@@ -184,7 +184,7 @@ footer{text-align:center;padding:40px;opacity:.3;font-size:12px}
 </section>
 <footer>
   <p>© 2025 27sun</p>
-  <p style="margin-top:10px; opacity:0.6; line-height:1.4" data-i18n="disclaimer">Tento web slouží jako osobní portfolio a přehled mé tvorby. Jedná se o hobby projekt, nikoliv o komerční činnost.</p>
+  <p style="margin-top:15px; opacity:0.6; line-height:1.4; font-size:11px;" data-i18n="disclaimer">Tento web slouží výhradně jako osobní portfolio a přehled mé tvorby. Jedná se o hobby projekt vytvořený pro přehlednost, nikoliv o komerční činnost.</p>
 </footer>
 <script>
 function scrollMe(id, step) {
@@ -196,13 +196,13 @@ const t={
     hero:"Video editor & photographer<br>Reels • TikTok • YouTube",contactBtn:"Kontakt",aboutText:"Jmenuju se <b>Samuel Karbán</b>, je mi 18 let a stříhání se věnuju od března 2025 v <b>DaVinci Resolve</b>. K tvorbě mě to táhlo už od dětství. Velkou inspirací mi byl Petr Zoubek.<br><br><b>Gear:</b> Sony ZV-E10 + Sigma 16mm f1.4",showcase:"UKÁZKY",clips:"Clips",reels:"Reels / TikTok",drag:"← Tahej pro zobrazení →",gallery:"Fotogalerie",reviewsTitle:"Feedback",feedbackNote:"Feedback je brán ze zpráv",
     msg1:"Fakt super práce kamo", msg2:"predtym to bolo ppci kamo a teraz uplny strop", msg3:"braaaaaaaacho extremne to je diki moooc", msg4:"Diky za dnešek, bomba uplne, az budeš mít hned posílej",
     pricing:"Služby & Ceník",serv1:"🎬 1x Reels / TikTok (střih)",price1:"od 350 Kč",servEdit:"🎥 Střih videoklipu",priceEdit:"od 900 Kč",refEdit:"od 540 Kč",servShoot:"🎥 Natáčení + Střih",priceShoot:"od 1 100 Kč",serv2:"📺 YouTube video střih",ytNote:"(cena za 10 min. videa - vlogy, reakce apod.)",price2:"od 1 500 Kč",serv3:"📷 Focení + úprava",photoNote:"(v ceně 10 upravených fotek)",price3:"od 900 Kč",serv4:"🖼️ Úprava fotografie",singleNote:"(za jednu fotku)",price4:"od 150 Kč",refPhoto:"od 90 Kč",priceNote:"* Ceny jsou orientační a mohou se lišit dle náročnosti projektu.",referral:"Referral Deal -40%:",ref1:"od 660 Kč",ref2:"od 540 Kč",bundles:"Výhodné Balíčky",bundle1:"Content Pack S",bundle1Desc:"5x Reels + 10x Fotek",bundle2:"Content Pack M",bundle2Desc:"10x Reels + 20x Fotek",bundle3:"Content Pack Master",bundle3Desc:"20x Reels + 40x Fotek",refTitle:"🤝 Referral Program",refDesc:"Doporuč mé služby dál! Pokud tvůj známý objedná jakoukoliv službu, získáváš na svou příští objednávku automaticky <b>slevu 40 %</b>.",contactTitle:"Kontakt",formTitle:"Pošli mi poptávku",sendBtn:"Odeslat e-mail",fName:"Tvé jméno", fEmail:"Tvůj e-mail", fMsg:"O jakou službu máš zájem?", fOk: "Díky! Zpráva byla odeslána.", fErr: "Chyba při odesílání.",
-    disclaimer:"Tento web slouží jako osobní portfolio a přehled mé tvorby. Jedná se o hobby projekt vytvořený pro přehlednost, nikoliv o komerční činnost."
+    disclaimer: "Tento web slouží výhradně jako osobní portfolio a přehled mé tvorby. Jedná se o hobby projekt vytvořený pro přehlednost, nikoliv o komerční činnost."
   },
   en:{
     hero:"Video editor & photographer<br>Reels • TikTok • YouTube",contactBtn:"Contact",aboutText:"My name is <b>Samuel Karbán</b>, I'm 18 years old and I've been editing since March 2025 in <b>DaVinci Resolve</b>. I've been drawn to creation since childhood. Petr Zoubek was a great inspiration.<br><br><b>Gear:</b> Sony ZV-E10 + Sigma 16mm f1.4",showcase:"SHOWCASE",clips:"Clips",reels:"Reels / TikTok",drag:"← Drag to view →",gallery:"Gallery",reviewsTitle:"Feedback",feedbackNote:"Feedback taken from messages",
     msg1:"Really great work mate", msg2:"it was awesome before but now it's next level", msg3:"brooooooo this is extreme, thanks a lot", msg4:"Thanks for today, absolutely fire, send it as soon as you have it",
     pricing:"Services & Pricing",serv1:"🎬 1x Reels / TikTok (Edit)",price1:"from 15 €",servEdit:"🎥 Music Video Editing",priceEdit:"from 36 €",refEdit:"from 21.6 €",servShoot:"🎥 Shooting + Edit",priceShoot:"from 45 €",serv2:"📺 YouTube Editing",ytNote:"(price per 10 min. video - vlogs, reactions etc.)",price2:"from 60 €",serv3:"📷 Photos + Edit",photoNote:"(includes 10 edited photos)",price3:"from 36 €",serv4:"🖼️ Photo Retouch",singleNote:"(per photo)",price4:"from 6 €",refPhoto:"from 3.6 €",priceNote:"* Prices are indicative and may vary based on project complexity.",referral:"Referral Deal -40%:",ref1:"from 27 €",ref2:"from 21 €",bundles:"Bundles",bundle1:"Content Pack S",bundle1Desc:"5x Reels + 10x Photos",bundle2:"Content Pack M",bundle2Desc:"10x Reels + 20x Photos",bundle3:"Content Pack Master",bundle3Desc:"20x Reels + 40x Photos",refTitle:"🤝 Referral Program",refDesc:"Recommend my services! If your friend orders any service, you automatically get a 40% discount on your next order.",contactTitle:"Contact",formTitle:"Send a request",sendBtn:"Send Email",fName:"Your name", fEmail:"Your e-mail", fMsg:"Your request", fOk: "Thanks! Message sent.", fErr: "Oops! Error sending.",
-    disclaimer:"This website serves as a personal portfolio and an overview of my work. It is a hobby project created for organization, not a commercial activity."
+    disclaimer: "This website serves exclusively as a personal portfolio and an overview of my work. It is a hobby project created for organization, not a commercial activity."
   }
 };
 
@@ -215,16 +215,16 @@ function setLang(l){
       if(e.dataset.i18n==='bundle1') e.nextElementSibling.nextElementSibling.innerHTML='140 €';
       if(e.dataset.i18n==='bundle2') e.nextElementSibling.nextElementSibling.innerHTML='200 €';
       if(e.dataset.i18n==='bundle3') e.nextElementSibling.nextElementSibling.innerHTML='360 €';
-      document.getElementById('f-name').placeholder = t.en.fName;
-      document.getElementById('f-email').placeholder = t.en.fEmail;
-      document.getElementById('f-msg').placeholder = t.en.fMsg;
+      if(document.getElementById('f-name')) document.getElementById('f-name').placeholder = t.en.fName;
+      if(document.getElementById('f-email')) document.getElementById('f-email').placeholder = t.en.fEmail;
+      if(document.getElementById('f-msg')) document.getElementById('f-msg').placeholder = t.en.fMsg;
     } else {
       if(e.dataset.i18n==='bundle1') e.nextElementSibling.nextElementSibling.innerHTML='3 500 Kč';
       if(e.dataset.i18n==='bundle2') e.nextElementSibling.nextElementSibling.innerHTML='5 000 Kč';
       if(e.dataset.i18n==='bundle3') e.nextElementSibling.nextElementSibling.innerHTML='9 000 Kč';
-      document.getElementById('f-name').placeholder = t.cs.fName;
-      document.getElementById('f-email').placeholder = t.cs.fEmail;
-      document.getElementById('f-msg').placeholder = t.cs.fMsg;
+      if(document.getElementById('f-name')) document.getElementById('f-name').placeholder = t.cs.fName;
+      if(document.getElementById('f-email')) document.getElementById('f-email').placeholder = t.cs.fEmail;
+      if(document.getElementById('f-msg')) document.getElementById('f-msg').placeholder = t.cs.fMsg;
     }
   });
   document.querySelectorAll('.lang-switch button').forEach(btn => btn.classList.remove('active'));
@@ -251,27 +251,29 @@ document.addEventListener('DOMContentLoaded',()=>{
   }, 3000);
 
   var form = document.getElementById("my-form");
-  async function handleSubmit(event) {
-    event.preventDefault();
-    var status = document.getElementById("my-form-status");
-    var data = new FormData(event.target);
-    const currentLang = document.getElementById('btn-en').classList.contains('active') ? 'en' : 'cs';
-    fetch(event.target.action, {
-      method: form.method,
-      body: data,
-      headers: { 'Accept': 'application/json' }
-    }).then(response => {
-      if (response.ok) {
-        status.innerHTML = t[currentLang].fOk;
-        form.reset();
-      } else {
+  if(form){
+    async function handleSubmit(event) {
+      event.preventDefault();
+      var status = document.getElementById("my-form-status");
+      var data = new FormData(event.target);
+      const currentLang = document.getElementById('btn-en').classList.contains('active') ? 'en' : 'cs';
+      fetch(event.target.action, {
+        method: form.method,
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          status.innerHTML = t[currentLang].fOk;
+          form.reset();
+        } else {
+          status.innerHTML = t[currentLang].fErr;
+        }
+      }).catch(error => {
         status.innerHTML = t[currentLang].fErr;
-      }
-    }).catch(error => {
-      status.innerHTML = t[currentLang].fErr;
-    });
+      });
+    }
+    form.addEventListener("submit", handleSubmit);
   }
-  form.addEventListener("submit", handleSubmit);
 });
 </script>
 </body>
