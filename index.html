@@ -23,10 +23,12 @@ body::before{
 }
 
 section{padding:100px 8%; max-width: 1400px; margin: 0 auto;}
-h2{font-size:clamp(28px, 6vw, 42px);font-weight:600;margin-bottom:10px;letter-spacing:1px;color:#fff}
-.section-subtitle{opacity:.6; font-size: 14px; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 2px; display: block;}
+h2{font-size:clamp(28px, 6vw, 42px);font-weight:600;margin-bottom:10px;letter-spacing:1px;color:#fff;text-transform: uppercase;}
 
-/* ZVĚTŠENÉ LOGO V TOP BARU */
+/* PODNADPISY: Kurzíva, normální písmo (ne hůlkové) */
+.section-subtitle{opacity:.6; font-size: 16px; margin-bottom: 30px; font-style: italic; display: block; text-transform: none; letter-spacing: 0.5px;}
+
+/* VELKÉ LOGO V TOP BARU */
 .top-bar{position:fixed;top:0;width:100%;height:110px;background:rgba(10,10,10,.9);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);display:flex;align-items:center;justify-content:center;z-index:1000;border-bottom:1px solid rgba(255,255,255,0.08)}
 .top-bar img{height:85px;width:auto;border-radius:10px;transition: transform 0.3s ease; filter: drop-shadow(0 0 10px rgba(255,122,24,0.2));}
 
@@ -57,7 +59,7 @@ h2{font-size:clamp(28px, 6vw, 42px);font-weight:600;margin-bottom:10px;letter-sp
 .video-slider.vertical video{min-width:280px;height:500px;border-radius:20px;background:#111;object-fit:cover;scroll-snap-align:center}
 .gallery-wrapper img{height:450px;width:auto;max-width:90vw;border-radius:18px;scroll-snap-align:center;flex-shrink:0;background:#1a1a1a;object-fit:contain}
 
-/* FEEDBACK CHAT */
+/* RECENZE CHAT */
 .chat-container{height:450px;overflow:hidden;position:relative;background:rgba(255,255,255,.02);border-radius:30px;border:1px solid rgba(255,255,255,.05);mask-image:linear-gradient(to bottom,transparent,black 15%,black 85%,transparent)}
 .chat-track{display:flex;flex-direction:column;gap:25px;padding:30px;animation:scrollUp 30s linear infinite;}
 @keyframes scrollUp{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
@@ -76,7 +78,6 @@ h2{font-size:clamp(28px, 6vw, 42px);font-weight:600;margin-bottom:10px;letter-sp
 .price{font-size:22px;margin-top:12px;font-weight:700; color: #fff}
 .discount{font-size:13px;color:#ff7a18;margin-top:10px;font-weight:600}
 .price-tag{color:#ff7a18; font-weight: 800; margin-left: 5px;}
-.bundle-card{border:1px solid rgba(255,122,24,0.4);background:rgba(255,122,24,.05);box-shadow: inset 0 0 30px rgba(255,122,24,0.05);}
 
 .contact-form input, .contact-form textarea{width:100%;padding:15px;margin-bottom:15px;border-radius:12px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#fff;font-family:inherit;outline:none;transition: 0.3s;}
 .contact-form input:focus, .contact-form textarea:focus{border-color:#ff7a18; background:rgba(255,255,255,0.08);}
@@ -123,7 +124,7 @@ footer{text-align:center;padding:80px 8% 50px;border-top:1px solid rgba(255,255,
 
 <section>
 <h2 data-i18n="showcase">UKÁZKY</h2>
-<span class="section-subtitle" data-i18n="clipsSub">Clips & Projects</span>
+<span class="section-subtitle" data-i18n="clipsSub">Klipová a projektová tvorba</span>
 <p class="drag-hint" data-i18n="drag">← Tahej pro zobrazení →</p>
 <div class="slider-container">
   <button class="nav-arrow prev" onclick="scrollMe('clips-scroll', -450)">&#10094;</button>
@@ -137,8 +138,8 @@ footer{text-align:center;padding:80px 8% 50px;border-top:1px solid rgba(255,255,
   <button class="nav-arrow next" onclick="scrollMe('clips-scroll', 450)">&#10095;</button>
 </div>
 
-<h2 data-i18n="reels">Short-form</h2>
-<span class="section-subtitle">Reels / TikTok / Shorts</span>
+<h2 data-i18n="reels">KRÁTKÁ VIDEA</h2>
+<span class="section-subtitle" data-i18n="reelsSub">Reels / TikTok / Shorts</span>
 <p class="drag-hint" data-i18n="drag">← Tahej pro zobrazení →</p>
 <div class="slider-container">
   <button class="nav-arrow prev" onclick="scrollMe('reels-scroll', -300)">&#10094;</button>
@@ -154,7 +155,7 @@ footer{text-align:center;padding:80px 8% 50px;border-top:1px solid rgba(255,255,
 
 <section>
 <h2 data-i18n="gallery">FOTOGALERIE</h2>
-<span class="section-subtitle" data-i18n="gallerySub">Photography Portfolio</span>
+<span class="section-subtitle" data-i18n="gallerySub">Fotografické portfolio</span>
 <p class="drag-hint" data-i18n="drag">← Tahej pro zobrazení →</p>
 <div class="slider-container">
   <button class="nav-arrow prev" onclick="scrollMe('autoGallery', -450)">&#10094;</button>
@@ -166,7 +167,7 @@ footer{text-align:center;padding:80px 8% 50px;border-top:1px solid rgba(255,255,
 </section>
 
 <section>
-  <h2 data-i18n="reviewsTitle">FEEDBACK</h2>
+  <h2 data-i18n="reviewsTitle">RECENZE</h2>
   <span class="section-subtitle" data-i18n="reviewsSub">Autentické zprávy od mých klientů</span>
   <div class="chat-container">
     <div class="chat-track" id="chatTrack">
@@ -196,11 +197,6 @@ footer{text-align:center;padding:80px 8% 50px;border-top:1px solid rgba(255,255,
   <div class="card bundle-card"><h3 data-i18n="bundle1">Content Pack S</h3><p data-i18n="bundle1Desc">5x Reels + 10x Fotek</p><p class="price">3 500 Kč</p></div>
   <div class="card bundle-card"><h3 data-i18n="bundle2">Content Pack M</h3><p data-i18n="bundle2Desc">10x Reels + 20x Fotek</p><p class="price">5 000 Kč</p></div>
   <div class="card bundle-card"><h3 data-i18n="bundle3">Content Pack Master</h3><p data-i18n="bundle3Desc">20x Reels + 40x Fotek</p><p class="price">9 000 Kč</p></div>
-</div>
-
-<div class="card" style="margin-top:30px; border: 1px dashed #ff7a18; background: rgba(255,122,24,.02);">
-  <h3 data-i18n="refTitle">🤝 Referral Program</h3>
-  <p data-i18n="refDesc" style="font-size:14px; opacity:.8;">Doporuč mé služby dál! Pokud tvůj známý objedná jakoukoliv službu, získáváš na svou příští objednávku automaticky <b>slevu 40 %</b>.</p>
 </div>
 </section>
 
@@ -252,10 +248,10 @@ function scrollMe(id, step) {
 
 const t={
   cs:{
-    hero:"Video editor & photographer<br>Reels • TikTok • YouTube",contactBtn:"Kontakt",aboutText:"Jmenuju se <b>Samuel Karbán</b>, je mi 18 let a stříhání se věnuju od března 2025 v <b>DaVinci Resolve</b>. K tvorbě mě to táhlo už od dětství. Velkou inspirací mi byl Petr Zoubek.<br><br><b>Gear:</b> Sony ZV-E10 + Sigma 16mm f1.4",showcase:"UKÁZKY",clipsSub:"Klipová a projektová tvorba",reels:"SHORT-FORM",drag:"← Tahej pro zobrazení →",gallery:"FOTOGALERIE",gallerySub:"Fotografické portfolio",reviewsTitle:"FEEDBACK",reviewsSub:"Autentické zprávy od mých klientů",msg1:"Fakt super práce kamo", msg2:"predtym to bolo ppci kamo a teraz uplny strop", msgNavy:"hele kamo pokracuj dal delas neco co tady v cesku chybi beres to vazne a jde to videt z prace co delas big up fotky a stříh popici", msg3:"braaaaaaaacho extremne to je diki moooc", msg4:"Diky za dnešek, bomba uplne, az budeš mít hned posílej", pricing:"SLUŽBY & CENÍK",pricingSub:"Uvedené ceny jsou orientační a závisí na náročnosti projektu",serv1:"🎬 1x Reels / TikTok (střih)",price1:"od 350 Kč",servEdit:"🎥 Střih videoklipu",priceEdit:"od 900 Kč",refEdit:"od 540 Kč",servShoot:"🎥 Natáčení + Střih",priceShoot:"od 1 100 Kč",serv2:"📺 YouTube video střih",price2:"od 1 500 Kč",serv3:"📷 Focení + úprava",price3:"od 900 Kč",serv4:"🖼️ Úprava fotografie",price4:"od 150 Kč",refPhoto:"od 90 Kč",bundles:"VÝHODNÉ BALÍČKY",bundle1:"Content Pack S",bundle1Desc:"5x Reels + 10x Fotek",bundle2:"Content Pack M",bundle2Desc:"10x Reels + 20x Fotek",bundle3:"Content Pack Master",bundle3Desc:"20x Reels + 40x Fotek",refTitle:"🤝 Referral Program",refDesc:"Doporuč mé služby dál! Pokud tvůj známý objedná jakoukoliv službu, získáváš na svou příští objednávku automaticky <b>slevu 40 %</b>.",contactTitle:"KONTAKT",formTitle:"Pošli mi poptávku",sendBtn:"Odeslat e-mail",fName:"Tvé jméno", fEmail:"Tvůj e-mail", fMsg:"O jakou službu máš zájem?", fOk: "Díky! Zpráva byla odeslána.", fErr: "Chyba.", disclaimer: "Tento web je nevýdělečným osobním portfoliem sloužícím k prezentaci mých dovedností..."
+    hero:"Video editor & photographer<br>Reels • TikTok • YouTube",contactBtn:"Kontakt",aboutText:"Jmenuju se <b>Samuel Karbán</b>, je mi 18 let a stříhání se věnuju od března 2025 v <b>DaVinci Resolve</b>. K tvorbě mě to táhlo už od dětství. Velkou inspirací mi byl Petr Zoubek.<br><br><b>Gear:</b> Sony ZV-E10 + Sigma 16mm f1.4",showcase:"UKÁZKY",clipsSub:"Klipová a projektová tvorba",reels:"KRÁTKÁ VIDEA",reelsSub:"Reels / TikTok / Shorts",drag:"← Tahej pro zobrazení →",gallery:"FOTOGALERIE",gallerySub:"Fotografické portfolio",reviewsTitle:"RECENZE",reviewsSub:"Autentické zprávy od mých klientů",msg1:"Fakt super práce kamo", msg2:"predtym to bolo ppci kamo a teraz uplny strop", msgNavy:"hele kamo pokracuj dal delas neco co tady v cesku chybi beres to vazne a jde to videt z prace co delas big up fotky a stříh popici", msg3:"braaaaaaaacho extremne to je diki moooc", msg4:"Diky za dnešek, bomba uplne, az budeš mít hned posílej", pricing:"SLUŽBY & CENÍK",pricingSub:"Uvedené ceny jsou orientační a závisí na náročnosti projektu",serv1:"🎬 1x Reels / TikTok (střih)",price1:"od 350 Kč",servEdit:"🎥 Střih videoklipu",priceEdit:"od 900 Kč",refEdit:"od 540 Kč",servShoot:"🎥 Natáčení + Střih",priceShoot:"od 1 100 Kč",serv2:"📺 YouTube video střih",price2:"od 1 500 Kč",serv3:"📷 Focení + úprava",price3:"od 900 Kč",serv4:"🖼️ Úprava fotografie",price4:"od 150 Kč",refPhoto:"od 90 Kč",bundles:"VÝHODNÉ BALÍČKY",bundle1:"Content Pack S",bundle1Desc:"5x Reels + 10x Fotek",bundle2:"Content Pack M",bundle2Desc:"10x Reels + 20x Fotek",bundle3:"Content Pack Master",bundle3Desc:"20x Reels + 40x Fotek",contactTitle:"KONTAKT",formTitle:"Pošli mi poptávku",sendBtn:"Odeslat e-mail", disclaimer: "Tento web je nevýdělečným osobním portfoliem..."
   },
   en:{
-    hero:"Video editor & photographer<br>Reels • TikTok • YouTube",contactBtn:"Contact",aboutText:"My name is <b>Samuel Karbán</b>, 18 y.o. editor using <b>DaVinci Resolve</b> since March 2025. Creating since childhood. Inspired by Petr Zoubek.<br><br><b>Gear:</b> Sony ZV-E10 + Sigma 16mm f1.4",showcase:"SHOWCASE",clipsSub:"Music videos & projects",reels:"SHORT-FORM",drag:"← Drag to scroll →",gallery:"GALLERY",gallerySub:"Photography portfolio",reviewsTitle:"FEEDBACK",reviewsSub:"Authentic messages from my clients",msg1:"Great work bro!", msg2:"It was cool before, now it's top level!", msgNavy:"Keep going man, you're doing something unique in CZ. It shows you take it seriously. Big up for photos and edits!", msg3:"Broooo that's extreme, thanks a lot!", msg4:"Thanks for today, fire work. Send it as soon as you have it!", pricing:"SERVICES & PRICING",pricingSub:"Prices are indicative and vary based on project complexity",serv1:"🎬 1x Reels Edit",price1:"from 15 €",servEdit:"🎥 Music Video",priceEdit:"from 36 €",refEdit:"from 21 €",servShoot:"🎥 Shoot + Edit",priceShoot:"from 45 €",serv2:"📺 YouTube Edit",price2:"from 60 €",serv3:"📷 Photos + Edit",price3:"from 36 €",serv4:"🖼️ Retouch",price4:"from 6 €",refPhoto:"from 3.6 €",bundles:"BUNDLES",bundle1:"Pack S",bundle1Desc:"5x Reels + 10x Photos",bundle2:"Pack M",bundle2Desc:"10x Reels + 20x Photos",bundle3:"Pack Master",bundle3Desc:"20x Reels + 40x Photos",refTitle:"🤝 Referral",refDesc:"Get 40% off for referral!",contactTitle:"CONTACT",formTitle:"Send an Inquiry",sendBtn:"Send Email",fName:"Name", fEmail:"Email", fMsg:"Message", fOk: "Sent!", fErr: "Error.", disclaimer: "Non-profit portfolio..."
+    hero:"Video editor & photographer<br>Reels • TikTok • YouTube",contactBtn:"Contact",aboutText:"My name is <b>Samuel Karbán</b>, 18 y.o. editor using <b>DaVinci Resolve</b> since March 2025.",showcase:"SHOWCASE",clipsSub:"Music videos & project work",reels:"SHORT VIDEOS",reelsSub:"Reels / TikTok / Shorts",drag:"← Drag to scroll →",gallery:"GALLERY",gallerySub:"Photography portfolio",reviewsTitle:"REVIEWS",reviewsSub:"Authentic messages from my clients",msg1:"Great work bro!", msg2:"It was cool before, now it's top level!", msgNavy:"Keep going man, you're doing something unique in CZ. Big up!", msg3:"Broooo that's extreme, thanks!", msg4:"Thanks for today, fire work!", pricing:"SERVICES & PRICING",pricingSub:"Prices are indicative and vary based on project complexity",serv1:"🎬 1x Reels Edit",price1:"from 15 €",servEdit:"🎥 Music Video",priceEdit:"from 36 €",refEdit:"from 21 €",servShoot:"🎥 Shoot + Edit",priceShoot:"from 45 €",serv2:"📺 YouTube Edit",price2:"from 60 €",serv3:"📷 Photos + Edit",price3:"from 36 €",serv4:"🖼️ Retouch",price4:"from 6 €",refPhoto:"from 3.6 €",bundles:"BUNDLES",bundle1:"Pack S",bundle1Desc:"5x Reels + 10x Photos",bundle2:"Pack M",bundle2Desc:"10x Reels + 20x Photos",bundle3:"Pack Master",bundle3Desc:"20x Reels + 40x Photos",contactTitle:"CONTACT",formTitle:"Send an Inquiry",sendBtn:"Send Email", disclaimer: "Non-profit portfolio..."
   }
 };
 
