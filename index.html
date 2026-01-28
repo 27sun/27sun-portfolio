@@ -27,33 +27,51 @@ body::before{
   z-index:-1;
 }
 
-section{padding:100px 6%}
-h2{font-size:32px;font-weight:500;margin-bottom:30px}
-h3{font-weight:500;opacity:.75;margin-bottom:15px}
+/* TOP BAR */
+.top-bar{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:70px;
+  background:rgba(10,10,10,.85);
+  backdrop-filter:blur(8px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:1000;
+}
+
+.top-bar img{
+  height:46px;
+  border-radius:14px;
+}
 
 .lang-switch{
-  position:fixed;
-  top:20px;
+  position:absolute;
   right:20px;
-  z-index:999;
 }
 .lang-switch button{
   background:none;
   border:1px solid rgba(255,255,255,.3);
   color:#fff;
-  padding:8px 14px;
+  padding:6px 12px;
   margin-left:6px;
   border-radius:999px;
   cursor:pointer;
 }
 .lang-switch button:hover{background:#ff7a18;color:#000}
 
+section{padding:120px 6%}
+h2{font-size:32px;font-weight:500;margin-bottom:30px}
+h3{font-weight:500;opacity:.75;margin-bottom:15px}
+
 .hero{
-  min-height:100vh;
+  min-height:calc(100vh - 70px);
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  gap:60px;
+  justify-content:center;
+  text-align:center;
 }
 
 .logo{
@@ -74,19 +92,14 @@ h3{font-weight:500;opacity:.75;margin-bottom:15px}
 }
 .btn:hover{background:#ff7a18;color:#000}
 
-.hero img{
-  width:360px;
-  border-radius:20px;
-  box-shadow:0 30px 80px rgba(0,0,0,.7);
-}
-
-/* SLIDERS */
+/* SLIDER HINT */
 .slider-hint{
   font-size:14px;
   opacity:.5;
   margin-bottom:10px;
 }
 
+/* VIDEO SLIDERS */
 .video-slider{
   display:flex;
   gap:30px;
@@ -96,7 +109,6 @@ h3{font-weight:500;opacity:.75;margin-bottom:15px}
 }
 .video-slider::-webkit-scrollbar{display:none}
 
-/* CLIPS */
 .video-slider.clips iframe{
   min-width:360px;
   height:220px;
@@ -105,7 +117,6 @@ h3{font-weight:500;opacity:.75;margin-bottom:15px}
   scroll-snap-align:center;
 }
 
-/* REELS / TIKTOKS (PHONE FORMAT) */
 .video-slider.vertical iframe{
   min-width:260px;
   height:460px;
@@ -120,9 +131,13 @@ h3{font-weight:500;opacity:.75;margin-bottom:15px}
   gap:20px;
   overflow-x:auto;
   scroll-snap-type:x mandatory;
+  padding-bottom:20px;
 }
+.gallery-wrapper::-webkit-scrollbar{display:none}
 .gallery-wrapper img{
-  height:460px;
+  height:420px;
+  width:auto;
+  object-fit:cover;
   border-radius:20px;
   scroll-snap-align:center;
 }
@@ -139,6 +154,8 @@ h3{font-weight:500;opacity:.75;margin-bottom:15px}
   background:rgba(255,255,255,.04);
   border:1px solid rgba(255,255,255,.12);
 }
+.price{font-size:22px;margin-top:10px;opacity:.85}
+.note{font-size:14px;opacity:.6;margin-top:10px;font-style:italic}
 
 /* CONTACT */
 .social-links a{
@@ -150,17 +167,21 @@ h3{font-weight:500;opacity:.75;margin-bottom:15px}
 footer{text-align:center;padding:60px;opacity:.4}
 
 @media(max-width:900px){
-  .hero{flex-direction:column;text-align:center}
   .logo{font-size:64px}
+  .gallery-wrapper img{height:280px}
 }
 </style>
 </head>
 
 <body>
 
-<div class="lang-switch">
-  <button onclick="setLang('cs')">CZ</button>
-  <button onclick="setLang('en')">EN</button>
+<!-- TOP BAR -->
+<div class="top-bar">
+  <img src="profile.PNG" alt="27sun">
+  <div class="lang-switch">
+    <button onclick="setLang('cs')">CZ</button>
+    <button onclick="setLang('en')">EN</button>
+  </div>
 </div>
 
 <section class="hero">
@@ -172,36 +193,77 @@ footer{text-align:center;padding:60px;opacity:.4}
     </p>
     <a href="#contact" class="btn" data-i18n="contactBtn">Kontakt</a>
   </div>
-  <img src="profile.PNG">
 </section>
 
 <section>
 <h2 data-i18n="gallery">Fotogalerie</h2>
 <div class="gallery-wrapper">
-  <img src="foto1.jpeg"><img src="foto2.jpeg"><img src="foto3.jpeg">
+  <img src="foto11.jpeg">
+  <img src="foto2.jpeg">
+  <img src="foto3.jpeg">
+  <img src="foto4.jpeg">
+  <img src="foto5.jpeg">
+  <img src="foto6.jpeg">
+  <img src="foto7.jpeg">
+  <img src="foto8.jpeg">
+  <img src="foto9.jpeg">
+  <img src="foto10.jpeg">
+  <img src="foto1.jpeg">
+  <img src="foto12.jpeg">
+  <img src="foto13.jpeg">
+  <img src="foto14.jpeg">
 </div>
 </section>
 
 <section>
-<h2 data-i18n="samples">UKÁZKY</h2>
+<h2 data-i18n="pricing">Služby, Ceník & Balíčky</h2>
 
-<h3 data-i18n="clips">Clips</h3>
-<div class="slider-hint" data-i18n="drag">👉 Táhni pro zobrazení</div>
-<div class="video-slider clips">
-  <iframe src="https://www.youtube.com/embed/_VWkv_ONEiM"></iframe>
-  <iframe src="https://www.youtube.com/embed/ihaDYNouXis"></iframe>
+<div class="pricing">
+  <div class="card">
+    <h3>📷 Focení + úprava</h3>
+    <p class="price">od 1 500 Kč</p>
+    <p class="note">• možnost uplatnit Referral Deal –40 %</p>
+  </div>
+
+  <div class="card">
+    <h3>🖼️ Úprava jedné fotografie</h3>
+    <p class="price">od 150 Kč / foto</p>
+    <p class="note">• možnost slevy z Referral Deal balíčku</p>
+  </div>
+
+  <div class="card">
+    <h3>🎬 Reels / Shorts</h3>
+    <p class="price">od 500 Kč</p>
+  </div>
+
+  <div class="card">
+    <h3>📺 YouTube video</h3>
+    <p class="price">od 1 500 Kč</p>
+  </div>
+
+  <div class="card">
+    <h3>🎥 Natáčení clipu + sestřih</h3>
+    <p class="price">od 2 500 Kč</p>
+  </div>
 </div>
 
-<h3 style="margin-top:60px" data-i18n="reels">Reels / TikToks</h3>
-<div class="slider-hint" data-i18n="drag">👉 Táhni pro zobrazení</div>
-<div class="video-slider vertical">
-
-  <iframe src="https://www.instagram.com/reel/DFzwMMosCJ_/embed"></iframe>
-  <iframe src="https://www.instagram.com/reel/DO8bjzOisWy/embed"></iframe>
-
-  <iframe src="https://www.tiktok.com/embed?url=https://vm.tiktok.com/ZNRAdmqB3/"></iframe>
-  <iframe src="https://www.tiktok.com/embed?url=https://vm.tiktok.com/ZNRAdureG/"></iframe>
-
+<h2 style="margin-top:80px">Balíčky</h2>
+<div class="pricing">
+  <div class="card">
+    <h3>🔥 Starter Content</h3>
+    <p>3× Reels / Shorts<br>Základní color grading</p>
+    <p class="price">1 300 Kč</p>
+  </div>
+  <div class="card">
+    <h3>🚀 Creator Pack</h3>
+    <p>Focení (10 fotek)<br>2× Reels / Shorts</p>
+    <p class="price">2 100 Kč</p>
+  </div>
+  <div class="card">
+    <h3>🤝 Referral Deal</h3>
+    <p>40 % sleva na focení + úpravu</p>
+    <p class="price">–40 %</p>
+  </div>
 </div>
 </section>
 
@@ -217,33 +279,26 @@ footer{text-align:center;padding:60px;opacity:.4}
 <footer>© 2025 27sun</footer>
 
 <script>
-const translations={
-  en:{
-    hero:"Video editor & photographer<br>Reels • TikTok • YouTube • Photography",
-    contactBtn:"Contact",
-    gallery:"Photo gallery",
-    samples:"SHOWCASE",
-    clips:"Clips",
-    reels:"Reels / TikToks",
-    drag:"👉 Drag to browse",
-    contact:"Contact"
-  },
+const t={
   cs:{
     hero:"Video editor & photographer<br>Reels • TikTok • YouTube • Fotografie",
     contactBtn:"Kontakt",
     gallery:"Fotogalerie",
-    samples:"UKÁZKY",
-    clips:"Clips",
-    reels:"Reels / TikToks",
-    drag:"👉 Táhni pro zobrazení",
+    pricing:"Služby, Ceník & Balíčky",
     contact:"Kontakt"
+  },
+  en:{
+    hero:"Video editor & photographer<br>Reels • TikTok • YouTube • Photography",
+    contactBtn:"Contact",
+    gallery:"Photo gallery",
+    pricing:"Services, Pricing & Packages",
+    contact:"Contact"
   }
 };
 
-function setLang(lang){
-  document.documentElement.lang=lang;
-  document.querySelectorAll("[data-i18n]").forEach(el=>{
-    el.innerHTML=translations[lang][el.dataset.i18n];
+function setLang(l){
+  document.querySelectorAll("[data-i18n]").forEach(e=>{
+    e.innerHTML=t[l][e.dataset.i18n];
   });
 }
 </script>
