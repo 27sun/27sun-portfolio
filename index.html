@@ -34,7 +34,7 @@ body::before{
   position:fixed;
   top:0;
   width:100%;
-  height:70px;
+  height:100px; /* Zvětšeno ze 70px na 100px */
   background:rgba(10,10,10,.85);
   backdrop-filter:blur(8px);
   display:flex;
@@ -43,8 +43,13 @@ body::before{
   z-index:1000;
 }
 .top-bar img{
-  height:42px;
+  height:75px; /* Zvětšeno 1.8x (původně 42px) */
+  width: auto;
   border-radius:12px;
+  transition: transform 0.3s ease; /* Plynulá animace */
+}
+.top-bar img:hover {
+  transform: scale(1.05); /* Jemné zvětšení při najetí myší */
 }
 .lang-switch{
   position:absolute;
@@ -78,7 +83,7 @@ h3{opacity:.7;margin-bottom:10px;font-weight:500;}
 
 /* HERO */
 .hero{
-  min-height:calc(100vh - 70px);
+  min-height:calc(100vh - 100px); /* Upraveno pro novou výšku lišty */
   display:flex;
   align-items:center;
   justify-content:space-between;
