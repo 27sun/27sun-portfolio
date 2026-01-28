@@ -28,6 +28,11 @@
       position: fixed;
       inset: 0;
       background:
+        radial-gradient(
+          circle at left bottom,
+          rgba(255,255,255,0.12),
+          transparent 45%
+        ),
         linear-gradient(to bottom, rgba(10,10,10,0.85), rgba(10,10,10,0.95)),
         repeating-linear-gradient(
           to right,
@@ -63,6 +68,7 @@
       font-family: 'UnifrakturCook', cursive;
       font-size: 96px;
       line-height: 1;
+      color: #ff7a18;
     }
 
     .hero-text p {
@@ -82,7 +88,7 @@
     }
 
     .btn:hover {
-      background: #fff;
+      background: #ff7a18;
       color: #000;
     }
 
@@ -157,7 +163,11 @@
       transition: 0.3s;
     }
 
-    .social-links a:hover { opacity: 1; transform: translateX(6px); }
+    .social-links a:hover {
+      opacity: 1;
+      transform: translateX(6px);
+      color: #ff7a18;
+    }
 
     footer {
       text-align: center;
@@ -185,7 +195,7 @@
       <div class="logo">27sun</div>
       <p>
         Video editor & photographer<br>
-        Reels • Shorts • YouTube • Fotografie
+        Reels • TikTok • YouTube • Fotografie
       </p>
       <a href="#contact" class="btn">Kontakt</a>
     </div>
@@ -223,7 +233,8 @@
   </section>
 
   <section>
-    <h2>Služby & Ceník</h2>
+    <h2>Služby, Ceník & Balíčky</h2>
+
     <div class="pricing">
       <div class="card">
         <h3>🎬 Reels / Shorts</h3>
@@ -236,6 +247,48 @@
       <div class="card">
         <h3>📷 Focení + úprava</h3>
         <p class="price">od 1 500 Kč</p>
+      </div>
+      <div class="card">
+        <h3>🖼️ Úprava jedné fotografie</h3>
+        <p class="price">od 150 Kč / foto</p>
+      </div>
+      <div class="card">
+        <h3>🎥 Natáčení clipu + sestřih</h3>
+        <p class="price">od 2 500 Kč</p>
+      </div>
+    </div>
+
+    <h2 style="margin-top:100px">Balíčky</h2>
+
+    <div class="pricing">
+      <div class="card">
+        <h3>🔥 Starter Content</h3>
+        <p>
+          • 3× Reels / Shorts<br>
+          • Základní color grading<br>
+          • Optimalizace pro IG / TikTok
+        </p>
+        <p class="price">1 300 Kč</p>
+      </div>
+
+      <div class="card">
+        <h3>🚀 Creator Pack</h3>
+        <p>
+          • 1× focení (10 upravených fotek)<br>
+          • 2× Reels / Shorts<br>
+          • Konzultace obsahu
+        </p>
+        <p class="price">2 100 Kč</p>
+      </div>
+
+      <div class="card">
+        <h3>🤝 Referral Deal</h3>
+        <p>
+          Přivedeš mi klienta na focení a<br>
+          <strong>máš 40 % slevu</strong><br>
+          na focení + úpravu.
+        </p>
+        <p class="price">–40 %</p>
       </div>
     </div>
   </section>
