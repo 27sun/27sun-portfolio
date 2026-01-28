@@ -143,7 +143,7 @@ h3{opacity:.7;margin-bottom:10px;font-weight:500;}
   border-radius:22px;
   border:none;
   scroll-snap-align:center;
-  background:#111; /* Tmavě šedá místo černé pro lepší feeling při načítání */
+  background:#111;
   object-fit: cover;
 }
 
@@ -239,7 +239,7 @@ footer{text-align:center;padding:60px;opacity:.4}
 <h3 data-i18n="clips">Clips</h3>
 <p class="drag-hint" data-i18n="drag">← Tahej pro zobrazení →</p>
 <div class="video-slider horizontal">
-  <iframe src="https://l.instagram.com/?u=https%3A%2F%2Fyoutu.be%2Fu3uAbnbAokE%3Fsi%3Do5x2eLfhF0sQTmMq&e=AT34BUcUALTt6HLZPj7xSSspz0ca8FGtq6DICZaVX7VZYNwchtnyL4agSNSx7oKfnLKn_6sCEHK2MAPWaTuPngp6_9tPGSs6Q253W_QeqI1rsxVevxRrCMfEIDCY"></iframe>
+  <iframe src="https://www.youtube.com/embed/u3uAbnbAokE"></iframe>
   <iframe src="https://www.youtube.com/embed/_VWkv_ONEiM"></iframe>
   <iframe src="https://www.youtube.com/embed/ihaDYNouXis"></iframe>
   <iframe src="https://www.youtube.com/embed/J13Ju447MCs"></iframe>
@@ -291,16 +291,31 @@ footer{text-align:center;padding:60px;opacity:.4}
 </p>
 
 <div class="pricing">
-  <div class="card"><h3>🎬 1x Reels / TikTok</h3><p class="price">od 350 Kč</p></div>
-  <div class="card"><h3>📺 YouTube video střih</h3><p class="price">od 1 500 Kč</p></div>
   <div class="card">
-    <h3>📷 Focení + úprava</h3>
-    <p class="price">od 900 Kč</p>
+    <h3 data-i18n="serv1">🎬 1x Reels / TikTok</h3>
+    <p class="price" data-i18n="price1">od 350 Kč</p>
+  </div>
+  <div class="card">
+    <h3 data-i18n="serv2">📺 YouTube video střih</h3>
+    <p class="price" data-i18n="price2">od 1 500 Kč</p>
+  </div>
+  <div class="card">
+    <h3 data-i18n="serv3">📷 Focení + úprava</h3>
+    <p class="price" data-i18n="price3">od 900 Kč</p>
     <p class="discount" data-i18n="referral">Možnost uplatnit Referral Deal –40 %</p>
   </div>
-  <div class="card"><h3>🖼️ Úprava fotografie</h3><p class="price">od 150 Kč</p></div>
-  <div class="card"><h3>🎥 Natáčení + střih</h3><p class="price">od 1 500 Kč</p></div>
-  <div class="card"><h3>✂️ Střih videoklipu</h3><p class="price">od 1 000 Kč</p></div>
+  <div class="card">
+    <h3 data-i18n="serv4">🖼️ Úprava fotografie</h3>
+    <p class="price" data-i18n="price4">od 150 Kč</p>
+  </div>
+  <div class="card">
+    <h3 data-i18n="serv5">🎥 Natáčení + střih</h3>
+    <p class="price" data-i18n="price5">od 1 500 Kč</p>
+  </div>
+  <div class="card">
+    <h3 data-i18n="serv6">✂️ Střih videoklipu</h3>
+    <p class="price" data-i18n="price6">od 1 000 Kč</p>
+  </div>
 </div>
 
 <h2 data-i18n="bundles">Výhodné Balíčky</h2>
@@ -308,17 +323,17 @@ footer{text-align:center;padding:60px;opacity:.4}
   <div class="card bundle-card">
     <h3 data-i18n="bundle1">Content Pack S</h3>
     <p data-i18n="bundle1Desc">5x Reels + 10x Upravená fotka</p>
-    <p class="price">3 500 Kč</p>
+    <p class="price" data-i18n="bPrice1">3 500 Kč</p>
   </div>
   <div class="card bundle-card">
     <h3 data-i18n="bundle2">Content Pack M</h3>
     <p data-i18n="bundle2Desc">10x Reels + 20x Upravená fotka</p>
-    <p class="price">5 000 Kč</p>
+    <p class="price" data-i18n="bPrice2">5 000 Kč</p>
   </div>
   <div class="card bundle-card">
     <h3 data-i18n="bundle3">Video Master</h3>
     <p data-i18n="bundle3Desc">Natáčení + Střih + 3x Promo Reels</p>
-    <p class="price">od 1 500 Kč</p>
+    <p class="price" data-i18n="bPrice3">od 1 500 Kč</p>
   </div>
 </div>
 </section>
@@ -344,14 +359,29 @@ const t={
   gallery:"Fotogalerie",
   pricing:"Služby, Ceník & Balíčky",
   priceInfo: "Ceny jsou orientační a odvíjejí se od náročnosti projektu. Konečná částka závisí na délce dodaného materiálu, složitosti střihu a efektů.",
+  serv1: "🎬 1x Reels / TikTok",
+  price1: "od 350 Kč",
+  serv2: "📺 YouTube video střih",
+  price2: "od 1 500 Kč",
+  serv3: "📷 Focení + úprava",
+  price3: "od 900 Kč",
+  serv4: "🖼️ Úprava fotografie",
+  price4: "od 150 Kč",
+  serv5: "🎥 Natáčení + střih",
+  price5: "od 1 500 Kč",
+  serv6: "✂️ Střih videoklipu",
+  price6: "od 1 000 Kč",
   referral: "Možnost uplatnit Referral Deal –40 %",
   bundles: "Výhodné Balíčky",
   bundle1: "Content Pack S",
   bundle1Desc: "5x Reels + 10x Upravená fotka",
+  bPrice1: "3 500 Kč",
   bundle2: "Content Pack M",
   bundle2Desc: "10x Reels + 20x Upravená fotka",
+  bPrice2: "5 000 Kč",
   bundle3: "Video Master",
   bundle3Desc: "Natáčení + Střih + 3x Promo Reels",
+  bPrice3: "od 1 500 Kč",
   drag:"← Tahej pro zobrazení →",
   contactBtn:"Kontakt",
   contactTitle:"Kontakt"
@@ -364,14 +394,29 @@ const t={
   gallery:"Photo Gallery",
   pricing:"Services & Pricing",
   priceInfo: "Prices are indicative and depend on the complexity of the project. The final amount depends on the material length, editing, and effects.",
+  serv1: "🎬 1x Reels / TikTok",
+  price1: "from 350 CZK",
+  serv2: "📺 YouTube Video Editing",
+  price2: "from 1,500 CZK",
+  serv3: "📷 Photoshoot + Editing",
+  price3: "from 900 CZK",
+  serv4: "🖼️ Photo Retouching",
+  price4: "from 150 CZK",
+  serv5: "🎥 Filming + Editing",
+  price5: "from 1,500 CZK",
+  serv6: "✂️ Music Video Edit",
+  price6: "from 1,000 CZK",
   referral: "Referral Deal –40 % available",
   bundles: "Special Bundles",
   bundle1: "Content Pack S",
   bundle1Desc: "5x Reels + 10x Edited Photos",
+  bPrice1: "3,500 CZK",
   bundle2: "Content Pack M",
   bundle2Desc: "10x Reels + 20x Edited Photos",
+  bPrice2: "5,000 CZK",
   bundle3: "Video Master",
   bundle3Desc: "Filming + Editing + 3x Promo Reels",
+  bPrice3: "from 1,500 CZK",
   drag:"← Drag to view →",
   contactBtn:"Contact",
   contactTitle:"Contact"
