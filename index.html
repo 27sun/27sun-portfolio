@@ -4,19 +4,41 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>27sun – Video editor & photographer</title>
+
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: "Inter", Arial, Helvetica, sans-serif;
     }
 
     body {
       background: #0b0b0b;
       color: #f2f2f2;
       line-height: 1.6;
-      overflow-x: hidden; /* Zabrání nechtěnému hýbání celé stránky do stran */
+      overflow-x: hidden;
+    }
+
+    /* Jemné "video timeline" pozadí */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(11,11,11,0.9),
+          rgba(11,11,11,0.95)
+        ),
+        repeating-linear-gradient(
+          to right,
+          rgba(255,255,255,0.05) 0,
+          rgba(255,255,255,0.05) 1px,
+          transparent 1px,
+          transparent 120px
+        );
+      z-index: -1;
     }
 
     a {
@@ -25,7 +47,7 @@
     }
 
     section {
-      padding: 60px 5%; /* Menší padding na stranách pro mobily */
+      padding: 70px 6%;
     }
 
     h1, h2, h3 {
@@ -36,30 +58,38 @@
 
     /* HERO */
     .hero {
-      min-height: 80vh;
+      min-height: 90vh;
       display: flex;
       align-items: center;
-      gap: 40px;
+      gap: 50px;
     }
 
     .hero img {
-      width: 300px;
+      width: 320px;
       max-width: 80%;
-      border-radius: 12px;
-      filter: brightness(0.9);
+      border-radius: 16px;
+      filter: brightness(0.95);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
     }
 
     .hero-text h1 {
-      font-size: 48px;
+      font-size: 52px;
       margin-bottom: 10px;
+    }
+
+    .hero-text p {
+      opacity: 0.85;
+      max-width: 500px;
     }
 
     .btn {
       display: inline-block;
-      border: 1px solid #fff;
-      padding: 12px 28px;
+      margin-top: 25px;
+      padding: 14px 34px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.4);
+      backdrop-filter: blur(6px);
       transition: 0.3s;
-      margin-top: 10px;
     }
 
     .btn:hover {
@@ -67,80 +97,99 @@
       color: #000;
     }
 
-    /* VIDEOS & REELS */
+    /* VIDEA */
     .grid-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      gap: 25px;
     }
 
     iframe {
       width: 100%;
       height: 200px;
-      border-radius: 10px;
+      border-radius: 14px;
       border: none;
       background: #1a1a1a;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
     }
 
-    /* SWIPE GALERIE - UPRAVENO PRO MOBILY */
+    /* GALERIE */
     .gallery-wrapper {
-      width: 100vw; /* Roztažení na celou šířku displeje */
-      margin-left: -5.5%; /* Kompenzace paddingu sekce */
+      width: 100vw;
+      margin-left: -6%;
       display: flex;
-      gap: 10px;
-      padding: 0 20px 20px 20px;
+      gap: 14px;
+      padding: 0 20px 20px;
       overflow-x: auto;
-      scroll-snap-type: x mandatory; /* Přichytávání fotek */
-      -webkit-overflow-scrolling: touch; /* Plynulé scrollování na iOS */
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
     }
 
-    /* Schování scrollbaru pro čistý vzhled */
-    .gallery-wrapper::-webkit-scrollbar {
-      display: none;
-    }
-    .gallery-wrapper {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
+    .gallery-wrapper::-webkit-scrollbar { display: none; }
+    .gallery-wrapper { scrollbar-width: none; }
 
     .gallery-wrapper img {
-      height: 400px; /* Vyšší fotky na mobilu vypadají lépe */
+      height: 420px;
       width: auto;
-      border-radius: 10px;
-      scroll-snap-align: center; /* Fotka skočí doprostřed */
+      border-radius: 14px;
+      scroll-snap-align: center;
       flex-shrink: 0;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-wrapper img:hover {
+      transform: scale(1.03);
     }
 
     /* PRICING */
     .pricing {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
+      gap: 25px;
     }
 
     .card {
-      border: 1px solid rgba(255,255,255,0.15);
-      padding: 25px;
-      border-radius: 12px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 30px;
+      border-radius: 18px;
+      backdrop-filter: blur(8px);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,255,255,0.3);
+    }
+
+    .price {
+      font-size: 20px;
+      opacity: 0.85;
     }
 
     /* CONTACT */
     .social-links a {
       display: block;
       margin-bottom: 15px;
-      opacity: 0.8;
-      transition: 0.3s;
+      opacity: 0.85;
       font-size: 18px;
+      transition: 0.3s;
+    }
+
+    .social-links a:hover {
+      opacity: 1;
+      transform: translateX(4px);
     }
 
     footer {
       text-align: center;
-      padding: 40px;
+      padding: 50px;
       opacity: 0.4;
       font-size: 14px;
     }
 
-    /* MOBILNÍ OPTIMALIZACE */
+    /* MOBIL */
     @media(max-width: 900px) {
       .hero {
         flex-direction: column;
@@ -148,12 +197,9 @@
         padding-top: 40px;
         min-height: auto;
       }
-      .hero-text h1 {
-        font-size: 36px;
-      }
-      .gallery-wrapper img {
-        height: 350px; /* Trochu menší pro malé telefony */
-      }
+
+      .hero-text h1 { font-size: 38px; }
+      .gallery-wrapper img { height: 340px; }
     }
   </style>
 </head>
@@ -222,7 +268,7 @@
     <h2>Kontakt & Sociální sítě</h2>
     <div class="social-links">
       <p>📩 <strong>E-mail:</strong> samkarban@gmail.com</p><br>
-    <p style="font-size: 13px; opacity: 0.5; margin-top: 10px; text-align: center;"><i>Kliknutím přejdeš na profil</i></p>
+      <p style="font-size: 13px; opacity: 0.5; margin-bottom: 15px;"><i>Kliknutím přejdeš na profil</i></p>
       <a href="https://instagram.com/s.karban_" target="_blank">📸 Instagram: @s.karban_</a>
       <a href="https://www.tiktok.com/@s.karban" target="_blank">🎵 TikTok: @s.karban</a>
     </div>
