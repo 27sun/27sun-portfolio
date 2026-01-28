@@ -14,17 +14,15 @@ body::before{
   content:"";
   position:fixed;
   inset:0;
-  /* Gradient se hýbe po ose X i Y zároveň */
+  /* Gradient optimalizovaný pro mobil i desktop - pohyb po úhlopříčce */
   background: 
-    radial-gradient(circle at calc(10% + (var(--scroll, 0) * 0.8%)) calc(10% + (var(--scroll, 0) * 0.8%)), rgba(255,122,24,0.18), transparent 50%),
+    radial-gradient(circle at calc(5% + (var(--scroll, 0) * 0.9%)) calc(5% + (var(--scroll, 0) * 0.7%)), rgba(255,122,24,0.15), transparent 60%),
     linear-gradient(to bottom, rgba(10,10,10,.85), rgba(10,10,10,.95)),
-    repeating-linear-gradient(to right, rgba(255,255,255,.03) 0, rgba(255,255,255,.03) 1px, transparent 1px, transparent 140px);
+    repeating-linear-gradient(to right, rgba(255,255,255,.02) 0, rgba(255,255,255,.02) 1px, transparent 1px, transparent 140px);
   z-index:-1;
   pointer-events: none;
   transform: translateZ(0);
 }
-
-/* ... (zbytek CSS zůstává stejný jako u tvého kódu) ... */
 
 section{padding:80px 6%;}
 h2{font-size:clamp(24px, 5vw, 32px);font-weight:500;margin-bottom:15px;letter-spacing:1px}
@@ -41,7 +39,6 @@ h3{opacity:.7;margin-bottom:10px;font-weight:500}
 .about-me{text-align:left;font-size:14px;max-width:340px;margin-top:20px;border-left:2px solid #ff7a18;padding-left:15px;opacity:.9}
 .about-me b{color:#ff7a18}
 .btn{display:inline-block;margin-top:30px;padding:14px 35px;border-radius:999px;background:#ff7a18;color:#000!important;text-decoration:none;font-weight:600;transition:.2s}
-.drag-hint{font-size:13px;opacity:.5;margin-bottom:12px;display:flex;align-items:center;gap:5px}
 
 .slider-container {position: relative; width: 100%;}
 .nav-arrow {
@@ -61,6 +58,7 @@ h3{opacity:.7;margin-bottom:10px;font-weight:500}
 .video-slider.horizontal iframe{min-width:85vw;max-width:400px;height:220px;border-radius:15px;scroll-snap-align:center;border:none;background:#000}
 .video-slider.vertical video{min-width:260px;height:460px;border-radius:18px;background:#111;object-fit:cover;scroll-snap-align:center}
 .gallery-wrapper img{height:400px;width:auto;max-width:90vw;border-radius:15px;scroll-snap-align:center;flex-shrink:0;background:#1a1a1a;object-fit:contain}
+
 .chat-container{height:400px;overflow:hidden;position:relative;background:rgba(255,255,255,.02);border-radius:25px;border:1px solid rgba(255,255,255,.05);mask-image:linear-gradient(to bottom,transparent,black 10%,black 90%,transparent)}
 .chat-track{display:flex;flex-direction:column;gap:20px;padding:20px;animation:scrollUp 25s linear infinite;will-change:transform;transform:translateZ(0)}
 @keyframes scrollUp{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
@@ -71,15 +69,19 @@ h3{opacity:.7;margin-bottom:10px;font-weight:500}
 .left .message-content{background:#262626;color:#fff;border-bottom-left-radius:4px}
 .right .message-content{background:#ff7a18;color:#000;border-bottom-right-radius:4px;font-weight:500}
 .sender-name{display:block;font-size:9px;opacity:.4;margin-bottom:4px;text-transform:uppercase;letter-spacing:1px}
+
 .pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
-.card{padding:30px;border-radius:20px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(5px);display:flex;flex-direction:column;justify-content:space-between}
+.card{padding:30px;border-radius:20px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(5px);display:flex;flex-direction:column;justify-content:space-between}
 .price{font-size:20px;margin-top:10px;font-weight:600}
 .discount{font-size:12px;color:#ff7a18;margin-top:8px;font-weight:600}
 .price-tag{color:#ff7a18; font-weight: 700; margin-left: 5px;}
-.bundle-card{border:1px solid #ff7a18;background:rgba(255,122,24,.05)}
+
 .social-links a{display:block;margin-bottom:15px;font-size:18px;color:#ff7a18;text-decoration:none;font-weight:500}
-footer{text-align:center;padding:40px;opacity:.4;font-size:13px;border-top:1px solid rgba(255,255,255,0.05)}
 .contact-form input, .contact-form textarea{width:100%;padding:12px;margin-bottom:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#fff;font-family:inherit}
+
+footer{text-align:center;padding:60px 6% 40px;border-top:1px solid rgba(255,255,255,0.05)}
+.disclaimer-text{margin-top:20px; opacity:0.5; font-size:11px; max-width:700px; margin-inline:auto; line-height:1.6}
+
 @media(max-width:600px){section{padding:60px 5%}.hero{gap:20px}.top-bar{height:70px}.gallery-wrapper img{height:320px}}
 </style>
 </head>
@@ -192,8 +194,8 @@ footer{text-align:center;padding:40px;opacity:.4;font-size:13px;border-top:1px s
 
 <footer>
   <p>© 2025 27sun • Samuel Karbán</p>
-  <p style="margin-top:15px; opacity:0.6; line-height:1.4; font-size:11px; max-width:600px; margin-inline:auto;" data-i18n="disclaimer">
-    Tento web slouží jako mé osobní portfolio. Uvedené částky jsou orientační a představují odměnu za čas strávený nad tvůrčí činností, nikoliv pevnou prodejní cenu. Vše záleží na naší vzájemné dohodě.
+  <p class="disclaimer-text" data-i18n="disclaimer">
+    Tento web je nevýdělečným osobním portfoliem sloužícím k prezentaci mých dovedností. Uvedené částky nejsou prodejní cenou, nýbrž odhadovanou hodnotou autorské odměny za tvůrčí činnost v rámci příležitostné výpomoci (ve smyslu § 10 zákona o daních z příjmů – příležitostná činnost). Veškeré spolupráce jsou řešeny individuální dohodou.
   </p>
 </footer>
 
@@ -222,7 +224,7 @@ const t={
     sendBtn:"Odeslat e-mail",
     fOk: "Díky! Zpráva byla odeslána.", 
     fErr: "Chyba při odesílání.",
-    disclaimer: "Tento web slouží jako mé osobní portfolio. Uvedené částky jsou orientační a představují odměnu za čas strávený nad tvůrčí činností, nikoliv pevnou prodejní cenu. Vše záleží na naší vzájemné dohodě."
+    disclaimer: "Tento web je nevýdělečným osobním portfoliem sloužícím k prezentaci mých dovedností. Uvedené částky nejsou prodejní cenou, nýbrž odhadovanou hodnotou autorské odměny za tvůrčí činnost v rámci příležitostné výpomoci (ve smyslu § 10 zákona o daních z příjmů – příležitostná činnost). Veškeré spolupráce jsou řešeny individuální dohodou."
   },
   en:{
     hero:"Video editor & photographer<br>Reels • TikTok • YouTube",
@@ -234,7 +236,7 @@ const t={
     sendBtn:"Send Email",
     fOk: "Thanks! Message sent.", 
     fErr: "Oops! Error sending.",
-    disclaimer: "This website serves as my personal portfolio. The listed amounts are indicative and represent a reward for time spent on creative activity, not a fixed sale price. Everything depends on our mutual agreement."
+    disclaimer: "This website is a non-profit personal portfolio for skill presentation. Listed amounts are not sale prices, but estimated author's rewards for creative work as occasional assistance. All collaborations are subject to individual agreement."
   }
 };
 
@@ -271,7 +273,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         body: new FormData(e.target),
         headers: { 'Accept': 'application/json' }
       }).then(res => {
-        status.innerHTML = res.ok ? "Odesláno!" : "Chyba.";
+        status.innerHTML = res.ok ? t[document.getElementById('btn-cs').classList.contains('active') ? 'cs' : 'en'].fOk : t[document.getElementById('btn-cs').classList.contains('active') ? 'cs' : 'en'].fErr;
         if(res.ok) form.reset();
       });
     });
