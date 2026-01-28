@@ -9,7 +9,7 @@
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{font-family:Inter,Arial,sans-serif;background:#0a0a0a;color:#f2f2f2;overflow-x:hidden;line-height:1.5}
 body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle at left bottom,rgba(255,255,255,.12),transparent 45%),linear-gradient(to bottom,rgba(10,10,10,.85),rgba(10,10,10,.95)),repeating-linear-gradient(to right,rgba(255,255,255,.04) 0,rgba(255,255,255,.04) 1px,transparent 1px,transparent 140px);z-index:-1}
-section{padding:80px 6%;content-visibility:auto;contain-intrinsic-size:1px 500px}
+section{padding:80px 6%;}
 h2{font-size:clamp(24px, 5vw, 32px);font-weight:500;margin-bottom:15px;letter-spacing:1px}
 h3{opacity:.7;margin-bottom:10px;font-weight:500}
 .top-bar{position:fixed;top:0;width:100%;height:80px;background:rgba(10,10,10,.8);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;z-index:1000;border-bottom:1px solid rgba(255,255,255,0.05)}
@@ -122,6 +122,8 @@ footer{text-align:center;padding:40px;opacity:.3;font-size:12px}
   <div class="card"><div><h3 data-i18n="serv3">📷 Focení + úprava</h3><p style="font-size:12px;opacity:.6;margin-top:-5px;" data-i18n="photoNote">(v ceně 10 upravených fotek)</p><p class="price" data-i18n="price3">od 900 Kč</p></div><p class="discount"><span data-i18n="referral">Referral Deal -40%:</span> <span class="price-tag" data-i18n="ref2">540 Kč</span></p></div>
   <div class="card"><h3 data-i18n="serv4">🖼️ Úprava fotografie</h3><p style="font-size:12px;opacity:.6;margin-top:-5px;" data-i18n="singleNote">(za jednu fotku)</p><p class="price" data-i18n="price4">150 Kč</p></div>
 </div>
+<p style="font-size:13px; opacity:.5; margin-top:15px; text-align:center" data-i18n="priceNote">* Ceny jsou orientační a mohou se lišit dle náročnosti projektu.</p>
+
 <h2 style="margin-top:40px" data-i18n="bundles">Výhodné Balíčky</h2>
 <div class="pricing">
   <div class="card bundle-card"><h3 data-i18n="bundle1">Content Pack S</h3><p data-i18n="bundle1Desc">5x Reels + 10x Fotek</p><p class="price">3 500 Kč</p></div>
@@ -151,6 +153,7 @@ const t={
     serv2:"📺 YouTube video střih",ytNote:"(cena za 10 min. videa)",price2:"od 1 500 Kč",
     serv3:"📷 Focení + úprava",photoNote:"(v ceně 10 upravených fotek)",price3:"od 900 Kč",
     serv4:"🖼️ Úprava fotografie",singleNote:"(za jednu fotku)",price4:"150 Kč",
+    priceNote:"* Ceny jsou orientační a mohou se lišit dle náročnosti projektu.",
     referral:"Referral Deal -40%:",ref1:"660 Kč",ref2:"540 Kč",bundles:"Výhodné Balíčky",bundle1:"Content Pack S",bundle1Desc:"5x Reels + 10x Fotek",bundle2:"Content Pack M",bundle2Desc:"10x Reels + 20x Fotek",bundle3:"Content Pack Master",bundle3Desc:"20x Reels + 40x Fotek",refTitle:"🤝 Referral Program",refDesc:"Doporuč mé služby dál! Pokud tvůj známý objedná jakoukoliv službu, získáváš na svou příští objednávku automaticky <b>slevu 40 %</b>.",contactTitle:"Kontakt"
   },
   en:{
@@ -160,6 +163,7 @@ const t={
     serv2:"📺 YouTube Editing",ytNote:"(price per 10 min. video)",price2:"from 60 €",
     serv3:"📷 Photos + Edit",photoNote:"(includes 10 edited photos)",price3:"from 36 €",
     serv4:"🖼️ Photo Retouch",singleNote:"(per photo)",price4:"6 €",
+    priceNote:"* Prices are indicative and may vary based on project complexity.",
     referral:"Referral Deal -40%:",ref1:"27 €",ref2:"21 €",bundles:"Bundles",bundle1:"Content Pack S",bundle1Desc:"5x Reels + 10x Photos",bundle2:"Content Pack M",bundle2Desc:"10x Reels + 20x Photos",bundle3:"Content Pack Master",bundle3Desc:"20x Reels + 40x Photos",refTitle:"🤝 Referral Program",refDesc:"Recommend my services! If your friend orders any service, you automatically get a 40% discount on your next order.",contactTitle:"Contact"
   }
 };
