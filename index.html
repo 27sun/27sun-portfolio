@@ -102,20 +102,20 @@ h3{opacity:.7;margin-bottom:10px;font-weight:500;}
   margin-top:40px;
   padding:16px 40px;
   border-radius:999px;
-  background:#ff7a18; /* Permanentně oranžové */
-  color:#000 !important; /* Černý text */
+  background:#ff7a18; 
+  color:#000 !important; 
   text-decoration:none;
   font-weight: 600;
   border:2px solid #ff7a18;
   transition:.2s;
 }
 .btn:hover{
-  background:#ff8c3b; /* Jen lehce zesvětlí při hoveru */
+  background:#ff8c3b; 
   border-color:#ff8c3b;
 }
 .btn:active{
-  background:#cc6214; /* Ztmavne při kliknutí (stlačení) */
-  transform: translateY(2px); /* Jemný efekt stlačení dolů */
+  background:#cc6214; 
+  transform: translateY(2px);
 }
 
 .hero img{
@@ -142,7 +142,6 @@ h3{opacity:.7;margin-bottom:10px;font-weight:500;}
 }
 .video-slider::-webkit-scrollbar{display:none}
 
-/* YOUTUBE / CLIPS */
 .video-slider.horizontal iframe{
   min-width:360px;
   height:220px;
@@ -153,7 +152,6 @@ h3{opacity:.7;margin-bottom:10px;font-weight:500;}
   background: #000;
 }
 
-/* REELS / TIKTOK / CLOUDINARY */
 .video-slider.vertical video {
   min-width:260px;
   height:460px;
@@ -181,6 +179,83 @@ h3{opacity:.7;margin-bottom:10px;font-weight:500;}
   box-shadow:0 30px 80px rgba(0,0,0,.7);
 }
 
+/* --- REVIEWS CHAT SYSTEM --- */
+.chat-container {
+  height: 450px;
+  overflow: hidden;
+  position: relative;
+  background: rgba(255,255,255,0.02);
+  border-radius: 30px;
+  border: 1px solid rgba(255,255,255,0.05);
+  margin-top: 20px;
+  mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+}
+
+.chat-track {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  animation: scrollUp 25s linear infinite;
+}
+
+.chat-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrollUp {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+.chat-bubble {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  max-width: 80%;
+  animation: fadeIn 0.5s ease;
+}
+
+.chat-bubble.left { align-self: flex-start; }
+.chat-bubble.right { align-self: flex-end; flex-direction: row-reverse; }
+
+.chat-bubble img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.message-content {
+  padding: 12px 18px;
+  border-radius: 20px;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.left .message-content {
+  background: #262626;
+  color: #fff;
+  border-bottom-left-radius: 4px;
+}
+
+.right .message-content {
+  background: #ff7a18;
+  color: #000;
+  border-bottom-right-radius: 4px;
+  font-weight: 500;
+}
+
+.sender-name {
+  display: block;
+  font-size: 11px;
+  opacity: 0.6;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
 /* PRICING */
 .pricing{
   display:grid;
@@ -202,7 +277,6 @@ h3{opacity:.7;margin-bottom:10px;font-weight:500;}
 .price{font-size:22px;margin-top:10px;opacity:.85;}
 .discount { font-size: 13px; color: #ff7a18; margin-top: 8px; font-weight: 600; }
 
-/* BUNDLES SECTION */
 .bundle-card {
   border: 1px solid #ff7a18;
   background: rgba(255, 122, 24, 0.05);
@@ -266,16 +340,16 @@ footer{text-align:center;padding:60px;opacity:.4}
 <h3 style="margin-top:60px" data-i18n="reels">Reels / TikTok</h3>
 <p class="drag-hint" data-i18n="drag">← Tahej pro zobrazení →</p>
 <div class="video-slider vertical">
-  <video controls preload="metadata" muted loop playsinline poster="">
+  <video controls preload="metadata" muted loop playsinline>
     <source src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto,so_0/d980b3ae76af4219b8b4d388ffb15dd1_i5ivd4#t=0.001" type="video/mp4">
   </video>
-  <video controls preload="metadata" muted loop playsinline poster="">
+  <video controls preload="metadata" muted loop playsinline>
     <source src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto,so_0/done_20version_s5ip3x#t=0.001" type="video/mp4">
   </video>
-  <video controls preload="metadata" muted loop playsinline poster="">
+  <video controls preload="metadata" muted loop playsinline>
     <source src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto,so_0/sdasdc_20XD_oglvcf#t=0.001" type="video/mp4">
   </video>
-  <video controls preload="metadata" muted loop playsinline poster="">
+  <video controls preload="metadata" muted loop playsinline>
     <source src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto,so_0/1_20CAST_kmsniw#t=0.001" type="video/mp4">
   </video>
 </div>
@@ -302,6 +376,46 @@ footer{text-align:center;padding:60px;opacity:.4}
 </div>
 </section>
 
+<section>
+  <h2 data-i18n="reviewsTitle">Feedback</h2>
+  <div class="chat-container">
+    <div class="chat-track" id="chatTrack">
+      
+      <div class="chat-bubble left">
+        <img src="nayssone.jpg" alt="NAYSSONE">
+        <div class="message-content">
+          <span class="sender-name">NAYSSONE</span>
+          Fakt super práce kamo
+        </div>
+      </div>
+
+      <div class="chat-bubble right">
+        <img src="nikofadess.jpg" alt="NIKOFADESS">
+        <div class="message-content">
+          <span class="sender-name">NIKOFADESS</span>
+          predtym to bolo ppci kamo a teraz uplny strop
+        </div>
+      </div>
+
+      <div class="chat-bubble left">
+        <img src="nikofadess.jpg" alt="NIKOFADESS">
+        <div class="message-content">
+          <span class="sender-name">NIKOFADESS</span>
+          braaaaaaaacho extremne to je diki moooc
+        </div>
+      </div>
+
+      <div class="chat-bubble right">
+        <img src="nayssone.jpg" alt="NAYSSONE">
+        <div class="message-content">
+          <span class="sender-name">NAYSSONE</span>
+          Diky za dnešek, bomba uplne, az budeš mít hned posílej
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 <section>
 <h2 data-i18n="pricing">Služby, Ceník & Balíčky</h2>
 <p class="pricing-note" data-i18n="priceInfo">
@@ -375,6 +489,7 @@ const t={
   clips:"Clips",
   reels:"Reels / TikTok",
   gallery:"Fotogalerie",
+  reviewsTitle: "Feedback",
   pricing:"Služby, Ceník & Balíčky",
   priceInfo: "Ceny jsou orientační a odvíjejí se od náročnosti projektu. Konečná částka závisí na délce dodaného materiálu, složitosti střihu a efektů.",
   serv1: "🎬 1x Reels / TikTok",
@@ -410,6 +525,7 @@ const t={
   clips:"Clips",
   reels:"Reels / TikTok",
   gallery:"Photo Gallery",
+  reviewsTitle: "Client Feedback",
   pricing:"Services & Pricing",
   priceInfo: "Prices are indicative and depend on the complexity of the project. The final amount depends on the material length, editing, and effects.",
   serv1: "🎬 1x Reels / TikTok",
@@ -440,11 +556,16 @@ const t={
   contactTitle:"Contact"
  }
 };
+
 function setLang(l){
  document.querySelectorAll("[data-i18n]").forEach(e=>{
   e.innerHTML=t[l][e.dataset.i18n];
  });
 }
+
+// AUTOMATICKÉ ZDVOJENÍ RECENZÍ PRO NEKONEČNÝ SCROLL
+const track = document.getElementById('chatTrack');
+track.innerHTML += track.innerHTML; 
 </script>
 
 </body>
