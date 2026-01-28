@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-/* ... (ponechávám tvé styly) ... */
+/* ZÁKLADNÍ STYLY - ZACHOVÁNO */
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:Inter,Arial,sans-serif;background:#0a0a0a;color:#f2f2f2;overflow-x:hidden;}
 body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle at left bottom,rgba(255,255,255,.12),transparent 45%),linear-gradient(to bottom,rgba(10,10,10,.85),rgba(10,10,10,.95)),repeating-linear-gradient(to right,rgba(255,255,255,.04) 0,rgba(255,255,255,.04) 1px,transparent 1px,transparent 140px);z-index:-1;}
@@ -27,34 +27,52 @@ section{padding:120px 6%}h2{font-size:32px;font-weight:500;margin-bottom:15px;le
 .gallery-wrapper{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:20px;}
 .gallery-wrapper img{height:460px;border-radius:20px;scroll-snap-align:center;flex-shrink:0;}
 
-/* Optimalizace animace chatu */
+/* --- REVIEWS CHAT SYSTEM - UPRAVENO --- */
 .chat-container {
   height: 450px;
   overflow: hidden;
   position: relative;
   background: rgba(255,255,255,0.02);
   border-radius: 30px;
+  border: 1px solid rgba(255,255,255,0.05);
+  margin-top: 20px;
   mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
 }
+
 .chat-track {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 25px; /* ZVĚTŠENÁ MEZERA MEZI ZPRÁVAMI */
   padding: 20px;
   animation: scrollUp 25s linear infinite;
-  will-change: transform; /* Říká prohlížeči, aby použil GPU */
+  will-change: transform;
 }
+
 @keyframes scrollUp { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
-.chat-bubble { display: flex; align-items: flex-end; gap: 10px; max-width: 80%; }
+
+.chat-bubble { display: flex; align-items: flex-end; gap: 12px; max-width: 80%; }
 .chat-bubble.left { align-self: flex-start; }
 .chat-bubble.right { align-self: flex-end; flex-direction: row-reverse; }
-.chat-bubble img { width: 35px; height: 35px; border-radius: 50%; object-fit: cover; }
-.message-content { padding: 12px 18px; border-radius: 20px; font-size: 15px; }
-.left .message-content { background: #262626; border-bottom-left-radius: 4px; }
+
+.chat-bubble img { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(255,255,255,0.1); }
+
+.message-content { padding: 14px 20px; border-radius: 22px; font-size: 15px; line-height: 1.4; }
+.left .message-content { background: #262626; color: #fff; border-bottom-left-radius: 4px; }
 .right .message-content { background: #ff7a18; color: #000; border-bottom-right-radius: 4px; font-weight: 500; }
-.pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;}
-.card{padding:40px;border-radius:24px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(8px);}
-@media(max-width:900px){.hero{flex-direction:column;text-align:center;padding-top:140px;}.logo{font-size:64px}.gallery-wrapper img{height:320px}}
+
+.sender-name { 
+  display: block; 
+  font-size: 10px; 
+  opacity: 0.4; /* SNÍŽENÁ OPACITY PRO JMENA */
+  margin-bottom: 6px; 
+  text-transform: uppercase; 
+  letter-spacing: 1px; 
+}
+
+/* PRICING & ZBYTEK - ZACHOVÁNO */
+.pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;margin-bottom: 60px;}
+.card{padding:40px;border-radius:24px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(8px);display: flex;flex-direction: column;justify-content: space-between;}
+@media(max-width:900px){.hero{flex-direction:column;text-align:center;padding-top:140px;}.logo{font-size:64px}section{padding:90px 6%}.gallery-wrapper img{height:320px}}
 footer{text-align:center;padding:60px;opacity:.4}
 </style>
 </head>
@@ -91,38 +109,17 @@ footer{text-align:center;padding:60px;opacity:.4}
 
 <h3 style="margin-top:60px" data-i18n="reels">Reels / TikTok</h3>
 <div class="video-slider vertical">
-  <video controls preload="none" muted loop playsinline poster="preview1.jpg">
-    <source src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto,so_0/d980b3ae76af4219b8b4d388ffb15dd1_i5ivd4" type="video/mp4">
-  </video>
-  <video controls preload="none" muted loop playsinline poster="preview2.jpg">
-    <source src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto,so_0/done_20version_s5ip3x" type="video/mp4">
-  </video>
-  <video controls preload="none" muted loop playsinline poster="preview3.jpg">
-    <source src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto,so_0/sdasdc_20XD_oglvcf" type="video/mp4">
-  </video>
-  <video controls preload="none" muted loop playsinline poster="preview4.jpg">
-    <source src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto,so_0/1_20CAST_kmsniw" type="video/mp4">
-  </video>
+  <video controls preload="none" muted loop playsinline><source src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto,so_0/d980b3ae76af4219b8b4d388ffb15dd1_i5ivd4" type="video/mp4"></video>
+  <video controls preload="none" muted loop playsinline><source src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto,so_0/done_20version_s5ip3x" type="video/mp4"></video>
+  <video controls preload="none" muted loop playsinline><source src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto,so_0/sdasdc_20XD_oglvcf" type="video/mp4"></video>
+  <video controls preload="none" muted loop playsinline><source src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto,so_0/1_20CAST_kmsniw" type="video/mp4"></video>
 </div>
 </section>
 
 <section>
 <h2 data-i18n="gallery">Fotogalerie</h2>
 <div class="gallery-wrapper">
-  <img src="foto11.jpeg" loading="lazy">
-  <img src="foto2.jpeg" loading="lazy">
-  <img src="foto3.jpeg" loading="lazy">
-  <img src="foto4.jpeg" loading="lazy">
-  <img src="foto5.jpeg" loading="lazy">
-  <img src="foto6.jpeg" loading="lazy">
-  <img src="foto7.jpeg" loading="lazy">
-  <img src="foto8.jpeg" loading="lazy">
-  <img src="foto9.jpeg" loading="lazy">
-  <img src="foto10.jpeg" loading="lazy">
-  <img src="foto1.jpeg" loading="lazy">
-  <img src="foto12.jpeg" loading="lazy">
-  <img src="foto13.jpeg" loading="lazy">
-  <img src="foto14.jpeg" loading="lazy">
+  <img src="foto11.jpeg" loading="lazy"><img src="foto2.jpeg" loading="lazy"><img src="foto3.jpeg" loading="lazy"><img src="foto4.jpeg" loading="lazy"><img src="foto5.jpeg" loading="lazy"><img src="foto6.jpeg" loading="lazy"><img src="foto7.jpeg" loading="lazy"><img src="foto8.jpeg" loading="lazy"><img src="foto9.jpeg" loading="lazy"><img src="foto10.jpeg" loading="lazy"><img src="foto1.jpeg" loading="lazy"><img src="foto12.jpeg" loading="lazy"><img src="foto13.jpeg" loading="lazy"><img src="foto14.jpeg" loading="lazy">
 </div>
 </section>
 
@@ -150,12 +147,33 @@ footer{text-align:center;padding:60px;opacity:.4}
   </div>
 </section>
 
+<section>
+<h2 data-i18n="pricing">Služby, Ceník & Balíčky</h2>
+<p class="pricing-note" data-i18n="priceInfo">Ceny jsou orientační a odvíjejí se od náročnosti projektu.</p>
+<div class="pricing">
+  <div class="card"><h3 data-i18n="serv1">🎬 1x Reels / TikTok</h3><p class="price" data-i18n="price1">od 350 Kč</p></div>
+  <div class="card"><h3 data-i18n="serv2">📺 YouTube video střih</h3><p class="price" data-i18n="price2">od 1 500 Kč</p></div>
+  <div class="card"><h3 data-i18n="serv3">📷 Focení + úprava</h3><p class="price" data-i18n="price3">od 900 Kč</p><p class="discount" data-i18n="referral">Možnost uplatnit Referral Deal –40 %</p></div>
+  <div class="card"><h3 data-i18n="serv4">🖼️ Úprava fotografie</h3><p class="price" data-i18n="price4">od 150 Kč</p></div>
+  <div class="card"><h3 data-i18n="serv5">🎥 Natáčení + střih</h3><p class="price" data-i18n="price5">od 1 500 Kč</p></div>
+  <div class="card"><h3 data-i18n="serv6">✂️ Střih videoklipu</h3><p class="price" data-i18n="price6">od 1 000 Kč</p></div>
+</div>
+</section>
+
+<section id="contact">
+<h2 data-i18n="contactTitle">Kontakt</h2>
+<p>📩 <strong>E-mail:</strong> samuelkarban@gmail.com</p><br>
+<div class="social-links">
+  <a href="https://www.instagram.com/27sun._?igsh=bmdvbjF0MjB1cjc5&utm_source=qr" target="_blank">📸 Instagram</a>
+  <a href="https://www.tiktok.com/@s.karban" target="_blank">🎵 TikTok</a>
+</div>
+</section>
+
+<footer>© 2025 27sun</footer>
+
 <script>
-// Ponechávám tvou logiku překladů a scrollu
 const t={cs:{hero:"Video editor & photographer<br>Reels • TikTok • YouTube • Fotografie",showcase:"UKÁZKY",clips:"Clips",reels:"Reels / TikTok",gallery:"Fotogalerie",reviewsTitle: "Feedback",pricing:"Služby, Ceník & Balíčky",priceInfo: "Ceny jsou orientační a odvíjejí se od náročnosti projektu.",serv1: "🎬 1x Reels / TikTok",price1: "od 350 Kč",serv2: "📺 YouTube video střih",price2: "od 1 500 Kč",serv3: "📷 Focení + úprava",price3: "od 900 Kč",serv4: "🖼️ Úprava fotografie",price4: "od 150 Kč",serv5: "🎥 Natáčení + střih",price5: "od 1 500 Kč",serv6: "✂️ Střih videoklipu",price6: "od 1 000 Kč",referral: "Možnost uplatnit Referral Deal –40 %",bundles: "Výhodné Balíčky",bundle1: "Content Pack S",bundle1Desc: "5x Reels + 10x Upravená fotka",bPrice1: "3 500 Kč",bundle2: "Content Pack M",bundle2Desc: "10x Reels + 20x Upravená fotka",bPrice2: "5 000 Kč",bundle3: "Video Master",bundle3Desc: "Natáčení + Střih + 3x Promo Reels",bPrice3: "od 1 500 Kč",drag:"← Tahej pro zobrazení →",contactBtn:"Kontakt",contactTitle:"Kontakt"},en:{hero:"Video editor & photographer<br>Reels • TikTok • YouTube • Photography",showcase:"SHOWCASE",clips:"Clips",reels:"Reels / TikTok",gallery:"Photo Gallery",reviewsTitle: "Client Feedback",pricing:"Services & Pricing",priceInfo: "Prices are indicative and depend on the complexity of the project.",serv1: "🎬 1x Reels / TikTok",price1: "from €14",serv2: "📺 YouTube Video Editing",price2: "from €60",serv3: "📷 Photoshoot + Editing",price3: "from €36",serv4: "🖼️ Photo Retouching",price4: "from €6",serv5: "🎥 Filming + Editing",price5: "from €60",serv6: "✂️ Music Video Edit",price6: "from €40",referral: "Referral Deal –40% available",bundles: "Special Bundles",bundle1: "Content Pack S",bundle1Desc: "5x Reels + 10x Edited Photos",bPrice1: "€140",bundle2: "Content Pack M",bundle2Desc: "10x Reels + 20x Edited Photos",bPrice2: "€200",bundle3: "Video Master",bundle3Desc: "Filming + Editing + 3x Promo Reels",bPrice3: "from €60",drag:"← Drag to view →",contactBtn:"Contact",contactTitle:"Contact"}};
 function setLang(l){document.querySelectorAll("[data-i18n]").forEach(e=>{e.innerHTML=t[l][e.dataset.i18n];});}
-
-// Optimalizované spuštění po načtení DOM
 document.addEventListener('DOMContentLoaded', () => {
   const track = document.getElementById('chatTrack');
   if(track) track.innerHTML += track.innerHTML;
