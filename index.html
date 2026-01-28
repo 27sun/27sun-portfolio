@@ -9,6 +9,7 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+
 body{
   font-family:Inter,Arial,sans-serif;
   background:#0a0a0a;
@@ -16,13 +17,25 @@ body{
   overflow-x:hidden;
 }
 
-/* ===== TOP BAR ===== */
+/* BACKGROUND */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at left bottom,rgba(255,255,255,.12),transparent 45%),
+    linear-gradient(to bottom,rgba(10,10,10,.85),rgba(10,10,10,.95)),
+    repeating-linear-gradient(to right,rgba(255,255,255,.04) 0,rgba(255,255,255,.04) 1px,transparent 1px,transparent 140px);
+  z-index:-1;
+}
+
+/* TOP BAR */
 .top-bar{
   position:fixed;
   top:0;
   width:100%;
-  height:72px;
-  background:rgba(10,10,10,.9);
+  height:70px;
+  background:rgba(10,10,10,.85);
   backdrop-filter:blur(8px);
   display:flex;
   align-items:center;
@@ -48,33 +61,39 @@ body{
 }
 .lang-switch button:hover{background:#ff7a18;color:#000}
 
-/* ===== SECTIONS ===== */
+/* SECTIONS */
 section{padding:120px 6%}
-h2{font-size:32px;font-weight:500;margin-bottom:20px}
+h2{font-size:32px;font-weight:500;margin-bottom:30px}
 h3{opacity:.7;margin-bottom:10px}
 
-/* ===== HERO ===== */
+/* HERO */
 .hero{
-  min-height:calc(100vh - 72px);
+  min-height:calc(100vh - 70px);
   display:flex;
-  justify-content:center;
   align-items:center;
-  text-align:center;
+  justify-content:space-between;
+  gap:60px;
 }
 .logo{
   font-family:'UnifrakturCook',cursive;
   font-size:96px;
 }
-.hero p{margin-top:20px;opacity:.85}
+.hero-text p{margin-top:20px;opacity:.85}
+.hero img{
+  width:360px;
+  max-width:90%;
+  border-radius:20px;
+  box-shadow:0 30px 80px rgba(0,0,0,.7);
+}
 
-/* ===== HINT ===== */
+/* DRAG TEXT */
 .drag-hint{
   font-size:14px;
   opacity:.5;
   margin-bottom:10px;
 }
 
-/* ===== VIDEO SLIDERS ===== */
+/* VIDEO SLIDERS */
 .video-slider{
   display:flex;
   gap:24px;
@@ -103,7 +122,7 @@ h3{opacity:.7;margin-bottom:10px}
   background:#000;
 }
 
-/* ===== GALLERY ===== */
+/* GALLERY */
 .gallery-wrapper{
   display:flex;
   gap:20px;
@@ -112,15 +131,15 @@ h3{opacity:.7;margin-bottom:10px}
 }
 .gallery-wrapper::-webkit-scrollbar{display:none}
 .gallery-wrapper img{
-  height:420px;
+  height:460px;
   border-radius:20px;
   scroll-snap-align:center;
 }
 
-/* ===== PRICING ===== */
+/* PRICING */
 .pricing{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
   gap:30px;
 }
 .card{
@@ -132,10 +151,20 @@ h3{opacity:.7;margin-bottom:10px}
 .price{margin-top:10px}
 .note{font-size:14px;opacity:.6;font-style:italic}
 
-/* ===== MOBILE ===== */
-@media(max-width:768px){
+/* CONTACT */
+.social-links a{
+  display:block;
+  margin-bottom:18px;
+  font-size:18px;
+  color:#ff7a18;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .hero{flex-direction:column;text-align:center}
   .logo{font-size:64px}
-  .gallery-wrapper img{height:260px}
+  section{padding:90px 6%}
+  .gallery-wrapper img{height:320px}
 }
 
 footer{text-align:center;padding:60px;opacity:.4}
@@ -155,13 +184,14 @@ footer{text-align:center;padding:60px;opacity:.4}
 
 <!-- HERO -->
 <section class="hero">
-  <div>
+  <div class="hero-text">
     <div class="logo">27sun</div>
     <p data-i18n="hero">Video editor & photographer<br>Reels • TikTok • YouTube • Fotografie</p>
   </div>
+  <img src="profile.PNG">
 </section>
 
-<!-- VIDEOS -->
+<!-- UKÁZKY -->
 <section>
 <h2 data-i18n="showcase">UKÁZKY</h2>
 
@@ -184,7 +214,7 @@ footer{text-align:center;padding:60px;opacity:.4}
 </div>
 </section>
 
-<!-- GALLERY -->
+<!-- GALERIE -->
 <section>
 <h2 data-i18n="gallery">Fotogalerie</h2>
 <div class="gallery-wrapper">
@@ -205,9 +235,10 @@ footer{text-align:center;padding:60px;opacity:.4}
 </div>
 </section>
 
-<!-- PRICING -->
+<!-- CENÍK -->
 <section>
-<h2 data-i18n="pricing">Služby & Ceník</h2>
+<h2 data-i18n="pricing">Služby, Ceník & Balíčky</h2>
+
 <div class="pricing">
   <div class="card">
     <h3>🎬 Reels / Shorts</h3>
@@ -222,11 +253,16 @@ footer{text-align:center;padding:60px;opacity:.4}
     <p class="price">od 1 500 Kč</p>
     <p class="note">možnost uplatnit Referral Deal –40 %</p>
   </div>
-  <div class="card">
-    <h3>🖼️ Úprava fotografie</h3>
-    <p class="price">od 150 Kč / foto</p>
-    <p class="note">sleva až –40 % v balíčku</p>
-  </div>
+</div>
+</section>
+
+<!-- KONTAKT -->
+<section id="contact">
+<h2>Kontakt</h2>
+<div class="social-links">
+  <p>📩 <strong>E-mail:</strong> samuelkarban@gmail.com</p><br>
+  <a href="https://instagram.com/s.karban_" target="_blank">📸 Instagram: @s.karban_</a>
+  <a href="https://www.tiktok.com/@s.karban" target="_blank">🎵 TikTok: @s.karban</a>
 </div>
 </section>
 
@@ -234,29 +270,29 @@ footer{text-align:center;padding:60px;opacity:.4}
 
 <script>
 const t={
-  cs:{
-    hero:"Video editor & photographer<br>Reels • TikTok • YouTube • Fotografie",
-    showcase:"UKÁZKY",
-    clips:"Clips",
-    reels:"Reels / TikTok",
-    gallery:"Fotogalerie",
-    pricing:"Služby & Ceník",
-    drag:"← Tahej pro zobrazení →"
-  },
-  en:{
-    hero:"Video editor & photographer<br>Reels • TikTok • YouTube • Photography",
-    showcase:"SHOWCASE",
-    clips:"Clips",
-    reels:"Reels / TikTok",
-    gallery:"Photo gallery",
-    pricing:"Services & Pricing",
-    drag:"← Drag to view →"
-  }
+ cs:{
+  hero:"Video editor & photographer<br>Reels • TikTok • YouTube • Fotografie",
+  showcase:"UKÁZKY",
+  clips:"Clips",
+  reels:"Reels / TikTok",
+  gallery:"Fotogalerie",
+  pricing:"Služby, Ceník & Balíčky",
+  drag:"← Tahej pro zobrazení →"
+ },
+ en:{
+  hero:"Video editor & photographer<br>Reels • TikTok • YouTube • Photography",
+  showcase:"SHOWCASE",
+  clips:"Clips",
+  reels:"Reels / TikTok",
+  gallery:"Photo gallery",
+  pricing:"Services & Pricing",
+  drag:"← Drag to view →"
+ }
 };
 function setLang(l){
-  document.querySelectorAll("[data-i18n]").forEach(e=>{
-    e.innerHTML=t[l][e.dataset.i18n];
-  });
+ document.querySelectorAll("[data-i18n]").forEach(e=>{
+  e.innerHTML=t[l][e.dataset.i18n];
+ });
 }
 </script>
 
