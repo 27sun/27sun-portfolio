@@ -83,21 +83,6 @@ h3{opacity:.7;margin-bottom:10px;font-weight:500}
 footer{text-align:center;padding:60px 6% 40px;border-top:1px solid rgba(255,255,255,0.05)}
 .disclaimer-text{margin-top:20px; opacity:0.5; font-size:11px; max-width:750px; margin-inline:auto; line-height:1.6}
 
-/* GAME STYLES */
-.game-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.92); display: none; align-items: center; justify-content: center; z-index: 2000; backdrop-filter: blur(15px); }
-.game-content { background: #111; border: 1px solid #ff7a18; padding: 40px; border-radius: 30px; width: 90%; max-width: 500px; text-align: center; position: relative; }
-#game-area { height: 300px; background: rgba(255,255,255,0.02); border-radius: 15px; position: relative; overflow: hidden; margin-top: 20px; cursor: crosshair; border: 1px solid rgba(255,255,255,0.05); }
-.target { position: absolute; width: 45px; height: 45px; background: #ff7a18; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; cursor: pointer; animation: popIn 0.2s; transition: background 0.1s; }
-.target.hit { background: #4caf50 !important; transform: scale(0.9); }
-@keyframes popIn { from { transform: scale(0); } to { transform: scale(1); } }
-.loot-box { width: 100px; height: 100px; margin: 30px auto; position: relative; cursor: pointer; transition: 0.3s; }
-.box-body { position: absolute; bottom: 0; width: 100%; height: 60%; background: #ff7a18; border-radius: 5px; }
-.box-lid { position: absolute; top: 15%; width: 110%; left: -5%; height: 25%; background: #fff; border-radius: 5px; z-index: 2; transition: 0.5s; }
-.loot-box.open .box-lid { transform: translateY(-30px) rotate(-10deg); opacity: 0; }
-.promo-wrap { display: flex; background: #1a1a1a; border: 1px dashed #ff7a18; padding: 12px; border-radius: 12px; justify-content: space-between; align-items: center; margin-top: 20px; }
-#promo-code { font-family: monospace; font-weight: bold; color: #ff7a18; font-size: 18px; }
-.copy-btn { background: #ff7a18; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 12px; }
-
 @media(max-width:600px){section{padding:60px 5%}.hero{gap:20px}.top-bar{height:70px}.gallery-wrapper img{height:320px}}
 </style>
 </head>
@@ -198,10 +183,6 @@ footer{text-align:center;padding:60px 6% 40px;border-top:1px solid rgba(255,255,
   <div class="card"><div><h3 data-i18n="serv4">🖼️ Úprava fotografie</h3><p style="font-size:12px;opacity:.6;margin-top:-5px;" data-i18n="singleNote">(za jednu fotku)</p><p class="price" data-i18n="price4">od 150 Kč</p></div><p class="discount"><span data-i18n="referral">Referral Deal -40%:</span> <span class="price-tag" data-i18n="refPhoto">od 90 Kč</span></p></div>
 </div>
 
-<p style="text-align:center; margin-top:35px;">
-  <a href="javascript:void(0)" onclick="openGame()" style="color:#ff7a18; text-decoration:none; font-weight:bold; font-size:15px; border: 1px solid #ff7a18; padding: 10px 20px; border-radius: 99px; background: rgba(255,122,24,0.05);" data-i18n="playGame">🎮 Hraj o slevy až 100 %</a>
-</p>
-
 <h2 style="margin-top:40px" data-i18n="bundles">Výhodné Balíčky</h2>
 <div class="pricing">
   <div class="card bundle-card" style="border: 1px dashed #ff7a18; background: rgba(255,122,24,.1);">
@@ -239,36 +220,6 @@ footer{text-align:center;padding:60px 6% 40px;border-top:1px solid rgba(255,255,
   <p class="disclaimer-text" data-i18n="disclaimer"></p>
 </footer>
 
-<div id="game-modal" class="game-overlay">
-  <div class="game-content">
-    <button onclick="closeGame()" style="position:absolute;top:15px;right:20px;background:none;border:none;color:#fff;font-size:30px;cursor:pointer;opacity:0.5;">&times;</button>
-    <div id="game-start-screen">
-      <h2 data-i18n="gameTitle">27sun Challenge</h2>
-      <p data-i18n="gameRules" style="margin: 15px 0; opacity: 0.8; font-size: 14px;"></p>
-      <button class="btn" onclick="startGame()" data-i18n="gameStart">Hrát o slevy</button>
-    </div>
-    <div id="game-play-screen" style="display:none">
-      <div style="display:flex;justify-content:space-between;margin-bottom:10px;font-weight:600;">
-        <div><span data-i18n="gameScore">Body</span>: <span id="current-score" style="color:#ff7a18">0</span> / 27</div>
-        <div id="game-timer" style="color:#ff4a4a">01:00</div>
-      </div>
-      <div id="game-area"></div>
-    </div>
-    <div id="game-win-screen" style="display:none">
-      <h2 data-i18n="gameWin" style="color:#ff7a18">VÝHRA!</h2>
-      <div class="loot-box" id="loot-box" onclick="openBox()">
-        <div class="box-lid"></div><div class="box-body"></div>
-      </div>
-      <p id="box-hint" data-i18n="gameOpenBox" style="font-size: 14px; opacity:0.7"></p>
-      <div id="reward-display" style="display:none">
-        <div id="reward-amount" style="font-size:28px; font-weight:800; color:#ff7a18; margin:15px 0;"></div>
-        <div class="promo-wrap"><span id="promo-code"></span><button class="copy-btn" onclick="copyPromo()" id="btn-copy">Copy</button></div>
-        <p style="font-size:11px; opacity:0.5; margin-top:12px;" data-i18n="gameApply"></p>
-      </div>
-    </div>
-  </div>
-</div>
-
 <script>
 function updateScroll() {
   const scrolled = window.scrollY;
@@ -289,24 +240,22 @@ const t={
     aboutText:"Jmenuju se <b>Samuel Karbán</b>, je mi 18 let a stříhání se věnuju od března 2025 v <b>DaVinci Resolve</b>. K tvorbě mě to táhlo už od dětství. Velkou inspirací mi byl Petr Zoubek.<br><br><b>Můj Gear:</b><br><ul class='gear-list'><li>Sony ZV-E10</li><li>Sigma 16mm f1.4</li><li>Sony 16-50 mm f/3,5-5,6</li><li>Stativ Rollei</li><li>Přídavné světlo Rollei</li><li>Přenosný Green Screen</li></ul>",
     showcase:"UKÁZKY",clips:"Clips",reels:"Reels / TikTok",drag:"← Tahej pro zobrazení →",gallery:"Fotogalerie",reviewsTitle:"Feedback",feedbackNote:"Feedback je brán ze zpráv",
     msg1:"Fakt super práce kamo", msg2:"predtym to bolo ppci kamo a teraz uplny strop", msgNavy:"hele kamo pokracuj dal delas neco co tady v cesku chybi beres to vazne a jde to videt z prace co delas big up fotky a stříh popici", msg3:"braaaaaaaacho extremne to je diki moooc", msg4:"Diky za dnešek, bomba uplne, az budeš mít hned posílej",
-    pricing:"Služby & Ceník",priceNote:"Ceny jsou pouze orientační a můžou se lišit podle délky videa, místa natáčení/focení atd.",playGame:"🎮 Hraj o slevy až 100 %",serv1:"🎬 1x Reels / TikTok (střih)",price1:"od 350 Kč",servEdit:"🎥 Střih videoklipu",priceEdit:"od 900 Kč",refEdit:"od 540 Kč",servShoot:"🎥 Natáčení + Střih",priceShoot:"od 1 100 Kč",serv2:"📺 YouTube video střih",ytNote:"(cena za 10 min. videa - vlogy, reakce apod.)",price2:"od 1 500 Kč",serv3:"📷 Focení + úprava",photoNote:"(v ceně 10 upravených fotek)",price3:"od 900 Kč",serv4:"🖼️ Úprava fotografie",singleNote:"(za jednu fotku)",price4:"od 150 Kč",refPhoto:"od 90 Kč",referral:"Referral Deal -40%:",ref1:"od 660 Kč",ref2:"od 540 Kč",
+    pricing:"Služby & Ceník",priceNote:"Ceny jsou pouze orientační a můžou se lišit podle délky videa, místa natáčení/focení atd.",serv1:"🎬 1x Reels / TikTok (střih)",price1:"od 350 Kč",servEdit:"🎥 Střih videoklipu",priceEdit:"od 900 Kč",refEdit:"od 540 Kč",servShoot:"🎥 Natáčení + Střih",priceShoot:"od 1 100 Kč",serv2:"📺 YouTube video střih",ytNote:"(cena za 10 min. videa - vlogy, reakce apod.)",price2:"od 1 500 Kč",serv3:"📷 Focení + úprava",photoNote:"(v ceně 10 upravených fotek)",price3:"od 900 Kč",serv4:"🖼️ Úprava fotografie",singleNote:"(za jednu fotku)",price4:"od 150 Kč",refPhoto:"od 90 Kč",referral:"Referral Deal -40%:",ref1:"od 660 Kč",ref2:"od 540 Kč",
     bundles:"Výhodné Balíčky",bundle1:"Content Pack S",bundle1Desc:"5x Reels + 10x Fotek",bundle2:"Content Pack M",bundle2Desc:"10x Reels + 20x Fotek",bundle3:"Content Pack Master",bundle3Desc:"20x Reels + 40x Fotek",
     refTitle:"🤝 Referral Program",refDesc:"Doporuč mé služby! Pokud tvůj známý objedná, získáváš na příští projekt <b>slevu 40 %</b>.",bundleRefPrice:"Individuální",
     contactTitle:"Kontakt",formTitle:"Pošli mi poptávku",sendBtn:"Odeslat e-mail",fName:"Tvé jméno", fEmail:"Tvůj e-mail", fMsg:"O jakou službu máš zájem?", fOk: "Díky! Zpráva byla odeslána.", fErr: "Chyba při odesílání.",
-    disclaimer: "Tento web je nevýdělečným osobním portfoliem sloužícím k prezentaci mých dovedností. Uvedené částky nejsou prodejní cenou, nýbrž odhadovanou hodnotou autorské odměny za tvůrčí činnost v rámci příležitostné výpomoci. Veškeré spolupráce jsou řešeny individuální dohodou.",
-    gameTitle: "27sun Challenge", gameRules: "Chytej foťáky! Dosáhni přesně 27 bodů během 60 sekund. Pokud překročíš 27 nebo vyprší čas, prohráváš.<br><br><b style='color:#ff7a18'>*Slevu nelze uplatnit na zvýhodněné balíčky.</b>", gameStart: "Hrát o slevy", gameScore: "Body", gameWin: "VÝHRA!", gameOpenBox: "Klikni na box a odhal slevu", gameApply: "Kód zkopíruj a vlož do poptávky níže.", gameWonText: "Vyhrál jsi slevu"
+    disclaimer: "Tento web je nevýdělečným osobním portfoliem sloužícím k prezentaci mých dovedností. Uvedené částky nejsou prodejní cenou, nýbrž odhadovanou hodnotou autorské odměny za tvůrčí činnost v rámci příležitostné výpomoci. Veškeré spolupráce jsou řešeny individuální dohodou."
   },
   en:{
     hero:"Video editor & photographer<br>Reels • TikTok • YouTube",contactBtn:"Contact",
     aboutText:"My name is <b>Samuel Karbán</b>, I'm 18 years old and I've been editing since March 2025 in <b>DaVinci Resolve</b>. I've been drawn to creation since childhood. My big inspiration was Petr Zoubek.<br><br><b>My Gear:</b><br><ul class='gear-list'><li>Sony ZV-E10</li><li>Sigma 16mm f1.4</li><li>Sony 16-50 mm f/3,5-5,6</li><li>Rollei Tripod</li><li>Rollei Light</li><li>Portable Green Screen</li></ul>",
     showcase:"SHOWCASE",clips:"Clips",reels:"Reels / TikTok",drag:"← Drag to view →",gallery:"Gallery",reviewsTitle:"Feedback",feedbackNote:"Feedback taken from messages",
     msg1:"Really great work mate", msg2:"it was awesome before but now it's next level", msgNavy:"Hey mate, keep going, you're doing something that's missing here in CZ, big up.", msg3:"brooooooo this is extreme, thanks a lot", msg4:"Thanks for today, absolutely fire!",
-    pricing:"Services & Pricing",priceNote:"Prices are indicative only and may vary based on video length, filming location, etc.",playGame:"🎮 Play for up to 100% discount",serv1:"🎬 1x Reels / TikTok (Edit)",price1:"from 15 €",servEdit:"🎥 Music Video Editing",priceEdit:"from 36 €",refEdit:"from 21.6 €",servShoot:"🎥 Shooting + Edit",priceShoot:"from 45 €",serv2:"📺 YouTube Editing",ytNote:"(price per 10 min. video)",price2:"from 60 €",serv3:"📷 Photos + Edit",photoNote:"(10 edited photos)",price3:"from 36 €",serv4:"🖼️ Photo Retouch",singleNote:"(per photo)",price4:"from 6 €",refPhoto:"from 3.6 €",referral:"Referral Deal -40%:",ref1:"from 27 €",ref2:"from 21 €",
+    pricing:"Services & Pricing",priceNote:"Prices are indicative only and may vary based on video length, filming location, etc.",serv1:"🎬 1x Reels / TikTok (Edit)",price1:"from 15 €",servEdit:"🎥 Music Video Editing",priceEdit:"from 36 €",refEdit:"from 21.6 €",servShoot:"🎥 Shooting + Edit",priceShoot:"from 45 €",serv2:"📺 YouTube Editing",ytNote:"(price per 10 min. video)",price2:"from 60 €",serv3:"📷 Photos + Edit",photoNote:"(10 edited photos)",price3:"from 36 €",serv4:"🖼️ Photo Retouch",singleNote:"(per photo)",price4:"from 6 €",refPhoto:"from 3.6 €",referral:"Referral Deal -40%:",ref1:"from 27 €",ref2:"from 21 €",
     bundles:"Bundles",bundle1:"Content Pack S",bundle1Desc:"5x Reels + 10x Photos",bundle2:"Content Pack M",bundle2Desc:"10x Reels + 20x Photos",bundle3:"Content Pack Master",bundle3Desc:"20x Reels + 40x Photos",
     refTitle:"🤝 Referral Program",refDesc:"Recommend my services! If your friend orders, you automatically get a <b>40% discount</b>.",bundleRefPrice:"Individual",
     contactTitle:"Contact",formTitle:"Send a request",sendBtn:"Send Email",fName:"Your name", fEmail:"Your e-mail", fMsg:"Your request", fOk: "Thanks! Message sent.", fErr: "Oops! Error sending.",
-    disclaimer: "This website is a non-profit personal portfolio. Amounts are estimated author's rewards for creative work. Collaborations are subject to individual agreement.",
-    gameTitle: "27sun Challenge", gameRules: "Catch the cameras! Reach exactly 27 points within 60 seconds. Exceed 27 or run out of time and you lose.<br><br><b style='color:#ff7a18'>*Discount cannot be applied to bundles.</b>", gameStart: "Play for discounts", gameScore: "Score", gameWin: "YOU WIN!", gameOpenBox: "Click the box to reveal discount", gameApply: "Copy the code and use it in your request.", gameWonText: "You won a discount of"
+    disclaimer: "This website is a non-profit personal portfolio. Amounts are estimated author's rewards for creative work. Collaborations are subject to individual agreement."
   }
 };
 
@@ -333,114 +282,6 @@ function setLang(l){
   });
   document.querySelectorAll('.lang-switch button').forEach(btn => btn.classList.remove('active'));
   document.getElementById('btn-' + l).classList.add('active');
-}
-
-/* GAME LOGIC - WITH 24H LOCK AND 1:20 CHANCE */
-let score = 0; let gameTimer; let timeLeft = 60; let countdownInterval;
-
-function openGame() { 
-  const lastSpin = localStorage.getItem('last27SunSpin');
-  const now = new Date().getTime();
-  
-  if (lastSpin && (now - lastSpin < 24 * 60 * 60 * 1000)) {
-    const hoursLeft = Math.ceil((24 * 60 * 60 * 1000 - (now - lastSpin)) / (1000 * 60 * 60));
-    const isEn = !document.getElementById('btn-cs').classList.contains('active');
-    alert(isEn ? `You already played today. Try again in ${hoursLeft} hours.` : `Dnes už jsi hrál. Zkus to znovu za ${hoursLeft} hodin.`);
-    return;
-  }
-  
-  document.getElementById('game-modal').style.display = 'flex'; 
-  resetGame(); 
-}
-
-function closeGame() { document.getElementById('game-modal').style.display = 'none'; stopGame(); }
-function stopGame() { clearTimeout(gameTimer); clearInterval(countdownInterval); }
-
-function resetGame() {
-  score = 0; timeLeft = 60;
-  document.getElementById('current-score').innerText = score;
-  document.getElementById('game-timer').innerText = "01:00";
-  document.getElementById('game-start-screen').style.display = 'block';
-  document.getElementById('game-play-screen').style.display = 'none';
-  document.getElementById('game-win-screen').style.display = 'none';
-  stopGame();
-}
-
-function startGame() {
-  document.getElementById('game-start-screen').style.display = 'none';
-  document.getElementById('game-play-screen').style.display = 'block';
-  startCountdown();
-  spawnTarget();
-}
-
-function startCountdown() {
-  countdownInterval = setInterval(() => {
-    timeLeft--;
-    document.getElementById('game-timer').innerText = `00:${timeLeft.toString().padStart(2, '0')}`;
-    if (timeLeft <= 0) { 
-      stopGame(); 
-      alert("Čas vypršel!"); 
-      resetGame(); 
-    }
-  }, 1000);
-}
-
-function spawnTarget() {
-  const area = document.getElementById('game-area'); area.innerHTML = '';
-  if (score > 27) { stopGame(); alert("Moc bodů! Musíš mít přesně 27."); resetGame(); return; }
-  if (score === 27) { stopGame(); winGame(); return; }
-
-  const target = document.createElement('div'); 
-  target.className = 'target'; target.innerHTML = '📷';
-  target.style.left = Math.random()*(area.clientWidth-50)+'px'; 
-  target.style.top = Math.random()*(area.clientHeight-50)+'px';
-  
-  target.onclick = function() { 
-    this.classList.add('hit');
-    score++; 
-    document.getElementById('current-score').innerText = score; 
-    setTimeout(spawnTarget, 50); 
-  };
-  area.appendChild(target);
-  gameTimer = setTimeout(() => { if (score < 27) spawnTarget(); }, 800);
-}
-
-function winGame() {
-  document.getElementById('game-play-screen').style.display = 'none';
-  document.getElementById('game-win-screen').style.display = 'block';
-  document.getElementById('loot-box').classList.remove('open');
-  document.getElementById('reward-display').style.display = 'none';
-}
-
-function openBox() {
-  const box = document.getElementById('loot-box'); 
-  if(box.classList.contains('open')) return;
-
-  // Nastavení 24h zámku ihned po kliknutí na box
-  localStorage.setItem('last27SunSpin', new Date().getTime());
-
-  // Šance 1 z 20 (5 %)
-  const winChance = Math.random() * 100;
-  const isEn = !document.getElementById('btn-cs').classList.contains('active');
-  
-  if (winChance <= 5) {
-    box.classList.add('open');
-    const rewards = [15, 25, 50, 100];
-    const selected = rewards[Math.floor(Math.random()*rewards.length)];
-    const secure = btoa(selected.toString());
-    
-    document.getElementById('reward-amount').innerText = (isEn ? t.en.gameWonText : t.cs.gameWonText) + ` ${selected}%`;
-    document.getElementById('promo-code').innerText = `27SUN-${secure}-WIN`;
-    setTimeout(() => document.getElementById('reward-display').style.display = 'block', 600);
-  } else {
-    alert(isEn ? "The box was empty! Try again in 24 hours." : "V boxu nic nebylo! Zkus to zase za 24 hodin.");
-    closeGame();
-  }
-}
-
-function copyPromo() {
-  navigator.clipboard.writeText(document.getElementById('promo-code').innerText);
-  document.getElementById('btn-copy').innerText = 'OK!';
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
