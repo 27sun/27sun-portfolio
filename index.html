@@ -29,77 +29,27 @@ h3{opacity:.7;margin-bottom:10px;font-weight:500}
 .top-bar img{height:55px;width:auto;border-radius:10px}
 .lang-switch{position:absolute;right:15px}.lang-switch button{background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);padding:5px 12px;margin-left:4px;border-radius:999px;cursor:pointer;font-size:12px;transition:.3s;font-weight:600}
 .lang-switch button.active{background:#ff7a18;color:#000;border-color:#ff7a18}
-.hero{min-height:90vh;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:40px;padding-top:120px}
-.logo{font-family:'UnifrakturCook',cursive;font-size:clamp(60px, 12vw, 96px);line-height:1;text-align:center}
-.hero-text{flex:1;min-width:300px;text-align:center}
-.hero-right{flex:1;min-width:300px;display:flex;flex-direction:column;align-items:center}
-.hero img{width:100%;max-width:340px;border-radius:20px;box-shadow:0 20px 50px rgba(0,0,0,.5)}
-.about-me{text-align:left;font-size:14px;max-width:340px;margin-top:20px;border-left:2px solid #ff7a18;padding-left:15px;opacity:.9}
-.about-me b{color:#ff7a18}
-.gear-list {list-style: none; margin-top: 10px; font-size: 13px; padding-left: 0;}
-.gear-list li::before {content: "•"; color: #ff7a18; display: inline-block; width: 1em; margin-left: 0;}
 
-.btn{display:inline-block;margin-top:30px;padding:14px 35px;border-radius:999px;background:#ff7a18;color:#000!important;text-decoration:none;font-weight:600;transition:.2s; border:none; cursor:pointer;}
-.drag-hint{font-size:13px;opacity:.5;margin-bottom:12px;display:flex;align-items:center;gap:5px}
-
-.slider-container {position: relative; width: 100%;}
-.nav-arrow {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  background: rgba(255,122,24,0.7); color: #000; border: none;
-  width: 36px; height: 36px; border-radius: 50%; cursor: pointer;
-  z-index: 10; display: none; align-items: center; justify-content: center;
-  font-weight: bold; font-size: 18px; transition: 0.3s;
-}
-.nav-arrow:hover {background: rgba(255,122,24,1);}
-.nav-arrow.prev {left: -18px;}
-.nav-arrow.next {right: -18px;}
-@media (min-width: 1024px) { .nav-arrow { display: flex; } }
-
-.video-slider,.gallery-wrapper{display:flex;gap:15px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:15px;scrollbar-width:none;scroll-behavior: smooth;}
-.video-slider::-webkit-scrollbar,.gallery-wrapper::-webkit-scrollbar{display:none}
-.video-slider.horizontal iframe{min-width:85vw;max-width:400px;height:220px;border-radius:15px;scroll-snap-align:center;border:none;background:#000}
-.video-slider.vertical video{min-width:260px;height:460px;border-radius:18px;background:#111;object-fit:cover;scroll-snap-align:center}
-.gallery-wrapper img{height:400px;width:auto;max-width:90vw;border-radius:15px;scroll-snap-align:center;flex-shrink:0;background:#1a1a1a;object-fit:contain}
-
-.chat-container{height:400px;overflow:hidden;position:relative;background:rgba(255,255,255,.02);border-radius:25px;border:1px solid rgba(255,255,255,0.05);mask-image:linear-gradient(to bottom,transparent,black 10%,black 90%,transparent)}
-.chat-track{display:flex;flex-direction:column;gap:20px;padding:20px;animation:scrollUp 25s linear infinite;will-change:transform;transform:translateZ(0)}
-@keyframes scrollUp{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
-.chat-bubble{display:flex;align-items:flex-end;gap:10px;max-width:90%}
-.chat-bubble.right{align-self:flex-end;flex-direction:row-reverse}
-.chat-bubble img{width:35px;height:35px;border-radius:50%;object-fit:cover}
-.message-content{padding:12px 16px;border-radius:18px;font-size:14px}
-.left .message-content{background:#262626;color:#fff;border-bottom-left-radius:4px}
-.right .message-content{background:#ff7a18;color:#000;border-bottom-right-radius:4px;font-weight:500}
-.sender-name{display:block;font-size:9px;opacity:.4;margin-bottom:4px;text-transform:uppercase;letter-spacing:1px}
-
-.pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
-.card{padding:30px;border-radius:20px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(5px);display:flex;flex-direction:column;justify-content:space-between}
-.price{font-size:20px;margin-top:10px;font-weight:600}
-.discount{font-size:12px;color:#ff7a18;margin-top:8px;font-weight:600}
-.price-tag{color:#ff7a18; font-weight: 700; margin-left: 5px;}
-.bundle-card{border:1px solid #ff7a18;background:rgba(255,122,24,.05)}
-
-.contact-form input, .contact-form textarea{width:100%;padding:12px;margin-bottom:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#fff;font-family:inherit}
-footer{text-align:center;padding:60px 6% 40px;border-top:1px solid rgba(255,255,255,0.05)}
-.disclaimer-text{margin-top:20px; opacity:0.5; font-size:11px; max-width:750px; margin-inline:auto; line-height:1.6}
-
-/* GAME STYLES - UPDATED HARD MODE */
+/* GAME STYLES */
 .game-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.92); display: none; align-items: center; justify-content: center; z-index: 2000; backdrop-filter: blur(15px); }
 .game-content { background: #111; border: 1px solid #ff7a18; padding: 40px; border-radius: 30px; width: 90%; max-width: 500px; text-align: center; position: relative; }
 #game-area { height: 300px; background: rgba(255,255,255,0.02); border-radius: 15px; position: relative; overflow: hidden; margin-top: 20px; cursor: crosshair; border: 1px solid rgba(255,255,255,0.05); transition: background 0.1s; }
-#game-area.miss-active { background: rgba(255, 74, 74, 0.2) !important; border-color: #ff4a4a; }
-.target { position: absolute; width: 45px; height: 45px; background: #ff7a18; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 24px; cursor: pointer; animation: popIn 0.15s; transition: background 0.1s; z-index: 5; }
-.target.hit { background: #4caf50 !important; transform: scale(0.9); }
+#game-area.miss-active { background: rgba(255, 74, 74, 0.3) !important; }
+.target { position: absolute; width: 45px; height: 45px; background: #ff7a18; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 24px; cursor: pointer; animation: popIn 0.15s; z-index: 5; }
+.hit-anim { position: absolute; color: #4caf50; font-weight: bold; font-size: 20px; pointer-events: none; animation: pointUp 0.6s ease-out forwards; z-index: 10; }
+
 @keyframes popIn { from { transform: scale(0); } to { transform: scale(1); } }
-.loot-box { width: 100px; height: 100px; margin: 30px auto; position: relative; cursor: pointer; transition: 0.3s; }
+@keyframes pointUp { 
+  0% { transform: translateY(0); opacity: 1; } 
+  100% { transform: translateY(-40px); opacity: 0; } 
+}
+
+.loot-box { width: 100px; height: 100px; margin: 30px auto; position: relative; cursor: pointer; }
 .box-body { position: absolute; bottom: 0; width: 100%; height: 60%; background: #ff7a18; border-radius: 5px; }
 .box-lid { position: absolute; top: 15%; width: 110%; left: -5%; height: 25%; background: #fff; border-radius: 5px; z-index: 2; transition: 0.5s; }
 .loot-box.open .box-lid { transform: translateY(-30px) rotate(-10deg); opacity: 0; }
-.promo-wrap { display: flex; background: #1a1a1a; border: 1px dashed #ff7a18; padding: 12px; border-radius: 12px; justify-content: space-between; align-items: center; margin-top: 20px; }
-#promo-code { font-family: monospace; font-weight: bold; color: #ff7a18; font-size: 18px; }
-.copy-btn { background: #ff7a18; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 12px; }
 
-@media(max-width:600px){section{padding:60px 5%}.hero{gap:20px}.top-bar{height:70px}.gallery-wrapper img{height:320px}}
+.btn{display:inline-block;margin-top:30px;padding:14px 35px;border-radius:999px;background:#ff7a18;color:#000!important;text-decoration:none;font-weight:600;transition:.2s; border:none; cursor:pointer;}
 </style>
 </head>
 <body>
@@ -112,349 +62,164 @@ footer{text-align:center;padding:60px 6% 40px;border-top:1px solid rgba(255,255,
   </div>
 </div>
 
-<section class="hero">
-  <div class="hero-text">
-    <div class="logo">27sun</div>
-    <p data-i18n="hero">Video editor & photographer<br>Reels • TikTok • YouTube</p>
-    <a href="#contact" class="btn" data-i18n="contactBtn">Kontakt</a>
-  </div>
-  <div class="hero-right">
-    <img src="profile.JPG" alt="Samuel Karbán" fetchpriority="high">
-    <div class="about-me">
-      <div data-i18n="aboutText"></div>
-    </div>
-  </div>
+<section style="text-align:center; padding-top:150px;">
+  <div class="logo" style="font-family:'UnifrakturCook',cursive;font-size:80px;">27sun</div>
+  <a href="javascript:void(0)" onclick="openGame()" class="btn">🎮 Hrát o slevy</a>
 </section>
-
-<section>
-<h2 data-i18n="showcase">UKÁZKY</h2>
-<h3 data-i18n="clips">Clips</h3>
-<p class="drag-hint" data-i18n="drag">← Tahej pro zobrazení →</p>
-<div class="slider-container">
-  <button class="nav-arrow prev" onclick="scrollMe('clips-scroll', -400)">&#10094;</button>
-  <div class="video-slider horizontal" id="clips-scroll">
-    <iframe src="https://www.youtube.com/embed/u3uAbnbAokE" loading="lazy"></iframe>
-    <iframe src="https://www.youtube.com/embed/_VWkv_ONEiM" loading="lazy"></iframe>
-    <iframe src="https://www.youtube.com/embed/ihaDYNouXis" loading="lazy"></iframe>
-    <iframe src="https://www.youtube.com/embed/J13Ju447MCs" loading="lazy"></iframe>
-    <iframe src="https://www.youtube.com/embed/PsFQpfMa7ZU" loading="lazy"></iframe>
-  </div>
-  <button class="nav-arrow next" onclick="scrollMe('clips-scroll', 400)">&#10095;</button>
-</div>
-
-<h3 style="margin-top:40px" data-i18n="reels">Reels / TikTok</h3>
-<p class="drag-hint" data-i18n="drag">← Tahej pro zobrazení →</p>
-<div class="slider-container">
-  <button class="nav-arrow prev" onclick="scrollMe('reels-scroll', -300)">&#10094;</button>
-  <div class="video-slider vertical" id="reels-scroll">
-    <video controls preload="metadata" muted loop playsinline poster="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/finale_202_oqmn0s.jpg"><source src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/finale_202_oqmn0s.mp4#t=0.1" type="video/mp4"></video>
-    <video controls preload="metadata" muted loop playsinline poster="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/ed38eb3c1c02454287444edc078ede49_pyrkc1.jpg"><source src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/ed38eb3c1c02454287444edc078ede49_pyrkc1.mp4#t=0.1" type="video/mp4"></video>
-    <video controls preload="metadata" muted loop playsinline poster="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/d980b3ae76af4219b8b4d388ffb15dd1_i5ivd4.jpg"><source src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/d980b3ae76af4219b8b4d388ffb15dd1_i5ivd4.mp4#t=0.1" type="video/mp4"></video>
-    <video controls preload="metadata" muted loop playsinline poster="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/done_20version_s5ip3x.jpg"><source src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/done_20version_s5ip3x.mp4#t=0.1" type="video/mp4"></video>
-    <video controls preload="metadata" muted loop playsinline poster="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/sdasdc_20XD_oglvcf.jpg"><source src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/sdasdc_20XD_oglvcf.mp4#t=0.1" type="video/mp4"></video>
-    <video controls preload="metadata" muted loop playsinline poster="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/1_20CAST_kmsniw.jpg"><source src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/1_20CAST_kmsniw.mp4#t=0.1" type="video/mp4"></video>
-    <video controls preload="metadata" muted loop playsinline poster="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/Timeline_4_gshe8d.jpg"><source src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/Timeline_4_gshe8d.mp4#t=0.1" type="video/mp4"></video>
-  </div>
-  <button class="nav-arrow next" onclick="scrollMe('reels-scroll', 300)">&#10095;</button>
-</div>
-</section>
-
-<section>
-<h2 data-i18n="gallery">Fotogalerie</h2>
-<p class="drag-hint" data-i18n="drag">← Tahej pro zobrazení →</p>
-<div class="slider-container">
-  <button class="nav-arrow prev" onclick="scrollMe('autoGallery', -400)">&#10094;</button>
-  <div class="gallery-wrapper" id="autoGallery">
-    <img src="foto11.jpeg" loading="lazy"><img src="foto2.jpeg" loading="lazy"><img src="foto3.jpeg" loading="lazy"><img src="foto4.jpeg" loading="lazy"><img src="foto5.jpeg" loading="lazy"><img src="foto6.jpeg" loading="lazy"><img src="foto7.jpeg" loading="lazy"><img src="foto8.jpeg" loading="lazy"><img src="foto9.jpeg" loading="lazy"><img src="foto10.jpeg" loading="lazy"><img src="foto1.jpeg" loading="lazy"><img src="foto12.jpeg" loading="lazy"><img src="foto13.jpeg" loading="lazy"><img src="foto14.jpeg" loading="lazy">
-  </div>
-  <button class="nav-arrow next" onclick="scrollMe('autoGallery', 400)">&#10095;</button>
-</div>
-</section>
-
-<section>
-  <h2 data-i18n="reviewsTitle">Feedback</h2>
-  <div class="chat-container">
-    <div class="chat-track" id="chatTrack">
-      <div class="chat-bubble left"><img src="nayssone.PNG" loading="lazy"><div class="message-content"><span class="sender-name">NAYSSONE</span><span data-i18n="msg1">Fakt super práce kamo</span></div></div>
-      <div class="chat-bubble right"><img src="nikofadess.PNG" loading="lazy"><div class="message-content"><span class="sender-name">NIKOFADESS</span><span data-i18n="msg2">predtym to bolo ppci kamo a teraz uplny strop</span></div></div>
-      <div class="chat-bubble left"><img src="navy.PNG" loading="lazy"><div class="message-content"><span class="sender-name">NAVY</span><span data-i18n="msgNavy">...</span></div></div>
-      <div class="chat-bubble right"><img src="nikofadess.PNG" loading="lazy"><div class="message-content"><span class="sender-name">NIKOFADESS</span><span data-i18n="msg3">braaaaaaaacho extremne to je diki moooc</span></div></div>
-      <div class="chat-bubble left"><img src="nayssone.PNG" loading="lazy"><div class="message-content"><span class="sender-name">NAYSSONE</span><span data-i18n="msg4">Diky za dnešek, bomba uplne</span></div></div>
-    </div>
-  </div>
-</section>
-
-<section>
-<h2 data-i18n="pricing">Služby & Ceník</h2>
-<div class="pricing">
-  <div class="card"><h3 data-i18n="serv1">🎬 1x Reels / TikTok (střih)</h3><p class="price" data-i18n="price1">od 350 Kč</p></div>
-  <div class="card"><div><h3 data-i18n="servEdit">🎥 Střih videoklipu</h3><p class="price" data-i18n="priceEdit">od 900 Kč</p></div><p class="discount"><span data-i18n="referral">Referral Deal -40%:</span> <span class="price-tag" data-i18n="refEdit">od 540 Kč</span></p></div>
-  <div class="card"><div><h3 data-i18n="servShoot">🎥 Natáčení + Střih</h3><p class="price" data-i18n="priceShoot">od 1 100 Kč</p></div><p class="discount"><span data-i18n="referral">Referral Deal -40%:</span> <span class="price-tag" data-i18n="ref1">od 660 Kč</span></p></div>
-  <div class="card"><div><h3 data-i18n="serv2">📺 YouTube video střih</h3><p class="price" data-i18n="price2">od 1 500 Kč</p></div></div>
-  <div class="card"><div><h3 data-i18n="serv3">📷 Focení + úprava</h3><p class="price" data-i18n="price3">od 900 Kč</p></div><p class="discount"><span data-i18n="referral">Referral Deal -40%:</span> <span class="price-tag" data-i18n="ref2">od 540 Kč</span></p></div>
-  <div class="card"><div><h3 data-i18n="serv4">🖼️ Úprava fotografie</h3><p class="price" data-i18n="price4">od 150 Kč</p></div><p class="discount"><span data-i18n="referral">Referral Deal -40%:</span> <span class="price-tag" data-i18n="refPhoto">od 90 Kč</span></p></div>
-</div>
-
-<p style="text-align:center; margin-top:35px;">
-  <a href="javascript:void(0)" onclick="openGame()" style="color:#ff7a18; text-decoration:none; font-weight:bold; font-size:15px; border: 1px solid #ff7a18; padding: 10px 20px; border-radius: 99px; background: rgba(255,122,24,0.05);" data-i18n="playGame">🎮 Hraj o slevy až 100 %</a>
-</p>
-
-<h2 style="margin-top:40px" data-i18n="bundles">Výhodné Balíčky</h2>
-<div class="pricing">
-  <div class="card bundle-card" style="border: 1px dashed #ff7a18; background: rgba(255,122,24,.1);">
-    <h3 data-i18n="refTitle">🤝 Referral Program</h3>
-    <p style="font-size:14px; opacity:.8;" data-i18n="refDesc">Doporuč mé služby! Pokud tvůj známý objedná, získáváš na příští projekt <b>slevu 40 %</b>.</p>
-    <p class="price" data-i18n="bundleRefPrice">Individuální</p>
-  </div>
-  <div class="card bundle-card"><h3 data-i18n="bundle1">Content Pack S</h3><p data-i18n="bundle1Desc">5x Reels + 10x Fotek</p><p class="price">3 500 Kč</p></div>
-  <div class="card bundle-card"><h3 data-i18n="bundle2">Content Pack M</h3><p data-i18n="bundle2Desc">10x Reels + 20x Fotek</p><p class="price">5 000 Kč</p></div>
-  <div class="card bundle-card"><h3 data-i18n="bundle3">Content Pack Master</h3><p data-i18n="bundle3Desc">20x Reels + 40x Fotek</p><p class="price">9 000 Kč</p></div>
-</div>
-</section>
-
-<section id="contact">
-<h2 data-i18n="contactTitle">Kontakt</h2>
-<div class="social-links">
-  <p style="margin-bottom:20px;opacity:.8">📩 samuelkarban@gmail.com</p>
-  <a href="https://www.instagram.com/27sun._?igsh=bmdvbjF0MjB1cjc5&utm_source=qr" target="_blank" style="color:#ff7a18; text-decoration:none; display:block; margin-bottom:15px;">📸 Instagram</a>
-  <a href="https://www.tiktok.com/@s.karban" target="_blank" style="color:#ff7a18; text-decoration:none; display:block;">🎵 TikTok</a>
-</div>
-<div class="contact-form" style="margin-top:30px; background:rgba(255,255,255,0.03); padding:25px; border-radius:20px; border:1px solid rgba(255,255,255,0.1)">
-  <h3 data-i18n="formTitle" style="opacity:1; margin-bottom:15px">Pošli mi poptávku</h3>
-  <form id="my-form" action="https://formspree.io/f/xeekojbo" method="POST">
-    <input type="text" name="name" id="f-name" placeholder="Tvé jméno" required>
-    <input type="email" name="email" id="f-email" placeholder="Tvůj e-mail" required>
-    <textarea name="message" id="f-msg" placeholder="O jakou službu máš zájem?" required style="min-height:100px"></textarea>
-    <button type="submit" id="my-form-button" class="btn" style="width:100%; border:none; cursor:pointer; margin-top:5px" data-i18n="sendBtn">Odeslat e-mail</button>
-    <p id="my-form-status" style="margin-top:15px; font-size:13px; text-align:center"></p>
-  </form>
-</div>
-</section>
-
-<footer>
-  <p>© 2025 27sun • Samuel Karbán</p>
-  <p class="disclaimer-text" data-i18n="disclaimer"></p>
-</footer>
 
 <div id="game-modal" class="game-overlay">
   <div class="game-content">
     <button onclick="closeGame()" style="position:absolute;top:15px;right:20px;background:none;border:none;color:#fff;font-size:30px;cursor:pointer;opacity:0.5;">&times;</button>
+    
     <div id="game-start-screen">
-      <h2 data-i18n="gameTitle">27sun Challenge</h2>
-      <p data-i18n="gameRules" style="margin: 15px 0; opacity: 0.8; font-size: 14px;"></p>
-      <button class="btn" onclick="startGame()" data-i18n="gameStart">Hrát o slevy</button>
+      <h2 id="g-title">27sun Challenge</h2>
+      <p style="margin: 15px 0; opacity: 0.8; font-size: 14px;">
+        Tref 27 foťáků! Rychlost se zvyšuje.<br>
+        <b style="color:#ff4a4a">Kliknutí vedle = -1 sekunda.</b>
+      </p>
+      <button class="btn" onclick="startGame()">Start</button>
     </div>
+
     <div id="game-play-screen" style="display:none">
       <div style="display:flex;justify-content:space-between;margin-bottom:10px;font-weight:600;">
-        <div><span data-i18n="gameScore">Body</span>: <span id="current-score" style="color:#ff7a18">0</span> / 27</div>
-        <div id="game-timer" style="color:#ff4a4a">01:00</div>
+        <div>Body: <span id="current-score" style="color:#ff7a18">0</span> / 27</div>
+        <div id="game-timer" style="color:#ff4a4a">00:60</div>
       </div>
-      <div id="game-area" onclick="handleMiss()"></div>
+      <div id="game-area" onclick="handleMiss(event)"></div>
     </div>
+
     <div id="game-win-screen" style="display:none">
-      <h2 data-i18n="gameWin" style="color:#ff7a18">VÝHRA!</h2>
+      <h2 style="color:#ff7a18">VÝHRA!</h2>
       <div class="loot-box" id="loot-box" onclick="openBox()">
         <div class="box-lid"></div><div class="box-body"></div>
       </div>
-      <p id="box-hint" data-i18n="gameOpenBox" style="font-size: 14px; opacity:0.7"></p>
+      <p>Klikni na box</p>
       <div id="reward-display" style="display:none">
-        <div id="reward-amount" style="font-size:28px; font-weight:800; color:#ff7a18; margin:15px 0;"></div>
-        <div class="promo-wrap"><span id="promo-code"></span><button class="copy-btn" onclick="copyPromo()" id="btn-copy">Copy</button></div>
-        <p style="font-size:11px; opacity:0.5; margin-top:12px;" data-i18n="gameApply"></p>
+        <div id="reward-amount" style="font-size:24px; font-weight:800; color:#ff7a18; margin:15px 0;"></div>
+        <p style="font-size:12px; opacity:0.6">Kód: <b id="promo-code"></b></p>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-// Pomocné funkce pro web
-function updateScroll() {
-  const scrolled = window.scrollY;
-  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-  const scrollPercent = (scrolled / maxScroll) * 100;
-  document.body.style.setProperty('--scroll', scrollPercent);
-}
-window.addEventListener('scroll', updateScroll);
-window.addEventListener('resize', updateScroll);
-
-function scrollMe(id, step) {
-  document.getElementById(id).scrollBy({left: step, behavior: 'smooth'});
-}
-
-const t={
-  cs:{
-    hero:"Video editor & photographer<br>Reels • TikTok • YouTube",contactBtn:"Kontakt",
-    aboutText:"Jmenuju se <b>Samuel Karbán</b>, je mi 18 let a stříhání se věnuju od března 2025 v <b>DaVinci Resolve</b>. K tvorbě mě to táhlo už od dětství.<br><br><b>Můj Gear:</b><br><ul class='gear-list'><li>Sony ZV-E10</li><li>Sigma 16mm f1.4</li><li>Sony 16-50 mm f/3,5-5,6</li><li>Stativ Rollei</li><li>Přídavné světlo Rollei</li><li>Přenosný Green Screen</li></ul>",
-    showcase:"UKÁZKY",clips:"Clips",reels:"Reels / TikTok",drag:"← Tahej pro zobrazení →",gallery:"Fotogalerie",reviewsTitle:"Feedback",
-    pricing:"Služby & Ceník",playGame:"🎮 Hraj o slevy až 100 %",serv1:"🎬 1x Reels / TikTok (střih)",price1:"od 350 Kč",servEdit:"🎥 Střih videoklipu",priceEdit:"od 900 Kč",refEdit:"od 540 Kč",servShoot:"🎥 Natáčení + Střih",priceShoot:"od 1 100 Kč",serv2:"📺 YouTube video střih",price2:"od 1 500 Kč",serv3:"📷 Focení + úprava",price3:"od 900 Kč",serv4:"🖼️ Úprava fotografie",price4:"od 150 Kč",referral:"Referral Deal -40%:",
-    bundles:"Výhodné Balíčky",refTitle:"🤝 Referral Program",refDesc:"Doporuč mé služby! Pokud tvůj známý objedná, získáváš na příští projekt <b>slevu 40 %</b>.",
-    contactTitle:"Kontakt",formTitle:"Pošli mi poptávku",sendBtn:"Odeslat e-mail",fName:"Tvé jméno", fEmail:"Tvůj e-mail", fMsg:"O jakou službu máš zájem?", fOk: "Díky! Zpráva byla odeslána.", fErr: "Chyba při odesílání.",
-    disclaimer: "Tento web je nevýdělečným osobním portfoliem. Veškeré spolupráce jsou řešeny individuální dohodou.",
-    gameTitle: "27sun Challenge", gameRules: "Chytej foťáky! Dosáhni přesně 27 bodů. <b style='color:#ff4a4a'>Pozor: Každý klik vedle nebo zmizení foťáku odečte 1 sekundu!</b> Musíš mít přesně 27 bodů.", gameStart: "Hrát o slevy", gameScore: "Body", gameWin: "VÝHRA!", gameOpenBox: "Klikni na box a odhal slevu", gameApply: "Kód zkopíruj a vlož do poptávky níže.", gameWonText: "Vyhrál jsi slevu"
-  },
-  en:{
-    hero:"Video editor & photographer<br>Reels • TikTok • YouTube",contactBtn:"Contact",
-    aboutText:"My name is <b>Samuel Karbán</b>, I'm 18 years old and I've been editing since March 2025 in <b>DaVinci Resolve</b>.",
-    showcase:"SHOWCASE",clips:"Clips",reels:"Reels / TikTok",drag:"← Drag to view →",gallery:"Gallery",reviewsTitle:"Feedback",
-    pricing:"Services & Pricing",playGame:"🎮 Play for up to 100% discount",serv1:"🎬 1x Reels / TikTok (Edit)",price1:"from 15 €",servEdit:"🎥 Music Video Editing",priceEdit:"from 36 €",refEdit:"from 21.6 €",servShoot:"🎥 Shooting + Edit",priceShoot:"from 45 €",serv2:"📺 YouTube Editing",price2:"from 60 €",serv3:"📷 Photos + Edit",price3:"from 36 €",serv4:"🖼️ Photo Retouch",price4:"from 6 €",referral:"Referral Deal -40%:",
-    bundles:"Bundles",refTitle:"🤝 Referral Program",refDesc:"Recommend my services! If your friend orders, you automatically get a <b>40% discount</b>.",
-    contactTitle:"Contact",formTitle:"Send a request",sendBtn:"Send Email",fName:"Your name", fEmail:"Your e-mail", fMsg:"Your request", fOk: "Thanks! Message sent.", fErr: "Oops! Error sending.",
-    disclaimer: "This website is a non-profit personal portfolio. Collaborations are subject to individual agreement.",
-    gameTitle: "27sun Challenge", gameRules: "Catch the cameras! Reach 27 points. <b style='color:#ff4a4a'>Warning: Each miss or timeout subtracts 1 second!</b>", gameStart: "Play for discounts", gameScore: "Score", gameWin: "YOU WIN!", gameOpenBox: "Click the box to reveal discount", gameApply: "Copy the code and use it in your request.", gameWonText: "You won a discount of"
-  }
-};
-
-function setLang(l){
-  document.querySelectorAll("[data-i18n]").forEach(e=>{
-    const item=t[l][e.dataset.i18n];
-    if(item) e.innerHTML=item;
-  });
-  document.querySelectorAll('.lang-switch button').forEach(btn => btn.classList.remove('active'));
-  document.getElementById('btn-' + l).classList.add('active');
-}
-
-/* --- UPDATED GAME LOGIC --- */
-let score = 0; 
-let gameTimer; 
-let timeLeft = 60; 
+let score = 0;
+let timeLeft = 60;
+let gameTimer;
 let countdownInterval;
+let currentSpeed = 1000; // Počáteční rychlost (1s)
 
 function openGame() { document.getElementById('game-modal').style.display = 'flex'; resetGame(); }
 function closeGame() { document.getElementById('game-modal').style.display = 'none'; stopGame(); }
-function stopGame() { clearTimeout(gameTimer); clearInterval(countdownInterval); }
 
 function resetGame() {
-  score = 0; timeLeft = 60;
-  document.getElementById('current-score').innerText = score;
-  document.getElementById('game-timer').innerText = "00:60";
-  document.getElementById('game-start-screen').style.display = 'block';
-  document.getElementById('game-play-screen').style.display = 'none';
-  document.getElementById('game-win-screen').style.display = 'none';
-  stopGame();
+    score = 0; timeLeft = 60; currentSpeed = 1000;
+    document.getElementById('current-score').innerText = score;
+    document.getElementById('game-timer').innerText = "00:60";
+    document.getElementById('game-start-screen').style.display = 'block';
+    document.getElementById('game-play-screen').style.display = 'none';
+    document.getElementById('game-win-screen').style.display = 'none';
+    stopGame();
 }
 
+function stopGame() { clearTimeout(gameTimer); clearInterval(countdownInterval); }
+
 function startGame() {
-  document.getElementById('game-start-screen').style.display = 'none';
-  document.getElementById('game-play-screen').style.display = 'block';
-  startCountdown();
-  spawnTarget();
+    document.getElementById('game-start-screen').style.display = 'none';
+    document.getElementById('game-play-screen').style.display = 'block';
+    startCountdown();
+    spawnTarget();
 }
 
 function startCountdown() {
-  countdownInterval = setInterval(() => {
-    timeLeft--;
-    updateTimerDisplay();
-    if (timeLeft <= 0) { 
-        stopGame(); 
-        alert("Čas vypršel!"); 
-        resetGame(); 
+    countdownInterval = setInterval(() => {
+        timeLeft--;
+        document.getElementById('game-timer').innerText = `00:${timeLeft.toString().padStart(2, '0')}`;
+        if (timeLeft <= 0) { stopGame(); alert("Čas vypršel!"); resetGame(); }
+    }, 1000);
+}
+
+// Penalizace POUZE při kliknutí vedle
+function handleMiss(e) {
+    if (e.target.id === 'game-area') {
+        timeLeft = Math.max(0, timeLeft - 1);
+        document.getElementById('game-timer').innerText = `00:${timeLeft.toString().padStart(2, '0')}`;
+        
+        const area = document.getElementById('game-area');
+        area.classList.remove('miss-active');
+        void area.offsetWidth;
+        area.classList.add('miss-active');
     }
-  }, 1000);
-}
-
-function updateTimerDisplay() {
-    document.getElementById('game-timer').innerText = `00:${timeLeft.toString().padStart(2, '0')}`;
-}
-
-// Funkce pro chybu (klik vedle nebo zmizení foťáku)
-function handleMiss() {
-    timeLeft = Math.max(0, timeLeft - 1);
-    updateTimerDisplay();
-    
-    // Vizuální záblesk
-    const area = document.getElementById('game-area');
-    area.classList.remove('miss-active');
-    void area.offsetWidth; // Reset animace
-    area.classList.add('miss-active');
 }
 
 function spawnTarget() {
-  const area = document.getElementById('game-area'); 
-  area.innerHTML = '';
-  
-  if (score > 27) { 
-      stopGame(); 
-      alert("Moc bodů! Musíš mít přesně 27."); 
-      resetGame(); 
-      return; 
-  }
-  if (score === 27) { 
-      stopGame(); 
-      winGame(); 
-      return; 
-  }
+    const area = document.getElementById('game-area');
+    area.innerHTML = '';
 
-  const target = document.createElement('div'); 
-  target.className = 'target'; 
-  target.innerHTML = '📷';
-  
-  const x = Math.random() * (area.clientWidth - 50);
-  const y = Math.random() * (area.clientHeight - 50);
-  target.style.left = x + 'px'; 
-  target.style.top = y + 'px';
-  
-  let clicked = false;
-  target.onclick = function(e) { 
-    e.stopPropagation(); // Zabrání handleMiss() na pozadí
-    clicked = true;
-    this.classList.add('hit');
-    score++; 
-    document.getElementById('current-score').innerText = score; 
-    spawnTarget(); 
-  };
-  area.appendChild(target);
+    if (score >= 27) { winGame(); return; }
 
-  clearTimeout(gameTimer); 
-  // Pevná rychlost 1 vteřina
-  gameTimer = setTimeout(() => {
-    if (!clicked && score < 27) {
-      handleMiss(); 
-      spawnTarget(); 
-    }
-  }, 1000);
+    const target = document.createElement('div');
+    target.className = 'target';
+    target.innerHTML = '📷';
+    
+    const x = Math.random() * (area.clientWidth - 50);
+    const y = Math.random() * (area.clientHeight - 50);
+    target.style.left = x + 'px';
+    target.style.top = y + 'px';
+
+    let clicked = false;
+    target.onclick = function(e) {
+        e.stopPropagation();
+        clicked = true;
+        score++;
+        document.getElementById('current-score').innerText = score;
+        
+        // Animace +1
+        showPointAnim(x, y);
+        
+        // Zrychlení (o 30ms s každým bodem, minimum 300ms)
+        currentSpeed = Math.max(300, 1000 - (score * 30));
+        
+        spawnTarget();
+    };
+
+    area.appendChild(target);
+
+    clearTimeout(gameTimer);
+    gameTimer = setTimeout(() => {
+        if (!clicked) spawnTarget(); // Pokud zmizí sám, neodečítá se čas
+    }, currentSpeed);
+}
+
+function showPointAnim(x, y) {
+    const anim = document.createElement('div');
+    anim.className = 'hit-anim';
+    anim.innerText = '+1';
+    anim.style.left = x + 'px';
+    anim.style.top = y + 'px';
+    document.getElementById('game-area').appendChild(anim);
+    setTimeout(() => anim.remove(), 600);
 }
 
 function winGame() {
-  document.getElementById('game-play-screen').style.display = 'none';
-  document.getElementById('game-win-screen').style.display = 'block';
-  document.getElementById('loot-box').classList.remove('open');
-  document.getElementById('reward-display').style.display = 'none';
+    stopGame();
+    document.getElementById('game-play-screen').style.display = 'none';
+    document.getElementById('game-win-screen').style.display = 'block';
 }
 
 function openBox() {
-  const box = document.getElementById('loot-box'); if(box.classList.contains('open')) return;
-  box.classList.add('open');
-  const rewards = [10, 15, 25, 100];
-  const selected = rewards[Math.floor(Math.random()*rewards.length)];
-  const isEn = !document.getElementById('btn-cs').classList.contains('active');
-  document.getElementById('reward-amount').innerText = (isEn ? t.en.gameWonText : t.cs.gameWonText) + ` ${selected}%`;
-  document.getElementById('promo-code').innerText = `27SUN-${selected}-WIN`;
-  setTimeout(() => document.getElementById('reward-display').style.display = 'block', 600);
+    document.getElementById('loot-box').classList.add('open');
+    const rewards = [10, 20, 50, 100];
+    const win = rewards[Math.floor(Math.random()*rewards.length)];
+    document.getElementById('reward-amount').innerText = `Sleva ${win}%`;
+    document.getElementById('promo-code').innerText = `27SUN-${win}`;
+    document.getElementById('reward-display').style.display = 'block';
 }
 
-function copyPromo() {
-  navigator.clipboard.writeText(document.getElementById('promo-code').innerText);
-  document.getElementById('btn-copy').innerText = 'OK!';
+function setLang(l) {
+    document.querySelectorAll('.lang-switch button').forEach(b => b.classList.remove('active'));
+    document.getElementById('btn-'+l).classList.add('active');
 }
-
-document.addEventListener('DOMContentLoaded',()=>{
-  setLang('cs');
-  // Form handling
-  var form = document.getElementById("my-form");
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    var status = document.getElementById("my-form-status");
-    const currentLang = document.getElementById('btn-cs').classList.contains('active') ? 'cs' : 'en';
-    fetch(e.target.action, {
-      method: 'POST',
-      body: new FormData(e.target),
-      headers: { 'Accept': 'application/json' }
-    }).then(res => {
-      status.innerHTML = res.ok ? t[currentLang].fOk : t[currentLang].fErr;
-      if(res.ok) form.reset();
-    });
-  });
-});
 </script>
 </body>
 </html>
