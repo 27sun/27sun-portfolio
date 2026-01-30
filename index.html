@@ -84,7 +84,8 @@ footer{text-align:center;padding:60px 6% 40px;border-top:1px solid rgba(255,255,
 .game-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.92); display: none; align-items: center; justify-content: center; z-index: 2000; backdrop-filter: blur(15px); }
 .game-content { background: #111; border: 1px solid #ff7a18; padding: 40px; border-radius: 30px; width: 90%; max-width: 500px; text-align: center; position: relative; }
 #game-area { height: 300px; background: rgba(255,255,255,0.02); border-radius: 15px; position: relative; overflow: hidden; margin-top: 20px; cursor: crosshair; border: 1px solid rgba(255,255,255,0.05); }
-.target { position: absolute; width: 45px; height: 45px; background: #ff7a18; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; cursor: pointer; animation: popIn 0.2s; }
+.target { position: absolute; width: 45px; height: 45px; background: #ff7a18; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; cursor: pointer; animation: popIn 0.2s; transition: background 0.1s; }
+.target.hit { background: #4caf50 !important; transform: scale(0.9); }
 @keyframes popIn { from { transform: scale(0); } to { transform: scale(1); } }
 .loot-box { width: 100px; height: 100px; margin: 30px auto; position: relative; cursor: pointer; transition: 0.3s; }
 .box-body { position: absolute; bottom: 0; width: 100%; height: 60%; background: #ff7a18; border-radius: 5px; }
@@ -287,8 +288,8 @@ const t={
     bundles:"Výhodné Balíčky",bundle1:"Content Pack S",bundle1Desc:"5x Reels + 10x Fotek",bundle2:"Content Pack M",bundle2Desc:"10x Reels + 20x Fotek",bundle3:"Content Pack Master",bundle3Desc:"20x Reels + 40x Fotek",
     refTitle:"🤝 Referral Program",refDesc:"Doporuč mé služby! Pokud tvůj známý objedná, získáváš na příští projekt <b>slevu 40 %</b>.",bundleRefPrice:"Individuální",
     contactTitle:"Kontakt",formTitle:"Pošli mi poptávku",sendBtn:"Odeslat e-mail",fName:"Tvé jméno", fEmail:"Tvůj e-mail", fMsg:"O jakou službu máš zájem?", fOk: "Díky! Zpráva byla odeslána.", fErr: "Chyba při odesílání.",
-    disclaimer: "Tento web je nevýdělečným osobním portfoliem sloužícím k prezentaci mých dovedností. Uvedené částky nejsou prodejní cenou, nýbrž odhadovanou hodnotou autorské odměny za tvůrčí činnost v rámci příležitostné výpomoci (ve smyslu § 10 zákona o daních z příjmů).",
-    gameTitle: "27sun Challenge", gameRules: "Chytej foťáky! Dosáhni přesně 27 bodů během 60 sekund. Pokud překročíš 27 nebo vyprší čas, prohráváš.", gameStart: "Hrát o slevy", gameScore: "Body", gameWin: "VÝHRA!", gameOpenBox: "Klikni na box a odhal slevu", gameApply: "Kód zkopíruj a vlož do poptávky níže.", gameWonText: "Vyhrál jsi slevu"
+    disclaimer: "Tento web je nevýdělečným osobním portfoliem sloužícím k prezentaci mých dovedností. Uvedené částky nejsou prodejní cenou, nýbrž odhadovanou hodnotou autorské odměny za tvůrčí činnost v rámci příležitostné výpomoci. Veškeré spolupráce jsou řešeny individuální dohodou.",
+    gameTitle: "27sun Challenge", gameRules: "Chytej foťáky! Dosáhni přesně 27 bodů během 60 sekund. Pokud překročíš 27 nebo vyprší čas, prohráváš.<br><br><b>*Slevu nelze uplatnit na zvýhodněné balíčky.</b>", gameStart: "Hrát o slevy", gameScore: "Body", gameWin: "VÝHRA!", gameOpenBox: "Klikni na box a odhal slevu", gameApply: "Kód zkopíruj a vlož do poptávky níže.", gameWonText: "Vyhrál jsi slevu"
   },
   en:{
     hero:"Video editor & photographer<br>Reels • TikTok • YouTube",contactBtn:"Contact",aboutText:"My name is <b>Samuel Karbán</b>, I'm 18 years old and I've been editing since March 2025 in <b>DaVinci Resolve</b>. I've been drawn to creation since childhood.<br><br><b>Gear:</b> Sony ZV-E10 + Sigma 16mm f1.4",showcase:"SHOWCASE",clips:"Clips",reels:"Reels / TikTok",drag:"← Drag to view →",gallery:"Gallery",reviewsTitle:"Feedback",feedbackNote:"Feedback taken from messages",
@@ -297,8 +298,8 @@ const t={
     bundles:"Bundles",bundle1:"Content Pack S",bundle1Desc:"5x Reels + 10x Photos",bundle2:"Content Pack M",bundle2Desc:"10x Reels + 20x Photos",bundle3:"Content Pack Master",bundle3Desc:"20x Reels + 40x Photos",
     refTitle:"🤝 Referral Program",refDesc:"Recommend my services! If your friend orders, you automatically get a <b>40% discount</b>.",bundleRefPrice:"Individual",
     contactTitle:"Contact",formTitle:"Send a request",sendBtn:"Send Email",fName:"Your name", fEmail:"Your e-mail", fMsg:"Your request", fOk: "Thanks! Message sent.", fErr: "Oops! Error sending.",
-    disclaimer: "This website is a non-profit personal portfolio. Amounts are estimated author's rewards for creative work.",
-    gameTitle: "27sun Challenge", gameRules: "Catch the cameras! Reach exactly 27 points within 60 seconds. Exceed 27 or run out of time and you lose.", gameStart: "Play for discounts", gameScore: "Score", gameWin: "YOU WIN!", gameOpenBox: "Click the box to reveal discount", gameApply: "Copy the code and use it in your request.", gameWonText: "You won a discount of"
+    disclaimer: "This website is a non-profit personal portfolio. Amounts are estimated author's rewards for creative work. Collaborations are subject to individual agreement.",
+    gameTitle: "27sun Challenge", gameRules: "Catch the cameras! Reach exactly 27 points within 60 seconds. Exceed 27 or run out of time and you lose.<br><br><b>*Discount cannot be applied to bundles.</b>", gameStart: "Play for discounts", gameScore: "Score", gameWin: "YOU WIN!", gameOpenBox: "Click the box to reveal discount", gameApply: "Copy the code and use it in your request.", gameWonText: "You won a discount of"
   }
 };
 
@@ -361,9 +362,14 @@ function spawnTarget() {
   if (score === 27) { stopGame(); winGame(); return; }
   const target = document.createElement('div'); target.className = 'target'; target.innerHTML = '📷';
   target.style.left = Math.random()*(area.clientWidth-50)+'px'; target.style.top = Math.random()*(area.clientHeight-50)+'px';
-  target.onclick = () => { score++; document.getElementById('current-score').innerText = score; spawnTarget(); };
+  target.onclick = function() { 
+    this.classList.add('hit');
+    score++; 
+    document.getElementById('current-score').innerText = score; 
+    setTimeout(spawnTarget, 100); 
+  };
   area.appendChild(target);
-  clearTimeout(gameTimer); gameTimer = setTimeout(spawnTarget, 1000);
+  clearTimeout(gameTimer); gameTimer = setTimeout(spawnTarget, 1200);
 }
 function winGame() {
   document.getElementById('game-play-screen').style.display = 'none';
