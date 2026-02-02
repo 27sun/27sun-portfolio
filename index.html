@@ -288,7 +288,7 @@ footer{text-align:center;padding:60px 6% 40px;border-top:1px solid rgba(255,255,
     
     <div id="game-start-screen">
       <h2 data-i18n="gameTitle">27sun Slot Machine</h2>
-      <p id="attempts-left" style="font-size: 12px; color: #ff7a18; margin: 10px 0; font-weight: 600;">Zbývá pokusů: 10/10</p>
+      <p id="attempts-left" style="font-size: 12px; color: #ff7a18; margin: 10px 0; font-weight: 600;" data-i18n="gameAttempts">Zbývá pokusů: 10/10</p>
       
       <div class="slot-container">
         <div class="reel-window"><div id="reel1" class="reel-strip"></div></div>
@@ -301,17 +301,17 @@ footer{text-align:center;padding:60px 6% 40px;border-top:1px solid rgba(255,255,
     </div>
 
     <div id="game-win-screen" style="display:none">
-      <h2 style="color:#ff7a18; letter-spacing: 2px;">GRATULACE!</h2>
+      <h2 style="color:#ff7a18; letter-spacing: 2px;" data-i18n="gameWinHeader">GRATULACE!</h2>
       <div id="reward-display">
         <div id="win-value-announcement"></div>
-        <p style="font-size:14px; opacity:0.7; margin-bottom:10px;">Tvůj unikátní kód:</p>
+        <p style="font-size:14px; opacity:0.7; margin-bottom:10px;" data-i18n="gameWonText">Tvůj unikátní kód:</p>
         <div class="promo-wrap">
             <span id="promo-code"></span>
             <button class="copy-btn" onclick="copyPromo()" id="btn-copy">Copy</button>
         </div>
         <p style="font-size:11px; opacity:0.5; margin-top:12px;" data-i18n="gameRules"></p>
       </div>
-      <button class="btn-reset" onclick="resetGame()">Zkusit znovu</button>
+      <button class="btn-reset" onclick="resetGame()" data-i18n="gameRetry">Zkusit znovu</button>
     </div>
   </div>
 </div>
@@ -336,6 +336,7 @@ const REWARDS = [
 
 let isSpinning = false;
 let needsReset = false;
+let lastWinValue = 0; // Pomocná proměnná pro překlad výhry
 
 function generateRandomCode(discountVal) {
     const prefix = DISCOUNT_MAP[discountVal] || "UNK";
@@ -368,8 +369,8 @@ const t={
     refTitle:"🤝 Referral Program",refDesc:"Doporuč mé služby! Pokud tvůj známý objedná, získáváš na příští projekt <b>slevu 40 %</b>.",bundleRefPrice:"Individuální",
     contactTitle:"Kontakt",formTitle:"Pošli mi poptávku",sendBtn:"Odeslat e-mail",fName:"Tvé jméno", fEmail:"Tvůj e-mail", fMsg:"O jakou službu máš zájem?", fOk: "Díky! Zpráva byla odeslána.", fErr: "Chyba při odesílání.",
     disclaimer: "Tento web je nevýdělečným osobním portfoliem sloužícím k prezentaci mých dovedností. Uvedené částky nejsou prodejní cenou, nýbrž odhadovanou hodnotou autorské odměny za tvůrčí činnost v rámci příležitostné výpomoci. Veškeré spolupráce jsou řešeny individuální dohodou.",
-    gameTitle: "27sun Slot Machine", gameStart: "Roztočit automat", gameWin: "VÝHRA!", gameWonText: "Sleva vygenerována:", tryAgain: "Skoro! Zkus to znovu.", limitReached: "Dnes vyčerpáno. Zkus to zítra!",
-    gameRules: "Kód vlož do poptávky níže. *Slevu nelze uplatnit na balíčky a slevy nelze slučovat."
+    gameTitle: "27sun Slot Machine", gameStart: "Roztočit automat", gameWinHeader: "GRATULACE!", gameWonText: "Tvůj unikátní kód:", tryAgain: "Skoro! Zkus to znovu.", limitReached: "Dnes vyčerpáno. Zkus to zítra!",
+    gameRules: "Kód vlož do poptávky níže. *Slevu nelze uplatnit na balíčky a slevy nelze slučovat.", gameAttempts: "Zbývá pokusů: ", gameRetry: "Zkusit znovu", gameLimitBtn: "Limit vyčerpán", winText: "SLEVA"
   },
   en:{
     hero:"Video editor & photographer<br>Reels • TikTok • YouTube",contactBtn:"Contact",
@@ -381,15 +382,23 @@ const t={
     refTitle:"🤝 Referral Program",refDesc:"Recommend my services! If your friend orders, you automatically get a <b>40% discount</b>.",bundleRefPrice:"Individual",
     contactTitle:"Contact",formTitle:"Send a request",sendBtn:"Send Email",fName:"Your name", fEmail:"Your e-mail", fMsg:"Your request", fOk: "Thanks! Message sent.", fErr: "Oops! Error sending.",
     disclaimer: "This website is a non-profit personal portfolio. Amounts are estimated author's rewards for creative work. Collaborations are subject to individual agreement.",
-    gameTitle: "27sun Slot Machine", gameStart: "Spin the Slots", gameWin: "YOU WIN!", gameWonText: "Discount generated:", tryAgain: "Close! Try again.", limitReached: "Limit reached. Try tomorrow!",
-    gameRules: "Enter the code in the request below. *Discount cannot be applied to bundles and discounts cannot be combined."
+    gameTitle: "27sun Slot Machine", gameStart: "Spin the Slots", gameWinHeader: "CONGRATS!", gameWonText: "Your unique code:", tryAgain: "Close! Try again.", limitReached: "Limit reached. Try tomorrow!",
+    gameRules: "Enter the code in the request below. *Discount cannot be applied to bundles and discounts cannot be combined.", gameAttempts: "Attempts left: ", gameRetry: "Try again", gameLimitBtn: "Limit reached", winText: "OFF"
   }
 };
 
 function setLang(l){
   document.querySelectorAll("[data-i18n]").forEach(e=>{
     const item=t[l][e.dataset.i18n];
-    if(item) e.innerHTML=item;
+    if(item) {
+        if(e.dataset.i18n === 'gameAttempts') {
+            const count = getAttempts();
+            e.innerHTML = item + (10 - count) + "/10";
+        } else {
+            e.innerHTML=item;
+        }
+    }
+    
     if(l==='en'){
       if(e.dataset.i18n==='bundle1') e.nextElementSibling.nextElementSibling.innerHTML='140 €';
       if(e.dataset.i18n==='bundle2') e.nextElementSibling.nextElementSibling.innerHTML='200 €';
@@ -406,6 +415,20 @@ function setLang(l){
       document.getElementById('f-msg').placeholder = t.cs.fMsg;
     }
   });
+
+  // Dynamická aktualizace textu výhry (pokup se právě zobrazuje)
+  if(lastWinValue > 0) {
+    document.getElementById('win-value-announcement').innerText = `${lastWinValue}% ${t[l].winText}`;
+  }
+
+  // Update textu na tlačítku automatu
+  const spinBtn = document.getElementById('spin-btn');
+  if(getAttempts() >= 10) {
+      spinBtn.innerText = t[l].gameLimitBtn;
+  } else if(!isSpinning) {
+      spinBtn.innerText = t[l].gameStart;
+  }
+
   document.querySelectorAll('.lang-switch button').forEach(btn => btn.classList.remove('active'));
   document.getElementById('btn-' + l).classList.add('active');
 }
@@ -434,10 +457,11 @@ function getAttempts() {
 
 function updateAttemptsUI() {
     const count = getAttempts();
+    const currentLang = document.getElementById('btn-cs').classList.contains('active') ? 'cs' : 'en';
     const btn = document.getElementById('spin-btn');
-    document.getElementById('attempts-left').innerText = `Zbývá pokusů: ${10 - count}/10`;
-    if (count >= 10) { btn.disabled = true; btn.innerText = "Limit vyčerpán"; }
-    else { btn.disabled = false; btn.innerText = "Roztočit automat"; }
+    document.getElementById('attempts-left').innerText = `${t[currentLang].gameAttempts}${10 - count}/10`;
+    if (count >= 10) { btn.disabled = true; btn.innerText = t[currentLang].gameLimitBtn; }
+    else { btn.disabled = false; btn.innerText = t[currentLang].gameStart; }
 }
 
 function openGame() {
@@ -446,6 +470,7 @@ function openGame() {
     updateAttemptsUI();
     document.getElementById('game-status-msg').innerText = "";
     needsReset = false;
+    lastWinValue = 0;
 }
 
 function closeGame() { document.getElementById('game-modal').style.display = 'none'; }
@@ -453,7 +478,6 @@ function closeGame() { document.getElementById('game-modal').style.display = 'no
 function spinSlots() {
     if (isSpinning) return;
     
-    // Pokud předchozí spin skončil, plynule resetujeme před novým
     if (needsReset) {
         resetReelsOnly();
         needsReset = false;
@@ -491,7 +515,6 @@ function spinSlots() {
         if (winVisual) {
             reel.children[stopIndex].innerHTML = winIcon;
         } else {
-            // Při prohře zajistíme, aby ikonky byly různé
             reel.children[stopIndex].innerHTML = SYMBOLS[(Math.floor(Math.random() * SYMBOLS.length) + i) % SYMBOLS.length];
         }
         
@@ -515,6 +538,7 @@ function spinSlots() {
                 msg.innerText = t[currentLang].limitReached;
             }
             btn.disabled = (getAttempts() >= 10);
+            if(getAttempts() >= 10) btn.innerText = t[currentLang].gameLimitBtn;
         }
     }, 4200);
 }
@@ -528,16 +552,20 @@ function resetReelsOnly() {
 }
 
 function showWin(val) {
+    lastWinValue = val;
     const code = generateRandomCode(val);
+    const currentLang = document.getElementById('btn-cs').classList.contains('active') ? 'cs' : 'en';
+    
     document.getElementById('game-start-screen').style.display = 'none';
     document.getElementById('game-win-screen').style.display = 'block';
     document.getElementById('promo-code').innerText = code;
-    document.getElementById('win-value-announcement').innerText = `${val}% SLEVA`;
+    document.getElementById('win-value-announcement').innerText = `${val}% ${t[currentLang].winText}`;
 }
 
 function resetGame() {
     isSpinning = false;
     needsReset = false;
+    lastWinValue = 0;
     document.getElementById('game-start-screen').style.display = 'block';
     document.getElementById('game-win-screen').style.display = 'none';
     document.getElementById('game-status-msg').innerText = "";
