@@ -100,7 +100,6 @@ footer{text-align:center;padding:60px 6% 40px;border-top:1px solid rgba(255,255,
 .reel-strip {
     position: absolute; width: 100%; left: 0; top: 0;
     display: flex; flex-direction: column;
-    /* transition se ovládá přes JS */
 }
 .slot-icon { 
     height: 120px; min-height: 120px; display: flex; 
@@ -310,7 +309,7 @@ footer{text-align:center;padding:60px 6% 40px;border-top:1px solid rgba(255,255,
             <span id="promo-code"></span>
             <button class="copy-btn" onclick="copyPromo()" id="btn-copy">Copy</button>
         </div>
-        <p style="font-size:11px; opacity:0.5; margin-top:12px;">Kód vlož do poptávky níže. *Slevu nelze uplatnit na balíčky.</p>
+        <p style="font-size:11px; opacity:0.5; margin-top:12px;" data-i18n="gameRules"></p>
       </div>
       <button class="btn-reset" onclick="resetGame()">Zkusit znovu</button>
     </div>
@@ -326,17 +325,18 @@ const DISCOUNT_MAP = {
     30: "T", 25: "DP", 20: "DV", 15: "PA", 10: "D", 5: "P"
 };
 
+// Nastavení šancí: 80% šance na prohru (0), zbytek rozdělen mezi výhry
 const REWARDS = [
-    { val: 0, prob: 0.50 },   
-    { val: 5, prob: 0.25 },   
-    { val: 10, prob: 0.12 },  
-    { val: 15, prob: 0.05 },  
-    { val: 20, prob: 0.03 },  
-    { val: 25, prob: 0.02 },  
-    { val: 30, prob: 0.015 }, 
-    { val: 45, prob: 0.008 }, 
-    { val: 70, prob: 0.004 }, 
-    { val: 80, prob: 0.002 }, 
+    { val: 0, prob: 0.80 },   
+    { val: 5, prob: 0.10 },   
+    { val: 10, prob: 0.04 },  
+    { val: 15, prob: 0.02 },  
+    { val: 20, prob: 0.015 },  
+    { val: 25, prob: 0.01 },  
+    { val: 30, prob: 0.007 }, 
+    { val: 45, prob: 0.004 }, 
+    { val: 70, prob: 0.002 }, 
+    { val: 80, prob: 0.001 }, 
     { val: 100, prob: 0.001 } 
 ];
 
@@ -374,7 +374,8 @@ const t={
     refTitle:"🤝 Referral Program",refDesc:"Doporuč mé služby! Pokud tvůj známý objedná, získáváš na příští projekt <b>slevu 40 %</b>.",bundleRefPrice:"Individuální",
     contactTitle:"Kontakt",formTitle:"Pošli mi poptávku",sendBtn:"Odeslat e-mail",fName:"Tvé jméno", fEmail:"Tvůj e-mail", fMsg:"O jakou službu máš zájem?", fOk: "Díky! Zpráva byla odeslána.", fErr: "Chyba při odesílání.",
     disclaimer: "Tento web je nevýdělečným osobním portfoliem sloužícím k prezentaci mých dovedností. Uvedené částky nejsou prodejní cenou, nýbrž odhadovanou hodnotou autorské odměny za tvůrčí činnost v rámci příležitostné výpomoci. Veškeré spolupráce jsou řešeny individuální dohodou.",
-    gameTitle: "27sun Slot Machine", gameStart: "Roztočit automat", gameWin: "VÝHRA!", gameWonText: "Sleva vygenerována:", tryAgain: "Skoro! Zkus to znovu.", limitReached: "Dnes vyčerpáno. Zkus to zítra!"
+    gameTitle: "27sun Slot Machine", gameStart: "Roztočit automat", gameWin: "VÝHRA!", gameWonText: "Sleva vygenerována:", tryAgain: "Skoro! Zkus to znovu.", limitReached: "Dnes vyčerpáno. Zkus to zítra!",
+    gameRules: "Kód vlož do poptávky níže. *Slevu nelze uplatnit na balíčky a slevy nelze slučovat."
   },
   en:{
     hero:"Video editor & photographer<br>Reels • TikTok • YouTube",contactBtn:"Contact",
@@ -386,7 +387,8 @@ const t={
     refTitle:"🤝 Referral Program",refDesc:"Recommend my services! If your friend orders, you automatically get a <b>40% discount</b>.",bundleRefPrice:"Individual",
     contactTitle:"Contact",formTitle:"Send a request",sendBtn:"Send Email",fName:"Your name", fEmail:"Your e-mail", fMsg:"Your request", fOk: "Thanks! Message sent.", fErr: "Oops! Error sending.",
     disclaimer: "This website is a non-profit personal portfolio. Amounts are estimated author's rewards for creative work. Collaborations are subject to individual agreement.",
-    gameTitle: "27sun Slot Machine", gameStart: "Spin the Slots", gameWin: "YOU WIN!", gameWonText: "Discount generated:", tryAgain: "Close! Try again.", limitReached: "Limit reached. Try tomorrow!"
+    gameTitle: "27sun Slot Machine", gameStart: "Spin the Slots", gameWin: "YOU WIN!", gameWonText: "Discount generated:", tryAgain: "Close! Try again.", limitReached: "Limit reached. Try tomorrow!",
+    gameRules: "Enter the code in the request below. *Discount cannot be applied to bundles and discounts cannot be combined."
   }
 };
 
@@ -513,7 +515,7 @@ function spinSlots() {
             updateAttemptsUI();
             if(getAttempts() < 10) {
                 msg.innerText = t[currentLang].tryAgain;
-                setTimeout(() => resetReelsOnly(), 500); // Reset po krátké pauze pro plynulost
+                setTimeout(() => resetReelsOnly(), 500);
             } else {
                 msg.innerText = t[currentLang].limitReached;
             }
@@ -527,7 +529,7 @@ function resetReelsOnly() {
         const reel = document.getElementById(`reel${id}`);
         reel.style.transition = 'none';
         reel.style.transform = 'translateY(0)';
-        reel.offsetHeight; // force reflow
+        reel.offsetHeight;
     });
 }
 
