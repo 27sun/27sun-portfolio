@@ -251,7 +251,7 @@ footer{text-align:center;padding:60px 6% 40px;border-top:1px solid rgba(255,255,
     
     <div id="game-start-screen">
       <h2 data-i18n="gameTitle">27sun Slot Machine</h2>
-      <p id="attempts-left" style="font-size: 12px; color: #ff7a18; margin: 10px 0; font-weight: 600;">Zbývá pokusů: 5/5</p>
+      <p id="attempts-left" style="font-size: 12px; color: #ff7a18; margin: 10px 0; font-weight: 600;">Zbývá pokusů: 10/10</p>
       
       <div class="slot-container">
         <div class="reel-window"><div id="reel1" class="reel-strip"></div></div>
@@ -265,7 +265,7 @@ footer{text-align:center;padding:60px 6% 40px;border-top:1px solid rgba(255,255,
     <div id="game-win-screen" style="display:none">
       <h2 data-i18n="gameWin" style="color:#ff7a18">VÝHRA!</h2>
       <div id="reward-display">
-        <div id="reward-amount" style="font-size:28px; font-weight:800; color:#fff; margin:15px 0;"></div>
+        <div id="reward-amount" style="font-size:20px; font-weight:600; color:#fff; margin:15px 0;">Sleva vygenerována:</div>
         <div class="promo-wrap"><span id="promo-code"></span><button class="copy-btn" onclick="copyPromo()" id="btn-copy">Copy</button></div>
         <p style="font-size:11px; opacity:0.5; margin-top:12px;">Kód vlož do poptávky níže. *Slevu nelze uplatnit na balíčky.</p>
       </div>
@@ -276,14 +276,38 @@ footer{text-align:center;padding:60px 6% 40px;border-top:1px solid rgba(255,255,
 
 <script>
 /* --- BASE CONFIG --- */
-const SALT = "27SUN_SECURE_2025";
 const SYMBOLS = ["📷", "🎬", "🎞️", "✨", "💎", "🔥"];
+
+// Mapování hodnot na písmena
+const DISCOUNT_MAP = {
+    100: "S", 80: "O", 70: "SE", 45: "ČP", 
+    30: "T", 25: "DP", 20: "DV", 15: "PA", 10: "D", 5: "P"
+};
+
+// Nastavení pravděpodobností (prob) - součet by měl být ideálně 1.0 (včetně proher)
 const REWARDS = [
-    { val: 10, prob: 0.50 }, // 50% šance
-    { val: 20, prob: 0.30 }, // 30% šance
-    { val: 50, prob: 0.15 }, // 15% šance
-    { val: 100, prob: 0.05 } // 5% šance (nejnižší)
+    { val: 0, prob: 0.40 },   // 40% šance, že nevyhraje nic (prohra)
+    { val: 5, prob: 0.20 },   // 20%
+    { val: 10, prob: 0.15 },  // 15%
+    { val: 15, prob: 0.10 },  // 10%
+    { val: 20, prob: 0.05 },  // 5%
+    { val: 25, prob: 0.04 },  // 4%
+    { val: 30, prob: 0.02 },  // 2%
+    { val: 45, prob: 0.015 }, // 1.5%
+    { val: 70, prob: 0.01 },  // 1%
+    { val: 80, prob: 0.01 },  // 1%
+    { val: 100, prob: 0.005 } // 0.5% šance na stovku
 ];
+
+function generateRandomCode(discountVal) {
+    const prefix = DISCOUNT_MAP[discountVal] || "UNK";
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let randomPart = '';
+    for (let i = 0; i < 5; i++) {
+        randomPart += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return `${prefix}-${randomPart}`;
+}
 
 function updateScroll() {
   const scrolled = window.scrollY;
@@ -309,7 +333,7 @@ const t={
     refTitle:"🤝 Referral Program",refDesc:"Doporuč mé služby! Pokud tvůj známý objedná, získáváš na příští projekt <b>slevu 40 %</b>.",bundleRefPrice:"Individuální",
     contactTitle:"Kontakt",formTitle:"Pošli mi poptávku",sendBtn:"Odeslat e-mail",fName:"Tvé jméno", fEmail:"Tvůj e-mail", fMsg:"O jakou službu máš zájem?", fOk: "Díky! Zpráva byla odeslána.", fErr: "Chyba při odesílání.",
     disclaimer: "Tento web je nevýdělečným osobním portfoliem sloužícím k prezentaci mých dovedností. Uvedené částky nejsou prodejní cenou, nýbrž odhadovanou hodnotou autorské odměny za tvůrčí činnost v rámci příležitostné výpomoci. Veškeré spolupráce jsou řešeny individuální dohodou.",
-    gameTitle: "27sun Slot Machine", gameStart: "Roztočit automat", gameWin: "VÝHRA!", gameWonText: "Vyhrál jsi slevu"
+    gameTitle: "27sun Slot Machine", gameStart: "Roztočit automat", gameWin: "VÝHRA!", gameWonText: "Sleva vygenerována:"
   },
   en:{
     hero:"Video editor & photographer<br>Reels • TikTok • YouTube",contactBtn:"Contact",
@@ -321,7 +345,7 @@ const t={
     refTitle:"🤝 Referral Program",refDesc:"Recommend my services! If your friend orders, you automatically get a <b>40% discount</b>.",bundleRefPrice:"Individual",
     contactTitle:"Contact",formTitle:"Send a request",sendBtn:"Send Email",fName:"Your name", fEmail:"Your e-mail", fMsg:"Your request", fOk: "Thanks! Message sent.", fErr: "Oops! Error sending.",
     disclaimer: "This website is a non-profit personal portfolio. Amounts are estimated author's rewards for creative work. Collaborations are subject to individual agreement.",
-    gameTitle: "27sun Slot Machine", gameStart: "Spin the Slots", gameWin: "YOU WIN!", gameWonText: "You won a discount of"
+    gameTitle: "27sun Slot Machine", gameStart: "Spin the Slots", gameWin: "YOU WIN!", gameWonText: "Discount generated:"
   }
 };
 
@@ -350,7 +374,7 @@ function setLang(l){
   document.getElementById('btn-' + l).classList.add('active');
 }
 
-/* --- UPDATED SLOT LOGIC --- */
+/* --- SLOT LOGIC --- */
 let isSpinning = false;
 
 function initReels() {
@@ -374,8 +398,8 @@ function getAttempts() {
 
 function updateAttemptsUI() {
     const count = getAttempts();
-    document.getElementById('attempts-left').innerText = `Zbývá pokusů: ${5 - count}/5`;
-    if (count >= 5) document.getElementById('spin-btn').disabled = true;
+    document.getElementById('attempts-left').innerText = `Zbývá pokusů: ${10 - count}/10`;
+    if (count >= 10) document.getElementById('spin-btn').disabled = true;
 }
 
 function openGame() {
@@ -389,7 +413,7 @@ function closeGame() { document.getElementById('game-modal').style.display = 'no
 function spinSlots() {
     if (isSpinning) return;
     let count = getAttempts();
-    if (count >= 5) return;
+    if (count >= 10) return;
 
     localStorage.setItem('sun27_slots', JSON.stringify({count: count + 1, date: new Date().toDateString()}));
     updateAttemptsUI();
@@ -398,23 +422,34 @@ function spinSlots() {
     const btn = document.getElementById('spin-btn');
     btn.disabled = true;
 
-    // Logic for win
+    // Losování výhry
     const rand = Math.random();
-    let sum = 0;
+    let cumulativeProb = 0;
     let winVal = 0;
-    for(let r of REWARDS) {
-        sum += r.prob;
-        if(rand <= sum) { winVal = r.val; break; }
+    for (let reward of REWARDS) {
+        cumulativeProb += reward.prob;
+        if (rand < cumulativeProb) {
+            winVal = reward.val;
+            break;
+        }
     }
 
-    const winVisual = Math.random() > 0.4; // 60% chance to show win icons
+    const winVisual = winVal > 0;
     const winIcon = SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
 
     [1,2,3].forEach((id, i) => {
         const reel = document.getElementById(`reel${id}`);
         const stopIndex = 30 + i; 
         const targetIcon = winVisual ? winIcon : SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
-        reel.children[stopIndex].innerHTML = targetIcon;
+        
+        // Pokud je to prohra, na prostředním válci dáme schválně něco jiného
+        if(!winVisual && i === 1) {
+            let otherIcon;
+            do { otherIcon = SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)]; } while(otherIcon === winIcon);
+            reel.children[stopIndex].innerHTML = otherIcon;
+        } else {
+            reel.children[stopIndex].innerHTML = targetIcon;
+        }
         
         setTimeout(() => {
             reel.style.transform = `translateY(-${stopIndex * 120}px)`;
@@ -426,20 +461,17 @@ function spinSlots() {
         if (winVisual) {
             showWin(winVal);
         } else {
-            btn.disabled = getAttempts() >= 5;
+            btn.disabled = getAttempts() >= 10;
             if(!btn.disabled) alert("Skoro! Zkus to znovu.");
+            else alert("Dnes už máš vyčerpáno všech 10 pokusů. Zkus to zítra!");
         }
     }, 4000);
 }
 
 function showWin(val) {
-    const hash = btoa(val + SALT).substring(0, 8).toUpperCase();
-    const code = `27SUN-${val}-${hash}`;
-
-    const isEn = !document.getElementById('btn-cs').classList.contains('active');
+    const code = generateRandomCode(val);
     document.getElementById('game-start-screen').style.display = 'none';
     document.getElementById('game-win-screen').style.display = 'block';
-    document.getElementById('reward-amount').innerText = (isEn ? t.en.gameWonText : t.cs.gameWonText) + ` ${val}%`;
     document.getElementById('promo-code').innerText = code;
 }
 
@@ -448,7 +480,7 @@ function resetGame() {
     document.getElementById('game-start-screen').style.display = 'block';
     document.getElementById('game-win-screen').style.display = 'none';
     const btn = document.getElementById('spin-btn');
-    btn.disabled = getAttempts() >= 5;
+    btn.disabled = getAttempts() >= 10;
     [1,2,3].forEach(id => {
         const reel = document.getElementById(`reel${id}`);
         reel.style.transition = 'none';
