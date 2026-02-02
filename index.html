@@ -319,13 +319,7 @@ footer{text-align:center;padding:60px 6% 40px;border-top:1px solid rgba(255,255,
 <script>
 /* --- BASE CONFIG --- */
 const SYMBOLS = ["📷", "🎬", "🎞️", "✨", "💎", "🔥"];
-
-const DISCOUNT_MAP = {
-    100: "S", 80: "O", 70: "SE", 45: "ČP", 
-    30: "T", 25: "DP", 20: "DV", 15: "PA", 10: "D", 5: "P"
-};
-
-// Nastavení šancí: 80% šance na prohru (0), zbytek rozdělen mezi výhry
+const DISCOUNT_MAP = { 100: "S", 80: "O", 70: "SE", 45: "ČP", 30: "T", 25: "DP", 20: "DV", 15: "PA", 10: "D", 5: "P" };
 const REWARDS = [
     { val: 0, prob: 0.80 },   
     { val: 5, prob: 0.10 },   
@@ -340,13 +334,14 @@ const REWARDS = [
     { val: 100, prob: 0.001 } 
 ];
 
+let isSpinning = false;
+let needsReset = false;
+
 function generateRandomCode(discountVal) {
     const prefix = DISCOUNT_MAP[discountVal] || "UNK";
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let randomPart = '';
-    for (let i = 0; i < 5; i++) {
-        randomPart += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
+    for (let i = 0; i < 5; i++) randomPart += chars.charAt(Math.floor(Math.random() * chars.length));
     return `${prefix}-${randomPart}`;
 }
 
@@ -357,7 +352,6 @@ function updateScroll() {
   document.body.style.setProperty('--scroll', scrollPercent);
 }
 window.addEventListener('scroll', updateScroll);
-window.addEventListener('resize', updateScroll);
 
 function scrollMe(id, step) {
   document.getElementById(id).scrollBy({left: step, behavior: 'smooth'});
@@ -396,7 +390,6 @@ function setLang(l){
   document.querySelectorAll("[data-i18n]").forEach(e=>{
     const item=t[l][e.dataset.i18n];
     if(item) e.innerHTML=item;
-    
     if(l==='en'){
       if(e.dataset.i18n==='bundle1') e.nextElementSibling.nextElementSibling.innerHTML='140 €';
       if(e.dataset.i18n==='bundle2') e.nextElementSibling.nextElementSibling.innerHTML='200 €';
@@ -417,14 +410,14 @@ function setLang(l){
   document.getElementById('btn-' + l).classList.add('active');
 }
 
-/* --- SLOT LOGIC --- */
-let isSpinning = false;
-
+/* --- SLOT MACHINE LOGIC --- */
 function initReels() {
     [1,2,3].forEach(id => {
         const reel = document.getElementById(`reel${id}`);
         reel.innerHTML = '';
-        for(let i=0; i<40; i++) {
+        reel.style.transition = 'none';
+        reel.style.transform = 'translateY(0)';
+        for(let i=0; i<45; i++) {
             const icon = document.createElement('div');
             icon.className = 'slot-icon';
             icon.innerHTML = SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
@@ -443,13 +436,8 @@ function updateAttemptsUI() {
     const count = getAttempts();
     const btn = document.getElementById('spin-btn');
     document.getElementById('attempts-left').innerText = `Zbývá pokusů: ${10 - count}/10`;
-    if (count >= 10) {
-        btn.disabled = true;
-        btn.innerText = "Limit vyčerpán";
-    } else {
-        btn.disabled = false;
-        btn.innerText = "Roztočit automat";
-    }
+    if (count >= 10) { btn.disabled = true; btn.innerText = "Limit vyčerpán"; }
+    else { btn.disabled = false; btn.innerText = "Roztočit automat"; }
 }
 
 function openGame() {
@@ -457,12 +445,22 @@ function openGame() {
     initReels();
     updateAttemptsUI();
     document.getElementById('game-status-msg').innerText = "";
+    needsReset = false;
 }
 
 function closeGame() { document.getElementById('game-modal').style.display = 'none'; }
 
 function spinSlots() {
     if (isSpinning) return;
+    
+    // Pokud předchozí spin skončil, plynule resetujeme před novým
+    if (needsReset) {
+        resetReelsOnly();
+        needsReset = false;
+        setTimeout(spinSlots, 50);
+        return;
+    }
+
     let count = getAttempts();
     if (count >= 10) return;
 
@@ -480,10 +478,7 @@ function spinSlots() {
     let winVal = 0;
     for (let reward of REWARDS) {
         cumulativeProb += reward.prob;
-        if (rand < cumulativeProb) {
-            winVal = reward.val;
-            break;
-        }
+        if (rand < cumulativeProb) { winVal = reward.val; break; }
     }
 
     const winVisual = winVal > 0;
@@ -491,37 +486,37 @@ function spinSlots() {
 
     [1,2,3].forEach((id, i) => {
         const reel = document.getElementById(`reel${id}`);
-        const stopIndex = 30 + i; 
+        const stopIndex = 35 + i; 
         
         if (winVisual) {
             reel.children[stopIndex].innerHTML = winIcon;
         } else {
+            // Při prohře zajistíme, aby ikonky byly různé
             reel.children[stopIndex].innerHTML = SYMBOLS[(Math.floor(Math.random() * SYMBOLS.length) + i) % SYMBOLS.length];
         }
         
-        reel.style.transition = 'transform 3s cubic-bezier(0.15, 0, 0.15, 1)';
+        reel.style.transition = `transform ${3 + i * 0.5}s cubic-bezier(0.25, 0.1, 0.25, 1)`;
         setTimeout(() => {
             reel.style.transform = `translateY(-${stopIndex * 120}px)`;
-        }, i * 150);
+        }, i * 100);
     });
 
     setTimeout(() => {
         isSpinning = false;
+        needsReset = true;
         const currentLang = document.getElementById('btn-cs').classList.contains('active') ? 'cs' : 'en';
         
         if (winVisual) {
             showWin(winVal);
         } else {
-            updateAttemptsUI();
             if(getAttempts() < 10) {
                 msg.innerText = t[currentLang].tryAgain;
-                setTimeout(() => resetReelsOnly(), 500);
             } else {
                 msg.innerText = t[currentLang].limitReached;
             }
             btn.disabled = (getAttempts() >= 10);
         }
-    }, 4000);
+    }, 4200);
 }
 
 function resetReelsOnly() {
@@ -529,7 +524,6 @@ function resetReelsOnly() {
         const reel = document.getElementById(`reel${id}`);
         reel.style.transition = 'none';
         reel.style.transform = 'translateY(0)';
-        reel.offsetHeight;
     });
 }
 
@@ -539,15 +533,15 @@ function showWin(val) {
     document.getElementById('game-win-screen').style.display = 'block';
     document.getElementById('promo-code').innerText = code;
     document.getElementById('win-value-announcement').innerText = `${val}% SLEVA`;
-    document.getElementById('btn-copy').innerText = 'Copy';
 }
 
 function resetGame() {
     isSpinning = false;
+    needsReset = false;
     document.getElementById('game-start-screen').style.display = 'block';
     document.getElementById('game-win-screen').style.display = 'none';
     document.getElementById('game-status-msg').innerText = "";
-    resetReelsOnly();
+    initReels();
     updateAttemptsUI();
 }
 
@@ -560,29 +554,18 @@ document.addEventListener('DOMContentLoaded',()=>{
   setLang('cs');
   const track=document.getElementById('chatTrack');
   if(track) track.innerHTML+=track.innerHTML;
-  
   const gal = document.getElementById('autoGallery');
-  
   let scrollInterval;
   const startScroll = () => {
     scrollInterval = setInterval(() => {
-      if (gal.scrollLeft + gal.clientWidth >= gal.scrollWidth - 10) {
-        gal.scrollTo({left: 0, behavior: 'smooth'});
-      } else {
-        gal.scrollBy({left: 300, behavior: 'smooth'});
-      }
+      if (gal.scrollLeft + gal.clientWidth >= gal.scrollWidth - 10) gal.scrollTo({left: 0, behavior: 'smooth'});
+      else gal.scrollBy({left: 300, behavior: 'smooth'});
     }, 3000);
   };
-
-  const stopScroll = () => clearInterval(scrollInterval);
-  
-  gal.addEventListener('touchstart', stopScroll);
-  gal.addEventListener('mousedown', stopScroll);
-  
+  gal.addEventListener('touchstart', () => clearInterval(scrollInterval));
   startScroll();
 
-  var form = document.getElementById("my-form");
-  form.addEventListener("submit", async (e) => {
+  document.getElementById("my-form").addEventListener("submit", async (e) => {
     e.preventDefault();
     var status = document.getElementById("my-form-status");
     const currentLang = document.getElementById('btn-cs').classList.contains('active') ? 'cs' : 'en';
@@ -592,7 +575,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       headers: { 'Accept': 'application/json' }
     }).then(res => {
       status.innerHTML = res.ok ? t[currentLang].fOk : t[currentLang].fErr;
-      if(res.ok) form.reset();
+      if(res.ok) e.target.reset();
     });
   });
 });
