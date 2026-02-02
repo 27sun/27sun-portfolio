@@ -55,12 +55,11 @@ h3{opacity:.7;margin-bottom:10px;font-weight:500}
 .nav-arrow.next {right: -18px;}
 @media (min-width: 1024px) { .nav-arrow { display: flex; } }
 
-/* OPRAVA: Zajištění viditelnosti videí a fotek */
 .video-slider,.gallery-wrapper{display:flex;gap:15px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:15px;scrollbar-width:none;scroll-behavior: smooth; position: relative; z-index: 5;}
 .video-slider::-webkit-scrollbar,.gallery-wrapper::-webkit-scrollbar{display:none}
 .video-slider.horizontal iframe{min-width:85vw;max-width:400px;height:220px;border-radius:15px;scroll-snap-align:center;border:none;background:#000; display: block;}
 .video-slider.vertical video{min-width:260px;height:460px;border-radius:18px;background:#111;object-fit:cover;scroll-snap-align:center; display: block;}
-.gallery-wrapper img{height:400px;width:auto;max-width:90vw;border-radius:15px;scroll-snap-align:center;flex-shrink:0;background:#1a1a1a;object-fit:contain; display: block;}
+.gallery-wrapper img{height:400px;width:auto;max-width:90vw;border-radius:15px;scroll-snap-align:center;flex-shrink:0;background:#1a1a1a;object-fit:contain; display: block; transition: opacity 0.5s;}
 
 .chat-container{height:400px;overflow:hidden;position:relative;background:rgba(255,255,255,.02);border-radius:25px;border:1px solid rgba(255,255,255,0.05);mask-image:linear-gradient(to bottom,transparent,black 10%,black 90%,transparent)}
 .chat-track{display:flex;flex-direction:column;gap:20px;padding:20px;animation:scrollUp 25s linear infinite;will-change:transform;transform:translateZ(0)}
@@ -122,7 +121,6 @@ footer{text-align:center;padding:60px 6% 40px;border-top:1px solid rgba(255,255,
     margin: 15px 0 !important;
 }
 
-/* OPRAVA: Viditelnost tlačítka Zkusit znovu */
 .btn-reset {
     margin-top: 25px; 
     background: transparent; 
@@ -203,7 +201,7 @@ footer{text-align:center;padding:60px 6% 40px;border-top:1px solid rgba(255,255,
 <div class="slider-container">
   <button class="nav-arrow prev" onclick="scrollMe('autoGallery', -400)">&#10094;</button>
   <div class="gallery-wrapper" id="autoGallery">
-    <img src="foto11.jpeg" loading="lazy"><img src="foto2.jpeg" loading="lazy"><img src="foto3.jpeg" loading="lazy"><img src="foto4.jpeg" loading="lazy"><img src="foto5.jpeg" loading="lazy"><img src="foto6.jpeg" loading="lazy"><img src="foto7.jpeg" loading="lazy"><img src="foto8.jpeg" loading="lazy"><img src="foto9.jpeg" loading="lazy"><img src="foto10.jpeg" loading="lazy"><img src="foto1.jpeg" loading="lazy"><img src="foto12.jpeg" loading="lazy"><img src="foto13.jpeg" loading="lazy"><img src="foto14.jpeg" loading="lazy">
+    <img src="foto11.jpeg" loading="lazy" alt="Photo 11"><img src="foto2.jpeg" loading="lazy" alt="Photo 2"><img src="foto3.jpeg" loading="lazy" alt="Photo 3"><img src="foto4.jpeg" loading="lazy" alt="Photo 4"><img src="foto5.jpeg" loading="lazy" alt="Photo 5"><img src="foto6.jpeg" loading="lazy" alt="Photo 6"><img src="foto7.jpeg" loading="lazy" alt="Photo 7"><img src="foto8.jpeg" loading="lazy" alt="Photo 8"><img src="foto9.jpeg" loading="lazy" alt="Photo 9"><img src="foto10.jpeg" loading="lazy" alt="Photo 10"><img src="foto1.jpeg" loading="lazy" alt="Photo 1"><img src="foto12.jpeg" loading="lazy" alt="Photo 12"><img src="foto13.jpeg" loading="lazy" alt="Photo 13"><img src="foto14.jpeg" loading="lazy" alt="Photo 14">
   </div>
   <button class="nav-arrow next" onclick="scrollMe('autoGallery', 400)">&#10095;</button>
 </div>
@@ -539,13 +537,26 @@ document.addEventListener('DOMContentLoaded',()=>{
   if(track) track.innerHTML+=track.innerHTML;
   
   const gal = document.getElementById('autoGallery');
-  setInterval(() => {
-    if (gal.scrollLeft + gal.clientWidth >= gal.scrollWidth - 10) {
-      gal.scrollTo({left: 0, behavior: 'smooth'});
-    } else {
-      gal.scrollBy({left: 300, behavior: 'smooth'});
-    }
-  }, 3000);
+  
+  // PŘIDÁNO: Optimalizovaný auto-scroll, který neběží, pokud uživatel není u galerie
+  let scrollInterval;
+  const startScroll = () => {
+    scrollInterval = setInterval(() => {
+      if (gal.scrollLeft + gal.clientWidth >= gal.scrollWidth - 10) {
+        gal.scrollTo({left: 0, behavior: 'smooth'});
+      } else {
+        gal.scrollBy({left: 300, behavior: 'smooth'});
+      }
+    }, 3000);
+  };
+
+  const stopScroll = () => clearInterval(scrollInterval);
+  
+  // Zastavit scroll při interakci uživatele
+  gal.addEventListener('touchstart', stopScroll);
+  gal.addEventListener('mousedown', stopScroll);
+  
+  startScroll();
 
   var form = document.getElementById("my-form");
   form.addEventListener("submit", async (e) => {
