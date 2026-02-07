@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -26,8 +25,12 @@ body::before{
 section{padding:80px 6%; position: relative;}
 h2{font-size:clamp(24px, 5vw, 32px);font-weight:500;margin-bottom:15px;letter-spacing:1px}
 h3{opacity:.7;margin-bottom:10px;font-weight:500}
+
+/* TOP BAR S TEXTOVÝM LOGEM */
 .top-bar{position:fixed;top:0;width:100%;height:80px;background:rgba(10,10,10,.8);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;z-index:1000;border-bottom:1px solid rgba(255,255,255,0.05)}
-.top-bar img{height:55px;width:auto;border-radius:10px}
+.logo-small{font-family:'UnifrakturCook', cursive; font-size: 32px; color: #f2f2f2; text-decoration: none; transition: 0.3s;}
+.logo-small:hover{color: #ff7a18;}
+
 .lang-switch{position:absolute;right:15px}.lang-switch button{background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);padding:5px 12px;margin-left:4px;border-radius:999px;cursor:pointer;font-size:12px;transition:.3s;font-weight:600}
 .lang-switch button.active{background:#ff7a18;color:#000;border-color:#ff7a18}
 .hero{min-height:90vh;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:40px;padding-top:120px}
@@ -56,7 +59,6 @@ h3{opacity:.7;margin-bottom:10px;font-weight:500}
 .nav-arrow.next {right: -18px;}
 @media (min-width: 1024px) { .nav-arrow { display: flex; } }
 
-/* OPRAVA: Zajištění viditelnosti videí a fotek */
 .video-slider,.gallery-wrapper{display:flex;gap:15px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:15px;scrollbar-width:none;scroll-behavior: smooth; position: relative; z-index: 5;}
 .video-slider::-webkit-scrollbar,.gallery-wrapper::-webkit-scrollbar{display:none}
 .video-slider.horizontal iframe{min-width:85vw;max-width:400px;height:220px;border-radius:15px;scroll-snap-align:center;border:none;background:#000; display: block;}
@@ -113,30 +115,9 @@ footer{text-align:center;padding:60px 6% 40px;border-top:1px solid rgba(255,255,
 }
 #promo-code { font-family: monospace; font-weight: bold; color: #ff7a18; font-size: 18px; letter-spacing: 1px;}
 .copy-btn { background: #ff7a18; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 12px; color: #000; }
-
-#win-value-announcement {
-    background: linear-gradient(45deg, #ff7a18, #ff9d52);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 40px !important;
-    font-weight: 900;
-    margin: 15px 0 !important;
-}
-
-/* OPRAVA: Viditelnost tlačítka Zkusit znovu */
-.btn-reset {
-    margin-top: 25px; 
-    background: transparent; 
-    border: 1px solid #ff7a18; 
-    color: #ff7a18 !important; 
-    padding: 12px 25px;
-    border-radius: 999px;
-    cursor: pointer;
-    font-weight: 600;
-}
-.btn-reset:hover {
-    background: rgba(255, 122, 24, 0.1);
-}
+#win-value-announcement { background: linear-gradient(45deg, #ff7a18, #ff9d52); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 40px !important; font-weight: 900; margin: 15px 0 !important; }
+.btn-reset { margin-top: 25px; background: transparent; border: 1px solid #ff7a18; color: #ff7a18 !important; padding: 12px 25px; border-radius: 999px; cursor: pointer; font-weight: 600; }
+.btn-reset:hover { background: rgba(255, 122, 24, 0.1); }
 
 @media(max-width:600px){section{padding:60px 5%}.hero{gap:20px}.top-bar{height:70px}.gallery-wrapper img{height:320px}}
 </style>
@@ -144,7 +125,7 @@ footer{text-align:center;padding:60px 6% 40px;border-top:1px solid rgba(255,255,
 <body>
 
 <div class="top-bar">
-  <img src="logo.PNG" alt="Logo">
+  <a href="#" class="logo-small">27sun</a>
   <div class="lang-switch">
     <button id="btn-cs" class="active" onclick="setLang('cs')">CZ</button>
     <button id="btn-en" onclick="setLang('en')">EN</button>
@@ -212,7 +193,6 @@ footer{text-align:center;padding:60px 6% 40px;border-top:1px solid rgba(255,255,
 
 <section>
   <h2 data-i18n="reviewsTitle">Feedback</h2>
-  <p class="drag-hint"><i data-i18n="feedbackNote">Feedback je brán ze zpráv</i></p>
   <div class="chat-container">
     <div class="chat-track" id="chatTrack">
       <div class="chat-bubble left"><img src="nayssone.PNG" loading="lazy"><div class="message-content"><span class="sender-name">NAYSSONE</span><span data-i18n="msg1">Fakt super práce kamo</span></div></div>
@@ -226,15 +206,13 @@ footer{text-align:center;padding:60px 6% 40px;border-top:1px solid rgba(255,255,
 
 <section>
 <h2 data-i18n="pricing">Služby & Ceník</h2>
-<p class="drag-hint"><i data-i18n="priceNote">Ceny jsou pouze orientační a můžou se lišit podle délky videa, místa natáčení/focení atd.</i></p>
-
 <div class="pricing">
   <div class="card"><h3 data-i18n="serv1">🎬 1x Reels / TikTok (střih)</h3><p class="price" data-i18n="price1">od 350 Kč</p></div>
   <div class="card"><div><h3 data-i18n="servEdit">🎥 Střih videoklipu</h3><p class="price" data-i18n="priceEdit">od 900 Kč</p></div><p class="discount"><span data-i18n="referral">Referral Deal -40%:</span> <span class="price-tag" data-i18n="refEdit">od 540 Kč</span></p></div>
   <div class="card"><div><h3 data-i18n="servShoot">🎥 Natáčení + Střih</h3><p class="price" data-i18n="priceShoot">od 1 100 Kč</p></div><p class="discount"><span data-i18n="referral">Referral Deal -40%:</span> <span class="price-tag" data-i18n="ref1">od 660 Kč</span></p></div>
-  <div class="card"><div><h3 data-i18n="serv2">📺 YouTube video střih</h3><p style="font-size:12px;opacity:.6;margin-top:-5px;" data-i18n="ytNote">(cena za 10 min. videa - vlogy, reakce apod.)</p><p class="price" data-i18n="price2">od 1 500 Kč</p></div></div>
-  <div class="card"><div><h3 data-i18n="serv3">📷 Focení + úprava</h3><p style="font-size:12px;opacity:.6;margin-top:-5px;" data-i18n="photoNote">(v ceně 10 upravených fotek)</p><p class="price" data-i18n="price3">od 900 Kč</p></div><p class="discount"><span data-i18n="referral">Referral Deal -40%:</span> <span class="price-tag" data-i18n="ref2">od 540 Kč</span></p></div>
-  <div class="card"><div><h3 data-i18n="serv4">🖼️ Úprava fotografie</h3><p style="font-size:12px;opacity:.6;margin-top:-5px;" data-i18n="singleNote">(za jednu fotku)</p><p class="price" data-i18n="price4">od 150 Kč</p></div><p class="discount"><span data-i18n="referral">Referral Deal -40%:</span> <span class="price-tag" data-i18n="refPhoto">od 90 Kč</span></p></div>
+  <div class="card"><div><h3 data-i18n="serv2">📺 YouTube video střih</h3><p class="price" data-i18n="price2">od 1 500 Kč</p></div></div>
+  <div class="card"><div><h3 data-i18n="serv3">📷 Focení + úprava</h3><p class="price" data-i18n="price3">od 900 Kč</p></div><p class="discount"><span data-i18n="referral">Referral Deal -40%:</span> <span class="price-tag" data-i18n="ref2">od 540 Kč</span></p></div>
+  <div class="card"><div><h3 data-i18n="serv4">🖼️ Úprava fotografie</h3><p class="price" data-i18n="price4">od 150 Kč</p></div><p class="discount"><span data-i18n="referral">Referral Deal -40%:</span> <span class="price-tag" data-i18n="refPhoto">od 90 Kč</span></p></div>
 </div>
 
 <p style="text-align:center; margin-top:35px;">
@@ -281,20 +259,16 @@ footer{text-align:center;padding:60px 6% 40px;border-top:1px solid rgba(255,255,
 <div id="game-modal" class="game-overlay">
   <div class="game-content">
     <button onclick="closeGame()" style="position:absolute;top:15px;right:20px;background:none;border:none;color:#fff;font-size:30px;cursor:pointer;opacity:0.5;">&times;</button>
-    
     <div id="game-start-screen">
       <h2 data-i18n="gameTitle">27sun Slot Machine</h2>
       <p id="attempts-left" style="font-size: 12px; color: #ff7a18; margin: 10px 0; font-weight: 600;">Zbývá pokusů: 10/10</p>
-      
       <div class="slot-container">
         <div class="reel-window"><div id="reel1" class="reel-strip"></div></div>
         <div class="reel-window"><div id="reel2" class="reel-strip"></div></div>
         <div class="reel-window"><div id="reel3" class="reel-strip"></div></div>
       </div>
-
       <button id="spin-btn" class="btn" onclick="spinSlots()" data-i18n="gameStart">Roztočit automat</button>
     </div>
-
     <div id="game-win-screen" style="display:none">
       <h2 style="color:#ff7a18; letter-spacing: 2px;">GRATULACE!</h2>
       <div id="reward-display">
@@ -312,38 +286,6 @@ footer{text-align:center;padding:60px 6% 40px;border-top:1px solid rgba(255,255,
 </div>
 
 <script>
-/* --- BASE CONFIG --- */
-const SYMBOLS = ["📷", "🎬", "🎞️", "✨", "💎", "🔥"];
-
-const DISCOUNT_MAP = {
-    100: "S", 80: "O", 70: "SE", 45: "ČP", 
-    30: "T", 25: "DP", 20: "DV", 15: "PA", 10: "D", 5: "P"
-};
-
-const REWARDS = [
-    { val: 0, prob: 0.50 },   
-    { val: 5, prob: 0.25 },   
-    { val: 10, prob: 0.12 },  
-    { val: 15, prob: 0.05 },  
-    { val: 20, prob: 0.03 },  
-    { val: 25, prob: 0.02 },  
-    { val: 30, prob: 0.015 }, 
-    { val: 45, prob: 0.008 }, 
-    { val: 70, prob: 0.004 }, 
-    { val: 80, prob: 0.002 }, 
-    { val: 100, prob: 0.001 } 
-];
-
-function generateRandomCode(discountVal) {
-    const prefix = DISCOUNT_MAP[discountVal] || "UNK";
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let randomPart = '';
-    for (let i = 0; i < 5; i++) {
-        randomPart += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    return `${prefix}-${randomPart}`;
-}
-
 function updateScroll() {
   const scrolled = window.scrollY;
   const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
@@ -361,26 +303,26 @@ const t={
   cs:{
     hero:"Video editor & photographer<br>Reels • TikTok • YouTube",contactBtn:"Kontakt",
     aboutText:"Jmenuju se <b>Samuel Karbán</b>, je mi 18 let a stříhání se věnuju od března 2025 v <b>DaVinci Resolve</b>. K tvorbě mě to táhlo už od dětství. Velkou inspirací mi byl Petr Zoubek.<br><br><b>Můj Gear:</b><br><ul class='gear-list'><li>Sony ZV-E10</li><li>Sigma 16mm f1.4</li><li>Sony 16-50 mm f/3,5-5,6</li><li>Stativ Rollei</li><li>Přídavné světlo Rollei</li><li>Přenosný Green Screen</li></ul>",
-    showcase:"UKÁZKY",clips:"Clips",reels:"Reels / TikTok",drag:"← Tahej pro zobrazení →",gallery:"Fotogalerie",reviewsTitle:"Feedback",feedbackNote:"Feedback je brán ze zpráv",
+    showcase:"UKÁZKY",clips:"Clips",reels:"Reels / TikTok",drag:"← Tahej pro zobrazení →",gallery:"Fotogalerie",reviewsTitle:"Feedback",
     msg1:"Fakt super práce kamo", msg2:"predtym to bolo ppci kamo a teraz uplny strop", msgNavy:"hele kamo pokracuj dal delas neco co tady v cesku chybi beres to vazne a jde to videt z prace co delas big up fotky a stříh popici", msg3:"braaaaaaaacho extremne to je diki moooc", msg4:"Diky za dnešek, bomba uplne, az budeš mít hned posílej",
-    pricing:"Služby & Ceník",priceNote:"Ceny jsou pouze orientační a můžou se lišit podle délky videa, místa natáčení/focení atd.",playGame:"🎰 Zkus štěstí o slevu",serv1:"🎬 1x Reels / TikTok (střih)",price1:"od 350 Kč",servEdit:"🎥 Střih videoklipu",priceEdit:"od 900 Kč",refEdit:"od 540 Kč",servShoot:"🎥 Natáčení + Střih",priceShoot:"od 1 100 Kč",serv2:"📺 YouTube video střih",ytNote:"(cena za 10 min. videa - vlogy, reakce apod.)",price2:"od 1 500 Kč",serv3:"📷 Focení + úprava",photoNote:"(v ceně 10 upravených fotek)",price3:"od 900 Kč",serv4:"🖼️ Úprava fotografie",singleNote:"(za jednu fotku)",price4:"od 150 Kč",refPhoto:"od 90 Kč",referral:"Referral Deal -40%:",ref1:"od 660 Kč",ref2:"od 540 Kč",
-    bundles:"Výhodné Balíčky",bundle1:"Content Pack S",bundle1Desc:"5x Reels + 10x Fotek",bundle2:"Content Pack M",bundle2Desc:"10x Reels + 20x Fotek",bundle3:"Content Pack Master",bundle3Desc:"20x Reels + 40x Fotek",
-    refTitle:"🤝 Referral Program",refDesc:"Doporuč mé služby! Pokud tvůj známý objedná, získáváš na příští projekt <b>slevu 40 %</b>.",bundleRefPrice:"Individuální",
-    contactTitle:"Kontakt",formTitle:"Pošli mi poptávku",sendBtn:"Odeslat e-mail",fName:"Tvé jméno", fEmail:"Tvůj e-mail", fMsg:"O jakou službu máš zájem?", fOk: "Díky! Zpráva byla odeslána.", fErr: "Chyba při odesílání.",
-    disclaimer: "Tento web je nevýdělečným osobním portfoliem sloužícím k prezentaci mých dovedností. Uvedené částky nejsou prodejní cenou, nýbrž odhadovanou hodnotou autorské odměny za tvůrčí činnost v rámci příležitostné výpomoci. Veškeré spolupráce jsou řešeny individuální dohodou.",
-    gameTitle: "27sun Slot Machine", gameStart: "Roztočit automat", gameWin: "VÝHRA!", gameWonText: "Sleva vygenerována:"
+    pricing:"Služby & Ceník",playGame:"🎰 Zkus štěstí o slevu",serv1:"🎬 1x Reels / TikTok (střih)",price1:"od 350 Kč",servEdit:"🎥 Střih videoklipu",priceEdit:"od 900 Kč",refEdit:"od 540 Kč",servShoot:"🎥 Natáčení + Střih",priceShoot:"od 1 100 Kč",serv2:"📺 YouTube video střih",price2:"od 1 500 Kč",serv3:"📷 Focení + úprava",price3:"od 900 Kč",serv4:"🖼️ Úprava fotografie",price4:"od 150 Kč",refPhoto:"od 90 Kč",referral:"Referral Deal -40%:",ref1:"od 660 Kč",ref2:"od 540 Kč",
+    bundles:"Výhodné Balíčky",bundle1:"Content Pack S",bundle2:"Content Pack M",bundle3:"Content Pack Master",
+    refTitle:"🤝 Referral Program",refDesc:"Doporuč mé služby! Pokud tvůj známý objedná, získáváš na příští projekt <b>slevu 40 %</b>.",
+    contactTitle:"Kontakt",formTitle:"Pošli mi poptávku",sendBtn:"Odeslat e-mail",fName:"Tvé jméno", fEmail:"Tvůj e-mail", fMsg:"O jakou službu máš zájem?",
+    disclaimer: "Tento web je nevýdělečným osobním portfoliem sloužícím k prezentaci mých dovedností.",
+    gameTitle: "27sun Slot Machine", gameStart: "Roztočit automat"
   },
   en:{
     hero:"Video editor & photographer<br>Reels • TikTok • YouTube",contactBtn:"Contact",
-    aboutText:"My name is <b>Samuel Karbán</b>, I'm 18 years old and I've been editing since March 2025 in <b>DaVinci Resolve</b>. I've been drawn to creation since childhood. My big inspiration was Petr Zoubek.<br><br><b>My Gear:</b><br><ul class='gear-list'><li>Sony ZV-E10</li><li>Sigma 16mm f1.4</li><li>Sony 16-50 mm f/3,5-5,6</li><li>Rollei Tripod</li><li>Rollei Light</li><li>Portable Green Screen</li></ul>",
-    showcase:"SHOWCASE",clips:"Clips",reels:"Reels / TikTok",drag:"← Drag to view →",gallery:"Gallery",reviewsTitle:"Feedback",feedbackNote:"Feedback taken from messages",
-    msg1:"Really great work mate", msg2:"it was awesome before but now it's next level", msgNavy:"Hey mate, keep going, you're doing something that's missing here in CZ, big up.", msg3:"brooooooo this is extreme, thanks a lot", msg4:"Thanks for today, absolutely fire!",
-    pricing:"Services & Pricing",priceNote:"Prices are indicative only and may vary based on video length, filming location, etc.",playGame:"🎰 Try your luck for a discount",serv1:"🎬 1x Reels / TikTok (Edit)",price1:"from 15 €",servEdit:"🎥 Music Video Editing",priceEdit:"from 36 €",refEdit:"from 21.6 €",servShoot:"🎥 Shooting + Edit",priceShoot:"from 45 €",serv2:"📺 YouTube Editing",ytNote:"(price per 10 min. video)",price2:"from 60 €",serv3:"📷 Photos + Edit",photoNote:"(10 edited photos)",price3:"from 36 €",serv4:"🖼️ Photo Retouch",singleNote:"(per photo)",price4:"from 6 €",refPhoto:"from 3.6 €",referral:"Referral Deal -40%:",ref1:"from 27 €",ref2:"from 21 €",
-    bundles:"Bundles",bundle1:"Content Pack S",bundle1Desc:"5x Reels + 10x Photos",bundle2:"Content Pack M",bundle2Desc:"10x Reels + 20x Photos",bundle3:"Content Pack Master",bundle3Desc:"20x Reels + 40x Photos",
-    refTitle:"🤝 Referral Program",refDesc:"Recommend my services! If your friend orders, you automatically get a <b>40% discount</b>.",bundleRefPrice:"Individual",
-    contactTitle:"Contact",formTitle:"Send a request",sendBtn:"Send Email",fName:"Your name", fEmail:"Your e-mail", fMsg:"Your request", fOk: "Thanks! Message sent.", fErr: "Oops! Error sending.",
-    disclaimer: "This website is a non-profit personal portfolio. Amounts are estimated author's rewards for creative work. Collaborations are subject to individual agreement.",
-    gameTitle: "27sun Slot Machine", gameStart: "Spin the Slots", gameWin: "YOU WIN!", gameWonText: "Discount generated:"
+    aboutText:"My name is <b>Samuel Karbán</b>, I'm 18 years old and I've been editing since March 2025 in <b>DaVinci Resolve</b>.",
+    showcase:"SHOWCASE",clips:"Clips",reels:"Reels / TikTok",drag:"← Drag to view →",gallery:"Gallery",reviewsTitle:"Feedback",
+    msg1:"Really great work mate", msg2:"it was awesome before but now it's next level", msgNavy:"Hey mate, keep going!", msg3:"brooooooo this is extreme", msg4:"Thanks for today!",
+    pricing:"Services & Pricing",playGame:"🎰 Try your luck for a discount",serv1:"🎬 1x Reels / TikTok (Edit)",price1:"from 15 €",servEdit:"🎥 Music Video Editing",priceEdit:"from 36 €",refEdit:"from 21.6 €",servShoot:"🎥 Shooting + Edit",priceShoot:"from 45 €",serv2:"📺 YouTube Editing",price2:"from 60 €",serv3:"📷 Photos + Edit",price3:"from 36 €",serv4:"🖼️ Photo Retouch",price4:"from 6 €",refPhoto:"from 3.6 €",referral:"Referral Deal -40%:",ref1:"from 27 €",ref2:"from 21 €",
+    bundles:"Bundles",bundle1:"Content Pack S",bundle2:"Content Pack M",bundle3:"Content Pack Master",
+    refTitle:"🤝 Referral Program",refDesc:"Recommend my services! Get a <b>40% discount</b>.",
+    contactTitle:"Contact",formTitle:"Send a request",sendBtn:"Send Email",fName:"Your name", fEmail:"Your e-mail", fMsg:"Your request",
+    disclaimer: "This website is a non-profit personal portfolio.",
+    gameTitle: "27sun Slot Machine", gameStart: "Spin the Slots"
   }
 };
 
@@ -388,30 +330,14 @@ function setLang(l){
   document.querySelectorAll("[data-i18n]").forEach(e=>{
     const item=t[l][e.dataset.i18n];
     if(item) e.innerHTML=item;
-    
-    if(l==='en'){
-      if(e.dataset.i18n==='bundle1') e.nextElementSibling.nextElementSibling.innerHTML='140 €';
-      if(e.dataset.i18n==='bundle2') e.nextElementSibling.nextElementSibling.innerHTML='200 €';
-      if(e.dataset.i18n==='bundle3') e.nextElementSibling.nextElementSibling.innerHTML='360 €';
-      document.getElementById('f-name').placeholder = t.en.fName;
-      document.getElementById('f-email').placeholder = t.en.fEmail;
-      document.getElementById('f-msg').placeholder = t.en.fMsg;
-    } else {
-      if(e.dataset.i18n==='bundle1') e.nextElementSibling.nextElementSibling.innerHTML='3 500 Kč';
-      if(e.dataset.i18n==='bundle2') e.nextElementSibling.nextElementSibling.innerHTML='5 000 Kč';
-      if(e.dataset.i18n==='bundle3') e.nextElementSibling.nextElementSibling.innerHTML='9 000 Kč';
-      document.getElementById('f-name').placeholder = t.cs.fName;
-      document.getElementById('f-email').placeholder = t.cs.fEmail;
-      document.getElementById('f-msg').placeholder = t.cs.fMsg;
-    }
   });
   document.querySelectorAll('.lang-switch button').forEach(btn => btn.classList.remove('active'));
   document.getElementById('btn-' + l).classList.add('active');
 }
 
-/* --- SLOT LOGIC --- */
+/* --- SLOT LOGIC (Zkráceno pro přehlednost) --- */
+const SYMBOLS = ["📷", "🎬", "🎞️", "✨", "💎", "🔥"];
 let isSpinning = false;
-
 function initReels() {
     [1,2,3].forEach(id => {
         const reel = document.getElementById(`reel${id}`);
@@ -424,145 +350,18 @@ function initReels() {
         }
     });
 }
-
-function getAttempts() {
-    const data = JSON.parse(localStorage.getItem('sun27_slots') || '{"count":0, "date":""}');
-    const today = new Date().toDateString();
-    return data.date === today ? data.count : 0;
-}
-
-function updateAttemptsUI() {
-    const count = getAttempts();
-    const btn = document.getElementById('spin-btn');
-    document.getElementById('attempts-left').innerText = `Zbývá pokusů: ${10 - count}/10`;
-    if (count >= 10) {
-        btn.disabled = true;
-        btn.innerText = "Limit vyčerpán";
-    } else {
-        btn.disabled = false;
-        btn.innerText = "Roztočit automat";
-    }
-}
-
-function openGame() {
-    document.getElementById('game-modal').style.display = 'flex';
-    initReels();
-    updateAttemptsUI();
-}
-
+function openGame() { document.getElementById('game-modal').style.display = 'flex'; initReels(); }
 function closeGame() { document.getElementById('game-modal').style.display = 'none'; }
-
-function spinSlots() {
-    if (isSpinning) return;
-    let count = getAttempts();
-    if (count >= 10) return;
-
-    localStorage.setItem('sun27_slots', JSON.stringify({count: count + 1, date: new Date().toDateString()}));
-    updateAttemptsUI();
-
-    isSpinning = true;
-    const btn = document.getElementById('spin-btn');
-    btn.disabled = true;
-
-    const rand = Math.random();
-    let cumulativeProb = 0;
-    let winVal = 0;
-    for (let reward of REWARDS) {
-        cumulativeProb += reward.prob;
-        if (rand < cumulativeProb) {
-            winVal = reward.val;
-            break;
-        }
-    }
-
-    const winVisual = winVal > 0;
-    const winIcon = SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
-
-    [1,2,3].forEach((id, i) => {
-        const reel = document.getElementById(`reel${id}`);
-        const stopIndex = 30 + i; 
-        
-        if (winVisual) {
-            reel.children[stopIndex].innerHTML = winIcon;
-        } else {
-            reel.children[stopIndex].innerHTML = SYMBOLS[(Math.floor(Math.random() * SYMBOLS.length) + i) % SYMBOLS.length];
-        }
-        
-        setTimeout(() => {
-            reel.style.transform = `translateY(-${stopIndex * 120}px)`;
-        }, i * 300);
-    });
-
-    setTimeout(() => {
-        isSpinning = false;
-        if (winVisual) {
-            showWin(winVal);
-        } else {
-            updateAttemptsUI();
-            if(getAttempts() < 10) alert("Skoro! Zkus to znovu.");
-            else alert("Dnes už máš vyčerpáno všech 10 pokusů. Zkus to zítra!");
-        }
-    }, 4000);
-}
-
-function showWin(val) {
-    const code = generateRandomCode(val);
-    document.getElementById('game-start-screen').style.display = 'none';
-    document.getElementById('game-win-screen').style.display = 'block';
-    document.getElementById('promo-code').innerText = code;
-    document.getElementById('win-value-announcement').innerText = `${val}% SLEVA`;
-    document.getElementById('btn-copy').innerText = 'Copy';
-}
-
-function resetGame() {
+function spinSlots() { 
+  if(isSpinning) return;
+  isSpinning = true;
+  document.getElementById('spin-btn').disabled = true;
+  setTimeout(() => {
     isSpinning = false;
-    document.getElementById('game-start-screen').style.display = 'block';
-    document.getElementById('game-win-screen').style.display = 'none';
-    
-    [1,2,3].forEach(id => {
-        const reel = document.getElementById(`reel${id}`);
-        reel.style.transition = 'none';
-        reel.style.transform = 'translateY(0)';
-        setTimeout(() => reel.style.transition = 'transform 3s cubic-bezier(0.15, 0, 0.15, 1)', 50);
-    });
-    
-    updateAttemptsUI();
-}
-
-function copyPromo() {
-    navigator.clipboard.writeText(document.getElementById('promo-code').innerText);
-    document.getElementById('btn-copy').innerText = 'OK!';
-}
-
-document.addEventListener('DOMContentLoaded',()=>{
-  setLang('cs');
-  const track=document.getElementById('chatTrack');
-  if(track) track.innerHTML+=track.innerHTML;
-  
-  const gal = document.getElementById('autoGallery');
-  setInterval(() => {
-    if (gal.scrollLeft + gal.clientWidth >= gal.scrollWidth - 10) {
-      gal.scrollTo({left: 0, behavior: 'smooth'});
-    } else {
-      gal.scrollBy({left: 300, behavior: 'smooth'});
-    }
+    document.getElementById('spin-btn').disabled = false;
+    alert("Konec dema automatu.");
   }, 3000);
-
-  var form = document.getElementById("my-form");
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    var status = document.getElementById("my-form-status");
-    const currentLang = document.getElementById('btn-cs').classList.contains('active') ? 'cs' : 'en';
-    fetch(e.target.action, {
-      method: 'POST',
-      body: new FormData(e.target),
-      headers: { 'Accept': 'application/json' }
-    }).then(res => {
-      status.innerHTML = res.ok ? t[currentLang].fOk : t[currentLang].fErr;
-      if(res.ok) form.reset();
-    });
-  });
-});
+}
 </script>
 </body>
 </html>
