@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>karbyvisuals – Creative Studio</title>
+<title>karbyvisuals</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 :root { --primary: #ff7a18; --bg: #050505; --card: #111; }
@@ -14,55 +14,50 @@ body::before { content: ""; position: fixed; inset: 0; background: radial-gradie
 .top-bar { position: fixed; top: 0; width: 100%; height: 70px; background: rgba(0,0,0,0.85); backdrop-filter: blur(15px); display: flex; align-items: center; justify-content: center; z-index: 1000; border-bottom: 1px solid rgba(255,122,24,0.2); }
 .logo { font-weight: 900; font-size: 24px; color: var(--primary); text-transform: uppercase; letter-spacing: 3px; cursor: pointer; text-decoration: none; }
 
-section { padding: 120px 6% 60px; min-height: 100vh; display: none; }
+section { padding: 140px 6% 60px; min-height: 100vh; display: none; }
 section.active { display: block; animation: fadeIn 0.4s ease-out; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-/* ABOUT SECTION */
-.about-container { display: flex; flex-wrap: wrap; gap: 40px; align-items: center; justify-content: center; margin-bottom: 80px; max-width: 1000px; margin-inline: auto; text-align: left; background: rgba(255,255,255,0.03); padding: 30px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.05); }
-.about-img { width: 250px; height: 320px; object-fit: cover; border-radius: 20px; border: 2px solid var(--primary); box-shadow: 0 0 20px rgba(255,122,24,0.2); }
-.about-text { flex: 1; min-width: 300px; }
-.about-text h2 { margin-bottom: 15px; font-size: 28px; }
-.gear-list { list-style: none; margin-top: 15px; columns: 2; font-size: 13px; }
-.gear-list li::before { content: "• "; color: var(--primary); }
+.home-content { text-align: center; margin-bottom: 40px; }
+.home-title { font-size: clamp(45px, 10vw, 90px); font-weight: 900; line-height: 0.9; }
+.home-subtitle { color: var(--primary); letter-spacing: 6px; font-weight: 700; font-size: 14px; margin-top: 30px; }
 
-.home-content { text-align: center; margin-bottom: 60px; }
-.home-title { font-size: clamp(40px, 8vw, 80px); font-weight: 900; line-height: 0.9; }
-.home-subtitle { color: var(--primary); letter-spacing: 6px; font-weight: 700; font-size: 14px; margin-top: 20px; }
-
-.home-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 40px; }
+.home-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px; margin-bottom: 80px; }
 .nav-card { background: var(--card); border: 1px solid rgba(255,255,255,0.05); padding: 50px 20px; border-radius: 28px; text-align: center; cursor: pointer; transition: 0.4s; }
-.nav-card:hover { border-color: var(--primary); transform: translateY(-8px); background: #1a1a1a; }
+.nav-card:hover { border-color: var(--primary); transform: translateY(-5px); background: #1a1a1a; }
+
+.about-box { max-width: 900px; margin: 40px auto; display: flex; flex-wrap: wrap; gap: 40px; align-items: center; background: rgba(255,255,255,0.02); padding: 40px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.05); }
+.about-img { flex: 1; min-width: 250px; }
+.about-img img { width: 100%; border-radius: 20px; filter: grayscale(0.2); border: 1px solid var(--primary); }
+.about-info { flex: 1.5; min-width: 300px; text-align: left; }
+.about-info h2 { color: var(--primary); margin-bottom: 15px; text-transform: uppercase; }
+.gear-list { margin-top: 20px; list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 14px; }
+.gear-list li::before { content: "• "; color: var(--primary); }
 
 .slider-container { position: relative; width: 100%; max-width: 1100px; margin: 30px auto; overflow: hidden; border-radius: 24px; background: #000; box-shadow: 0 40px 80px rgba(0,0,0,0.8); }
 .slider-track { display: flex; transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1); }
 .slide { min-width: 100%; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; background: #000; }
 .slide iframe { width: 100%; height: 100%; border: none; }
-.slide img, .slide video { max-width: 100%; max-height: 100%; object-fit: contain; cursor: pointer; }
-
+.slide img, .slide video { max-width: 100%; max-height: 100%; object-fit: contain; }
 .reels-slider { max-width: 380px; }
 .reels-slider .slide { aspect-ratio: 9/16; }
 
-.slider-controls { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.slider-controls { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
 .control-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 10px 18px; border-radius: 99px; cursor: pointer; font-size: 11px; text-transform: uppercase; font-weight: 700; transition: 0.3s; }
 .control-btn.active { background: var(--primary); border-color: var(--primary); color: #000; }
 
-.slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.6); border: 1px solid rgba(255,122,24,0.3); width: 45px; height: 45px; border-radius: 50%; color: #fff; cursor: pointer; z-index: 10; }
+.slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.6); border: 1px solid rgba(255,122,24,0.3); width: 45px; height: 45px; border-radius: 50%; color: #fff; cursor: pointer; z-index: 10; font-size: 20px; display: flex; align-items: center; justify-content: center; }
 .prev { left: 15px; } .next { right: 15px; }
 
-.order-box { max-width: 600px; margin: 50px auto; background: #0a0a0a; padding: 40px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.05); }
+.order-box { max-width: 600px; margin: 70px auto; background: #0a0a0a; padding: 40px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.05); }
 .order-box h4 { margin-bottom: 25px; text-align: center; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; }
-.form-group { margin-bottom: 20px; }
-.form-group label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 8px; color: rgba(255,255,255,0.8); }
+.form-group { margin-bottom: 20px; text-align: left; }
+.form-group label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 8px; color: rgba(255,255,255,0.7); }
+input, textarea, select { width: 100%; padding: 16px; border-radius: 14px; background: #000; border: 1px solid #222; color: #fff; font-family: inherit; font-size: 15px; }
+.btn-send { width: 100%; padding: 18px; background: var(--primary); border: none; border-radius: 14px; font-weight: 900; text-transform: uppercase; cursor: pointer; margin-top: 10px; }
+.back-link { display: block; text-align: center; margin-bottom: 40px; color: var(--primary); text-decoration: none; font-size: 13px; font-weight: 900; letter-spacing: 2px; }
 
-input, textarea, select { width: 100%; padding: 14px; border-radius: 12px; background: #000; border: 1px solid #222; color: #fff; font-family: inherit; font-size: 14px; }
-input:focus, textarea:focus { border-color: var(--primary); outline: none; }
-.btn-send { width: 100%; padding: 16px; background: var(--primary); border: none; border-radius: 12px; font-weight: 900; text-transform: uppercase; cursor: pointer; margin-top: 10px; }
-.back-link { display: block; text-align: center; margin-bottom: 30px; color: var(--primary); text-decoration: none; font-size: 13px; font-weight: 900; letter-spacing: 2px; }
-
-.hidden-fields { display: none; padding: 15px; background: rgba(255,122,24,0.05); border-radius: 12px; margin-bottom: 20px; }
-
-@media (max-width: 768px) { .about-container { text-align: center; } .about-img { width: 180px; height: 240px; } .gear-list { columns: 1; } }
+#nataceni-pole { display: none; }
 </style>
 </head>
 <body>
@@ -76,29 +71,31 @@ input:focus, textarea:focus { border-color: var(--primary); outline: none; }
         <h1 class="home-title">karbyvisuals</h1>
         <p class="home-subtitle">VIDEO • PHOTO • EDIT</p>
     </div>
-
-    <div class="about-container">
-        <img src="profile.JPG" alt="Samuel Karbán" class="about-img">
-        <div class="about-text">
-            <h2>O mně</h2>
-            <p>Jmenuju se <b>Samuel Karbán</b>, je mi 18 let a stříhání se věnuju od března 2025 v <b>DaVinci Resolve</b>. K tvorbě mě to táhlo už od dětství. Velkou inspirací mi byl Petr Zoubek.</p>
-            <p style="margin-top:10px"><b>Můj Gear:</b></p>
-            <ul class='gear-list'>
-                <li>Sony ZV-E10</li>
-                <li>Sigma 16mm f1.4</li>
-                <li>Sony 16-50 mm f/3,5-5,6</li>
-                <li>Stativ Rollei</li>
-                <li>Přídavné světlo Rollei</li>
-                <li>Přenosný Green Screen</li>
-            </ul>
-        </div>
+    
+    <div class="home-grid">
+        <div class="nav-card" onclick="openSection('sec-clips')"><h3>Hudební Klipy</h3></div>
+        <div class="nav-card" onclick="openSection('sec-reels')"><h3>Reels & TikTok</h3></div>
+        <div class="nav-card" onclick="openSection('sec-yt')"><h3>YouTube Tvorba</h3></div>
+        <div class="nav-card" onclick="openSection('sec-photos')"><h3>Fotografie</h3></div>
     </div>
 
-    <div class="home-grid">
-        <div class="nav-card" onclick="openSection('sec-clips')"><h3>Hudební Klipy</h3><p>SHOWCASE</p></div>
-        <div class="nav-card" onclick="openSection('sec-reels')"><h3>Reels & TikTok</h3><p>SOCIAL MEDIA</p></div>
-        <div class="nav-card" onclick="openSection('sec-yt')"><h3>YouTube Tvorba</h3><p>EDITS</p></div>
-        <div class="nav-card" onclick="openSection('sec-photos')"><h3>Fotografie</h3><p>GALLERY</p></div>
+    <div class="about-box">
+        <div class="about-img"><img src="profile.JPG" alt="Samuel Karbán"></div>
+        <div class="about-info">
+            <h2>O mně</h2>
+            <p>Jmenuju se <b>Samuel Karbán</b>, je mi 18 let a stříhání se věnuju od března 2025 v <b>DaVinci Resolve</b>. K tvorbě mě to táhlo už od dětství. Velkou inspirací mi byl Petr Zoubek.</p>
+            <div style="margin-top:20px;">
+                <b>Můj Gear:</b>
+                <ul class="gear-list">
+                    <li>Sony ZV-E10</li>
+                    <li>Sigma 16mm f1.4</li>
+                    <li>Sony 16-50 mm f/3,5-5,6</li>
+                    <li>Stativ Rollei</li>
+                    <li>Přídavné světlo Rollei</li>
+                    <li>Přenosný Green Screen</li>
+                </ul>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -114,23 +111,26 @@ input:focus, textarea:focus { border-color: var(--primary); outline: none; }
         </div>
         <button class="slider-btn next" onclick="moveSlide('slider-clips', 1)">&#10095;</button>
     </div>
+    <div class="slider-controls">
+        <button class="control-btn active" id="btn-auto-clips" onclick="toggleAuto('slider-clips')">Autoposun: ZAP</button>
+    </div>
     
     <div class="order-box">
-        <h4>Poptávka projektu</h4>
-        <form onsubmit="return validateForm(this)" action="https://formspree.io/f/xeekojbo" method="POST">
-            <div class="form-group"><label>Služba</label>
-                <select name="typ_sluzby" id="clip-service-type" onchange="toggleClipFields(this.value)">
-                    <option value="střih">Pouze střih (dodáš záběry)</option>
-                    <option value="komplet">Natáčení + Střih</option>
+        <h4>Domluvit videoklip</h4>
+        <form action="https://formspree.io/f/xeekojbo" method="POST">
+            <div class="form-group"><label>E-mail / IG</label><input type="text" name="kontakt" required placeholder="Napiš kam ti mám odepsat"></div>
+            <div class="form-group">
+                <label>O jakou službu máš zájem?</label>
+                <select name="typ_sluzby" id="clip-type" onchange="toggleClipFields()">
+                    <option value="střih">Pouze střih (máš natočeno)</option>
+                    <option value="komplet">Full produkce (Natáčení + Střih)</option>
                 </select>
             </div>
-            <div id="clip-extra-fields" class="hidden-fields">
-                <div class="form-group"><label>Lokalita natáčení</label><input type="text" name="lokalita" placeholder="Město / Místo"></div>
-                <div class="form-group"><label>Přibližný termín</label><input type="text" name="termin" placeholder="Kdy by se mělo točit?"></div>
+            <div id="nataceni-pole">
+                <div class="form-group"><label>Lokalita natáčení</label><input type="text" name="lokalita"></div>
+                <div class="form-group"><label>Předběžné datum</label><input type="text" name="datum"></div>
             </div>
-            <div class="form-group"><label>Instagram</label><input type="text" name="instagram" placeholder="@tvojejmeno"></div>
-            <div class="form-group"><label>E-mail</label><input type="email" name="email" placeholder="email@seznam.cz"></div>
-            <div class="form-group"><label>Představa (Styl, barvy...)</label><textarea name="projekt" rows="2"></textarea></div>
+            <div class="form-group"><label>Představa o klipu</label><textarea name="projekt" rows="3"></textarea></div>
             <button type="submit" class="btn-send">Odeslat poptávku</button>
         </form>
     </div>
@@ -142,35 +142,33 @@ input:focus, textarea:focus { border-color: var(--primary); outline: none; }
     <div class="slider-container reels-slider" id="slider-reels">
         <button class="slider-btn prev" onclick="moveSlide('slider-reels', -1)">&#10094;</button>
         <div class="slider-track">
-            <div class="slide"><video src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/finale_202_oqmn0s.mp4" loop playsinline muted onclick="togglePlay('slider-reels')"></video></div>
-            <div class="slide"><video src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/ed38eb3c1c02454287444edc078ede49_pyrkc1.mp4" loop playsinline muted onclick="togglePlay('slider-reels')"></video></div>
-            <div class="slide"><video src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/d980b3ae76af4219b8b4d388ffb15dd1_i5ivd4.mp4" loop playsinline muted onclick="togglePlay('slider-reels')"></video></div>
+            <div class="slide"><video src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/finale_202_oqmn0s.mp4" loop playsinline muted></video></div>
+            <div class="slide"><video src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/ed38eb3c1c02454287444edc078ede49_pyrkc1.mp4" loop playsinline muted></video></div>
+            <div class="slide"><video src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/d980b3ae76af4219b8b4d388ffb15dd1_i5ivd4.mp4" loop playsinline muted></video></div>
         </div>
         <button class="slider-btn next" onclick="moveSlide('slider-reels', 1)">&#10095;</button>
     </div>
     <div class="slider-controls">
-        <button class="control-btn" id="pause-reels" onclick="togglePlay('slider-reels')">Pauza</button>
-        <button class="control-btn" id="sound-reels" onclick="toggleSound('slider-reels')">Zvuk: VYP</button>
-        <button class="control-btn active" id="auto-reels" onclick="toggleAuto('slider-reels')">Autoposun</button>
+        <button class="control-btn" onclick="toggleSound('slider-reels')">ZVUK ZAP/VYP</button>
+        <button class="control-btn active" id="btn-auto-reels" onclick="toggleAuto('slider-reels')">Autoposun: ZAP</button>
     </div>
-    
+
     <div class="order-box">
-        <h4>Chci krátké video</h4>
-        <form onsubmit="return validateForm(this)" action="https://formspree.io/f/xeekojbo" method="POST">
-            <div class="form-group"><label>O jaký typ jde?</label>
-                <select name="typ_reels">
-                    <option value="barber">Barber Cut / Haircut promo</option>
-                    <option value="auto-moto">Auto / Moto edit</option>
-                    <option value="gym">Gym / Fitness motivace</option>
-                    <option value="reklama">Reklama na produkt</option>
-                    <option value="talking-head">Talking Head (vzdělávací)</option>
-                    <option value="jiné">Něco jiného...</option>
+        <h4>Poptat krátké video</h4>
+        <form action="https://formspree.io/f/xeekojbo" method="POST">
+            <div class="form-group"><label>E-mail / IG</label><input type="text" name="kontakt" required></div>
+            <div class="form-group">
+                <label>Co chceš stříhat?</label>
+                <select name="typ_videa">
+                    <option value="Promo">Promo video</option>
+                    <option value="Barber">Barber Cut</option>
+                    <option value="Reklama">Reklama / Business</option>
+                    <option value="Event">Event / Party</option>
+                    <option value="Jine">Něco jiného</option>
                 </select>
             </div>
-            <div class="form-group"><label>Instagram</label><input type="text" name="instagram" placeholder="@tvojejmeno"></div>
-            <div class="form-group"><label>Počet videí k odběru</label><input type="number" name="pocet" placeholder="1, 5, 10..."></div>
-            <div class="form-group"><label>Další detaily</label><textarea name="projekt" rows="2"></textarea></div>
-            <button type="submit" class="btn-send">Poptat cenu</button>
+            <div class="form-group"><label>Podrobnosti</label><textarea name="zprava" rows="3"></textarea></div>
+            <button type="submit" class="btn-send">Odeslat poptávku</button>
         </form>
     </div>
 </section>
@@ -178,14 +176,13 @@ input:focus, textarea:focus { border-color: var(--primary); outline: none; }
 <section id="sec-yt">
     <a href="javascript:void(0)" onclick="goHome()" class="back-link">← ZPĚT</a>
     <h2 style="text-align:center; margin-bottom:20px;">YouTube Tvorba</h2>
-    <div class="slider-container"><div class="slide"><iframe src="https://www.youtube.com/embed/R_vEUMhXYWA?enablejsapi=1&mute=1"></iframe></div></div>
+    <div class="slider-container"><div class="slide"><iframe src="https://www.youtube.com/embed/R_vEUMhXYWA?mute=1"></iframe></div></div>
     <div class="order-box">
-        <h4>Poptat střih YT</h4>
-        <form onsubmit="return validateForm(this)" action="https://formspree.io/f/xeekojbo" method="POST">
-            <div class="form-group"><label>E-mail / IG</label><input type="text" name="contact" placeholder="@jmeno / mail"></div>
-            <div class="form-group"><label>Délka videa</label><input type="text" name="delka" placeholder="např. 15 min"></div>
-            <div class="form-group"><label>Styl (Vlog, Gaming...)</label><input type="text" name="styl"></div>
-            <button type="submit" class="btn-send">Odeslat</button>
+        <h4>Poptat YouTube střih</h4>
+        <form action="https://formspree.io/f/xeekojbo" method="POST">
+            <div class="form-group"><label>E-mail / IG</label><input type="text" name="kontakt" required></div>
+            <div class="form-group"><label>O čem je tvůj kanál?</label><textarea name="projekt" rows="2"></textarea></div>
+            <button type="submit" class="btn-send">Odeslat poptávku</button>
         </form>
     </div>
 </section>
@@ -196,103 +193,86 @@ input:focus, textarea:focus { border-color: var(--primary); outline: none; }
     <div class="slider-container" id="slider-photos">
         <button class="slider-btn prev" onclick="moveSlide('slider-photos', -1)">&#10094;</button>
         <div class="slider-track">
-            <div class="slide"><img src="foto11.jpeg"></div>
-            <div class="slide"><img src="foto2.jpeg"></div>
-            <div class="slide"><img src="foto3.jpeg"></div>
+            <div class="slide"><img src="foto1.jpeg"></div><div class="slide"><img src="foto2.jpeg"></div><div class="slide"><img src="foto3.jpeg"></div><div class="slide"><img src="foto4.jpeg"></div><div class="slide"><img src="foto5.jpeg"></div><div class="slide"><img src="foto6.jpeg"></div><div class="slide"><img src="foto7.jpeg"></div><div class="slide"><img src="foto8.jpeg"></div><div class="slide"><img src="foto9.jpeg"></div><div class="slide"><img src="foto10.jpeg"></div><div class="slide"><img src="foto11.jpeg"></div><div class="slide"><img src="foto12.jpeg"></div><div class="slide"><img src="foto13.jpeg"></div><div class="slide"><img src="foto14.jpeg"></div>
         </div>
         <button class="slider-btn next" onclick="moveSlide('slider-photos', 1)">&#10095;</button>
+    </div>
+    <div class="slider-controls">
+        <button class="control-btn active" id="btn-auto-photos" onclick="toggleAuto('slider-photos')">Autoposun: ZAP</button>
+    </div>
+    <div class="order-box">
+        <h4>Domluvit focení</h4>
+        <form action="https://formspree.io/f/xeekojbo" method="POST">
+            <div class="form-group"><label>E-mail / IG</label><input type="text" name="kontakt" required></div>
+            <div class="form-group"><label>Lokalita / Představa</label><textarea name="projekt" rows="2"></textarea></div>
+            <button type="submit" class="btn-send">Poslat poptávku</button>
+        </form>
     </div>
 </section>
 
 <script>
 let sliderStates = {
-    'slider-clips': { idx: 0, auto: true, paused: false },
-    'slider-reels': { idx: 0, auto: true, paused: false, muted: true },
-    'slider-photos': { idx: 0, auto: true, paused: false }
+    'slider-clips': { idx: 0, auto: true },
+    'slider-reels': { idx: 0, auto: true, muted: true },
+    'slider-photos': { idx: 0, auto: true }
 };
 
 function openSection(id) {
     document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
     window.scrollTo(0,0);
-    history.pushState({sectionId: id}, "", "#" + id);
+    if(id === 'sec-reels') {
+        const v = document.querySelector('#slider-reels .slide video');
+        if(v) v.play().catch(()=>{});
+    }
 }
 
 function goHome() {
     document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
     document.getElementById('home').classList.add('active');
-    history.pushState({sectionId: 'home'}, "", " ");
-    // Stop all videos
-    document.querySelectorAll('video').forEach(v => v.pause());
-}
-
-function toggleClipFields(val) {
-    const fields = document.getElementById('clip-extra-fields');
-    fields.style.display = (val === 'komplet') ? 'block' : 'none';
+    document.querySelectorAll('video').forEach(v => { v.pause(); v.muted = true; });
 }
 
 function moveSlide(sid, step) {
     const state = sliderStates[sid];
     const track = document.querySelector(`#${sid} .slider-track`);
     const slides = track.querySelectorAll('.slide');
+    if(!slides.length) return;
     state.idx = (state.idx + step + slides.length) % slides.length;
     track.style.transform = `translateX(-${state.idx * 100}%)`;
 
     if(sid === 'slider-reels') {
         track.querySelectorAll('video').forEach((v, i) => {
             v.pause();
-            if(i === state.idx) {
-                v.currentTime = 0;
-                if(!state.paused) v.play().catch(()=>{});
-            }
+            if(i === state.idx) { v.play().catch(()=>{}); v.muted = state.muted; }
         });
     }
 }
 
-function togglePlay(sid) {
-    const state = sliderStates[sid];
-    state.paused = !state.paused;
-    const btn = document.getElementById('pause-reels');
-    if(btn) btn.innerText = state.paused ? "Přehrát" : "Pauza";
-    const currentVid = document.querySelector(`#${sid} .slide:nth-child(${state.idx + 1}) video`);
-    if(currentVid) state.paused ? currentVid.pause() : currentVid.play();
+function toggleAuto(sid) {
+    sliderStates[sid].auto = !sliderStates[sid].auto;
+    const btn = document.getElementById('btn-auto-' + sid.split('-')[1]);
+    btn.innerText = sliderStates[sid].auto ? "Autoposun: ZAP" : "Autoposun: VYP";
+    btn.classList.toggle('active', sliderStates[sid].auto);
 }
 
 function toggleSound(sid) {
     const state = sliderStates[sid];
     state.muted = !state.muted;
-    const btn = document.getElementById('sound-reels');
-    btn.innerText = state.muted ? "Zvuk: VYP" : "Zvuk: ZAP";
-    btn.classList.toggle('active', !state.muted);
     document.querySelectorAll(`#${sid} video`).forEach(v => v.muted = state.muted);
 }
 
-function toggleAuto(sid) {
-    const state = sliderStates[sid];
-    state.auto = !state.auto;
-    const btn = document.getElementById('auto-' + sid.split('-')[1]);
-    if(btn) btn.classList.toggle('active', state.auto);
+function toggleClipFields() {
+    const type = document.getElementById('clip-type').value;
+    document.getElementById('nataceni-pole').style.display = (type === 'komplet') ? 'block' : 'none';
 }
 
-function validateForm(form) {
-    const ig = form.instagram ? form.instagram.value.trim() : "";
-    const mail = form.email ? form.email.value.trim() : "";
-    const contact = form.contact ? form.contact.value.trim() : "";
-
-    if (!ig && !mail && !contact) {
-        alert("Prosím zanechej na sebe nějaký kontakt!");
-        return false;
-    }
-    return true;
-}
-
+// ZPOMALENÝ INTERVAL: 8000ms = 8 sekund
 setInterval(() => {
-    Object.keys(sliderStates).forEach(sid => {
-        if(sliderStates[sid].auto && !sliderStates[sid].paused) moveSlide(sid, 1);
-    });
-}, 5000);
-
-window.onpopstate = (e) => e.state?.sectionId ? openSection(e.state.sectionId) : goHome();
+    for (let sid in sliderStates) {
+        if (sliderStates[sid].auto) moveSlide(sid, 1);
+    }
+}, 8000);
 </script>
 </body>
 </html>
