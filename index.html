@@ -5,251 +5,286 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>karbyvisuals – Creative Studio</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+
 <style>
-:root { --primary: #ff7a18; --bg: #050505; --card: #111; }
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{font-family:'Inter', sans-serif; background: var(--bg); color: #fff; overflow-x:hidden; scroll-behavior: smooth;}
-body::before { content: ""; position: fixed; inset: 0; background: radial-gradient(circle at 50% 0%, rgba(255,122,24,0.1) 0%, transparent 50%), linear-gradient(180deg, #050505 0%, #0a0a0a 100%); z-index: -1; }
+:root { --primary:#ff7a18; --bg:#050505; --card:#111; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:#fff;
+    overflow-x:hidden;
+}
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(255,122,24,.1), transparent 50%),
+      linear-gradient(180deg,#050505,#0a0a0a);
+    z-index:-1;
+}
 
-.top-bar { position: fixed; top: 0; width: 100%; height: 70px; background: rgba(0,0,0,0.85); backdrop-filter: blur(15px); display: flex; align-items: center; justify-content: center; z-index: 1000; border-bottom: 1px solid rgba(255,122,24,0.2); }
-.logo { font-weight: 900; font-size: 24px; color: var(--primary); text-transform: uppercase; letter-spacing: 3px; cursor: pointer; text-decoration: none; }
+/* TOP BAR */
+.top-bar{
+    position:fixed;top:0;width:100%;height:70px;
+    background:rgba(0,0,0,.85);
+    backdrop-filter:blur(15px);
+    display:flex;justify-content:center;align-items:center;
+    z-index:1000;
+    border-bottom:1px solid rgba(255,122,24,.2);
+}
+.logo{
+    color:var(--primary);
+    font-weight:900;
+    letter-spacing:3px;
+    text-decoration:none;
+    font-size:24px;
+    cursor:pointer;
+}
 
-section { padding: 140px 6% 60px; min-height: 100vh; display: none; }
-section.active { display: block; animation: fadeIn 0.4s ease-out; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+/* SECTIONS */
+section{
+    padding:140px 6% 80px;
+    min-height:100vh;
+    display:none;
+}
+section.active{display:block;animation:fade .4s ease}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1}}
 
-.home-content { text-align: center; margin-bottom: 80px; }
-.home-title { font-size: clamp(45px, 10vw, 90px); font-weight: 900; line-height: 0.9; }
-.home-subtitle { color: var(--primary); letter-spacing: 6px; font-weight: 700; font-size: 14px; margin-top: 40px; }
+.home-title{
+    font-size:clamp(45px,10vw,90px);
+    font-weight:900;
+    text-align:center;
+}
+.home-sub{
+    text-align:center;
+    color:var(--primary);
+    letter-spacing:6px;
+    margin-top:30px;
+    font-weight:700;
+}
 
-.home-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 60px; }
-.nav-card { background: var(--card); border: 1px solid rgba(255,255,255,0.05); padding: 60px 20px; border-radius: 28px; text-align: center; cursor: pointer; transition: 0.4s; }
-.nav-card:hover { border-color: var(--primary); transform: translateY(-10px); background: #1a1a1a; }
+/* GRID */
+.home-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+    margin-top:80px;
+}
+.nav-card{
+    background:var(--card);
+    padding:60px 20px;
+    border-radius:28px;
+    text-align:center;
+    cursor:pointer;
+    transition:.4s;
+    border:1px solid rgba(255,255,255,.05);
+}
+.nav-card:hover{
+    border-color:var(--primary);
+    transform:translateY(-10px);
+}
 
-.slider-container { position: relative; width: 100%; max-width: 1100px; margin: 30px auto; overflow: hidden; border-radius: 24px; background: #000; box-shadow: 0 40px 80px rgba(0,0,0,0.8); }
-.slider-track { display: flex; transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1); }
-.slide { min-width: 100%; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; background: #000; }
-.slide iframe { width: 100%; height: 100%; border: none; }
-.slide img, .slide video { max-width: 100%; max-height: 100%; object-fit: contain; cursor: pointer; }
+/* SLIDER */
+.slider-container{
+    position:relative;
+    max-width:1100px;
+    margin:40px auto;
+    overflow:hidden;
+    border-radius:24px;
+    background:#000;
+}
+.slider-track{display:flex;transition:.7s}
+.slide{
+    min-width:100%;
+    aspect-ratio:16/9;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.slide iframe,.slide video,.slide img{
+    width:100%;height:100%;
+    object-fit:contain;
+}
 
-.reels-slider { max-width: 400px; }
-.reels-slider .slide { aspect-ratio: 9/16; }
+/* BUTTONS */
+.slider-btn{
+    position:absolute;top:50%;
+    transform:translateY(-50%);
+    width:45px;height:45px;
+    border-radius:50%;
+    background:rgba(0,0,0,.6);
+    color:#fff;
+    border:1px solid rgba(255,122,24,.3);
+    cursor:pointer;
+}
+.prev{left:15px}
+.next{right:15px}
 
-.slider-controls { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
-.control-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 10px 18px; border-radius: 99px; cursor: pointer; font-size: 11px; text-transform: uppercase; font-weight: 700; transition: 0.3s; }
-.control-btn.active { background: var(--primary); border-color: var(--primary); color: #000; }
+/* ORDER */
+.order-box{
+    max-width:600px;
+    margin:80px auto;
+    background:#0a0a0a;
+    padding:45px;
+    border-radius:30px;
+}
+.order-box h4{
+    text-align:center;
+    color:var(--primary);
+    margin-bottom:30px;
+}
+input,textarea{
+    width:100%;
+    padding:15px;
+    margin-bottom:20px;
+    border-radius:14px;
+    background:#000;
+    border:1px solid #222;
+    color:#fff;
+}
+.btn-send{
+    width:100%;
+    padding:18px;
+    border:none;
+    border-radius:14px;
+    background:var(--primary);
+    font-weight:900;
+    cursor:pointer;
+}
 
-.slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.6); border: 1px solid rgba(255,122,24,0.3); width: 45px; height: 45px; border-radius: 50%; color: #fff; cursor: pointer; z-index: 10; }
-.prev { left: 15px; } .next { right: 15px; }
+/* ABOUT */
+.about-box{
+    max-width:800px;
+    margin:0 auto;
+    background:#0a0a0a;
+    padding:60px;
+    border-radius:30px;
+    line-height:1.7;
+}
 
-.order-box { max-width: 600px; margin: 70px auto; background: #0a0a0a; padding: 45px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.05); }
-.order-box h4 { margin-bottom: 30px; text-align: center; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; }
-.form-group { margin-bottom: 25px; }
-.form-group label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 8px; color: rgba(255,255,255,0.8); }
-.form-group label span { color: var(--primary); }
-
-input, textarea { width: 100%; padding: 16px; border-radius: 14px; background: #000; border: 1px solid #222; color: #fff; font-family: inherit; font-size: 15px; }
-input:focus, textarea:focus { border-color: var(--primary); outline: none; }
-.btn-send { width: 100%; padding: 18px; background: var(--primary); border: none; border-radius: 14px; font-weight: 900; text-transform: uppercase; cursor: pointer; }
-.back-link { display: block; text-align: center; margin-bottom: 40px; color: var(--primary); text-decoration: none; font-size: 13px; font-weight: 900; letter-spacing: 2px; }
+/* FEEDBACK */
+.feedback{
+    max-width:800px;
+    margin:40px auto;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+.bubble{
+    background:#111;
+    padding:20px;
+    border-radius:20px;
+    max-width:80%;
+}
+.bubble.me{align-self:flex-end;background:#1a1a1a}
 </style>
 </head>
+
 <body>
 
 <div class="top-bar">
-    <a href="javascript:void(0)" onclick="goHome()" class="logo">karbyvisuals</a>
+  <a class="logo" onclick="goHome()">karbyvisuals</a>
 </div>
 
+<!-- HOME -->
 <section id="home" class="active">
-    <div class="home-content">
-        <h1 class="home-title">karbyvisuals</h1>
-        <p class="home-subtitle">VIDEO • PHOTO • EDIT</p>
-    </div>
-    <div class="home-grid">
-        <div class="nav-card" onclick="openSection('sec-clips')"><h3>Hudební Klipy</h3><p>SHOWCASE</p></div>
-        <div class="nav-card" onclick="openSection('sec-reels')"><h3>Reels & TikTok</h3><p>SOCIAL MEDIA</p></div>
-        <div class="nav-card" onclick="openSection('sec-yt')"><h3>YouTube Tvorba</h3><p>EDITS</p></div>
-        <div class="nav-card" onclick="openSection('sec-photos')"><h3>Fotografie</h3><p>GALLERY</p></div>
-    </div>
+  <h1 class="home-title">karbyvisuals</h1>
+  <p class="home-sub">VIDEO • PHOTO • EDIT</p>
+
+  <div class="home-grid">
+    <div class="nav-card" onclick="openSection('clips')">Hudební klipy</div>
+    <div class="nav-card" onclick="openSection('reels')">Reels / TikTok</div>
+    <div class="nav-card" onclick="openSection('photos')">Fotografie</div>
+    <div class="nav-card" onclick="openSection('about')">O mně</div>
+    <div class="nav-card" onclick="openSection('feedback')">Feedback</div>
+  </div>
 </section>
 
-<section id="sec-clips">
-    <a href="javascript:void(0)" onclick="goHome()" class="back-link">← ZPĚT</a>
-    <h2 style="text-align:center; margin-bottom:20px;">Hudební Klipy</h2>
-    <div class="slider-container" id="slider-clips">
-        <button class="slider-btn prev" onclick="moveSlide('slider-clips', -1)">&#10094;</button>
-        <div class="slider-track">
-            <div class="slide"><iframe src="https://www.youtube.com/embed/u3uAbnbAokE?enablejsapi=1&mute=1"></iframe></div>
-            <div class="slide"><iframe src="https://www.youtube.com/embed/_VWkv_ONEiM?enablejsapi=1&mute=1"></iframe></div>
-            <div class="slide"><iframe src="https://www.youtube.com/embed/ihaDYNouXis?enablejsapi=1&mute=1"></iframe></div>
-        </div>
-        <button class="slider-btn next" onclick="moveSlide('slider-clips', 1)">&#10095;</button>
+<!-- CLIPS -->
+<section id="clips">
+  <h2>Hudební klipy</h2>
+  <div class="slider-container" id="slider-clips">
+    <button class="slider-btn prev" onclick="move('slider-clips',-1)">‹</button>
+    <div class="slider-track">
+      <div class="slide"><iframe src="https://www.youtube.com/embed/u3uAbnbAokE?mute=1"></iframe></div>
+      <div class="slide"><iframe src="https://www.youtube.com/embed/_VWkv_ONEiM?mute=1"></iframe></div>
+      <div class="slide"><iframe src="https://www.youtube.com/embed/ihaDYNouXis?mute=1"></iframe></div>
     </div>
-    <div class="slider-controls"><button class="control-btn active" id="auto-clips" onclick="toggleAuto('slider-clips')">Autoposun</button></div>
-    <div class="order-box">
-        <h4>Natočit klip</h4>
-        <form onsubmit="return validateForm(this)" action="https://formspree.io/f/xeekojbo" method="POST">
-            <div class="form-group"><label>Instagram</label><input type="text" name="instagram" placeholder="@tvojejmeno"></div>
-            <div class="form-group"><label>E-mail</label><input type="email" name="email" placeholder="email@seznam.cz"></div>
-            <div class="form-group"><label>Představa projektu</label><textarea name="projekt" rows="3"></textarea></div>
-            <p style="font-size:10px; color:gray; margin-bottom:10px;">* Vyplň prosím aspoň Instagram nebo E-mail.</p>
-            <button type="submit" class="btn-send">Odeslat</button>
-        </form>
-    </div>
+    <button class="slider-btn next" onclick="move('slider-clips',1)">›</button>
+  </div>
+
+  <div class="order-box">
+    <h4>Natočit klip</h4>
+    <input placeholder="Instagram">
+    <input placeholder="E-mail">
+    <textarea placeholder="Představa projektu"></textarea>
+    <button class="btn-send">Odeslat</button>
+  </div>
 </section>
 
-<section id="sec-reels">
-    <a href="javascript:void(0)" onclick="goHome()" class="back-link">← ZPĚT</a>
-    <h2 style="text-align:center; margin-bottom:20px;">Reels & TikTok</h2>
-    <div class="slider-container reels-slider" id="slider-reels">
-        <button class="slider-btn prev" onclick="moveSlide('slider-reels', -1)">&#10094;</button>
-        <div class="slider-track">
-            <div class="slide"><video src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/finale_202_oqmn0s.mp4" loop playsinline onclick="togglePlay('slider-reels')"></video></div>
-            <div class="slide"><video src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/ed38eb3c1c02454287444edc078ede49_pyrkc1.mp4" loop playsinline onclick="togglePlay('slider-reels')"></video></div>
-            <div class="slide"><video src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/d980b3ae76af4219b8b4d388ffb15dd1_i5ivd4.mp4" loop playsinline onclick="togglePlay('slider-reels')"></video></div>
-        </div>
-        <button class="slider-btn next" onclick="moveSlide('slider-reels', 1)">&#10095;</button>
+<!-- REELS -->
+<section id="reels">
+  <h2>Reels & TikTok</h2>
+  <div class="slider-container" id="slider-reels">
+    <div class="slider-track">
+      <div class="slide"><video src="https://res.cloudinary.com/dlrgsdnry/video/upload/finale_202_oqmn0s.mp4" controls></video></div>
+      <div class="slide"><video src="https://res.cloudinary.com/dlrgsdnry/video/upload/ed38eb3c1c02454287444edc078ede49_pyrkc1.mp4" controls></video></div>
     </div>
-    <div class="slider-controls">
-        <button class="control-btn" id="pause-reels" onclick="togglePlay('slider-reels')">Pauza</button>
-        <button class="control-btn active" id="sound-reels" onclick="toggleSound('slider-reels')">Zvuk: ZAP</button>
-        <button class="control-btn active" id="auto-reels" onclick="toggleAuto('slider-reels')">Autoposun</button>
-    </div>
-    <div class="order-box">
-        <h4>Poptat Reels balíček</h4>
-        <form onsubmit="return validateForm(this)" action="https://formspree.io/f/xeekojbo" method="POST">
-            <div class="form-group"><label>Instagram</label><input type="text" name="instagram" placeholder="@tvojejmeno"></div>
-            <div class="form-group"><label>E-mail</label><input type="email" name="email" placeholder="email@seznam.cz"></div>
-            <div class="form-group"><label>Typ balíčku</label><input type="text" name="balicek" placeholder="např. Silver / Gold"></div>
-            <div class="form-group"><label>Počet videí</label><input type="number" name="pocet" placeholder="Kolik kusů?"></div>
-            <button type="submit" class="btn-send">Odeslat</button>
-        </form>
-    </div>
+  </div>
 </section>
 
-<section id="sec-yt">
-    <a href="javascript:void(0)" onclick="goHome()" class="back-link">← ZPĚT</a>
-    <h2 style="text-align:center; margin-bottom:20px;">YouTube Tvorba</h2>
-    <div class="slider-container"><div class="slide"><iframe src="https://www.youtube.com/embed/R_vEUMhXYWA?enablejsapi=1&mute=1"></iframe></div></div>
-    <div class="order-box">
-        <h4>Poptat střih YT</h4>
-        <form onsubmit="return validateForm(this)" action="https://formspree.io/f/xeekojbo" method="POST">
-            <div class="form-group"><label>Instagram</label><input type="text" name="instagram" placeholder="@tvojejmeno"></div>
-            <div class="form-group"><label>E-mail</label><input type="email" name="email" placeholder="email@seznam.cz"></div>
-            <div class="form-group"><label>Délka videa</label><input type="text" name="delka" placeholder="např. 10-15 min"></div>
-            <div class="form-group"><label>Styl videa</label><textarea name="styl" placeholder="vlog, gaming, dokument..."></textarea></div>
-            <button type="submit" class="btn-send">Odeslat</button>
-        </form>
+<!-- PHOTOS -->
+<section id="photos">
+  <h2>Fotografie</h2>
+  <div class="slider-container" id="slider-photos">
+    <div class="slider-track">
+      <div class="slide"><img src="foto11.jpeg"></div>
+      <div class="slide"><img src="foto2.jpeg"></div>
+      <div class="slide"><img src="foto3.jpeg"></div>
     </div>
+  </div>
 </section>
 
-<section id="sec-photos">
-    <a href="javascript:void(0)" onclick="goHome()" class="back-link">← ZPĚT</a>
-    <h2 style="text-align:center; margin-bottom:20px;">Fotogalerie</h2>
-    <div class="slider-container" id="slider-photos">
-        <button class="slider-btn prev" onclick="moveSlide('slider-photos', -1)">&#10094;</button>
-        <div class="slider-track">
-            <div class="slide"><img src="foto11.jpeg"></div>
-            <div class="slide"><img src="foto2.jpeg"></div>
-            <div class="slide"><img src="foto3.jpeg"></div>
-        </div>
-        <button class="slider-btn next" onclick="moveSlide('slider-photos', 1)">&#10095;</button>
-    </div>
-    <div class="order-box">
-        <h4>Domluvit focení</h4>
-        <form onsubmit="return validateForm(this)" action="https://formspree.io/f/xeekojbo" method="POST">
-            <div class="form-group"><label>Instagram</label><input type="text" name="instagram" placeholder="@tvojejmeno"></div>
-            <div class="form-group"><label>E-mail</label><input type="email" name="email" placeholder="email@seznam.cz"></div>
-            <div class="form-group"><label>Lokalita</label><input type="text" name="lokalita" placeholder="Kde budeme fotit?"></div>
-            <div class="form-group"><label>Kdy?</label><input type="text" name="kdy" placeholder="Datum / Čas"></div>
-            <button type="submit" class="btn-send">Odeslat</button>
-        </form>
-    </div>
+<!-- ABOUT -->
+<section id="about">
+  <h2>O mně</h2>
+  <div class="about-box">
+    <p>
+      Jsem videomaker a editor zaměřený na moderní vizuál,
+      hudební klipy, reels a obsah pro sociální sítě.
+      Baví mě syrový styl, emoce a dynamika.
+    </p>
+  </div>
+</section>
+
+<!-- FEEDBACK -->
+<section id="feedback">
+  <h2>Feedback</h2>
+  <div class="feedback">
+    <div class="bubble">„Totální bomba, přesně co jsme chtěli.“</div>
+    <div class="bubble me">„Rychlá domluva a top výsledek.“</div>
+    <div class="bubble">„Vizuál úplně jinde než konkurence.“</div>
+  </div>
 </section>
 
 <script>
-let sliderStates = {
-    'slider-clips': { idx: 0, auto: true, paused: false },
-    'slider-reels': { idx: 0, auto: true, paused: false, muted: false },
-    'slider-photos': { idx: 0, auto: true, paused: false }
-};
-
-function openSection(id) {
-    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    window.scrollTo(0,0);
-    history.pushState({sectionId: id}, "", "#" + id);
-    if(id === 'sec-reels') {
-        const vids = document.querySelectorAll('#slider-reels video');
-        vids.forEach(v => { v.muted = sliderStates['slider-reels'].muted; v.play().catch(()=>{}); });
-    }
+let state={};
+function openSection(id){
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
 }
-
-function goHome() {
-    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-    document.getElementById('home').classList.add('active');
-    history.pushState({sectionId: 'home'}, "", " ");
+function goHome(){openSection('home')}
+function move(id,dir){
+  if(!state[id])state[id]=0;
+  const track=document.querySelector(`#${id} .slider-track`);
+  const slides=track.children.length;
+  state[id]=(state[id]+dir+slides)%slides;
+  track.style.transform=`translateX(-${state[id]*100}%)`;
 }
-
-function moveSlide(sid, step) {
-    const state = sliderStates[sid];
-    const track = document.querySelector(`#${sid} .slider-track`);
-    const slides = track.querySelectorAll('.slide');
-    state.idx = (state.idx + step + slides.length) % slides.length;
-    track.style.transform = `translateX(-${state.idx * 100}%)`;
-
-    if(sid === 'slider-reels') {
-        track.querySelectorAll('video').forEach((v, i) => {
-            v.pause();
-            if(i === state.idx) {
-                v.currentTime = 0; // Restart videa od začátku
-                if(!state.paused) v.play();
-            }
-        });
-    }
-}
-
-function togglePlay(sid) {
-    const state = sliderStates[sid];
-    state.paused = !state.paused;
-    const btn = document.getElementById('pause-' + sid.split('-')[1]);
-    if(btn) btn.innerText = state.paused ? "Přehrát" : "Pauza";
-    const currentVid = document.querySelector(`#${sid} .slide:nth-child(${state.idx + 1}) video`);
-    if(currentVid) state.paused ? currentVid.pause() : currentVid.play();
-}
-
-function toggleSound(sid) {
-    const state = sliderStates[sid];
-    state.muted = !state.muted;
-    const btn = document.getElementById('sound-' + sid.split('-')[1]);
-    btn.innerText = state.muted ? "Zvuk: VYP" : "Zvuk: ZAP";
-    btn.classList.toggle('active', !state.muted);
-    document.querySelectorAll(`#${sid} video`).forEach(v => v.muted = state.muted);
-}
-
-function toggleAuto(sid) {
-    const state = sliderStates[sid];
-    state.auto = !state.auto;
-    document.getElementById('auto-' + sid.split('-')[1]).classList.toggle('active', state.auto);
-}
-
-function validateForm(form) {
-    const ig = form.instagram.value.trim();
-    const mail = form.email.value.trim();
-    if (!ig && !mail) {
-        alert("Prosím vyplň aspoň Instagram nebo E-mail, ať se ti mám jak ozvat!");
-        return false;
-    }
-    return true;
-}
-
-setInterval(() => {
-    Object.keys(sliderStates).forEach(sid => {
-        if(sliderStates[sid].auto && !sliderStates[sid].paused) moveSlide(sid, 1);
-    });
-}, 5000);
-
-window.onpopstate = (e) => e.state?.sectionId ? openSection(e.state.sectionId) : goHome();
 </script>
+
 </body>
 </html>
