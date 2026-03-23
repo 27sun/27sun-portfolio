@@ -95,7 +95,7 @@ h2{font-size:clamp(24px, 5vw, 32px);font-weight:600;margin-bottom:20px;letter-sp
     z-index: 10;
 }
 
-/* Fix pro YouTube video, aby nebylo čtvercové, pokud je 16:9 horizontální */
+/* Fix pro YouTube video */
 #slider-yt iframe {
     aspect-ratio: 16 / 9;
     max-width: 600px;
@@ -230,12 +230,11 @@ footer .disclaimer { font-size: 10px; opacity: 0.3; max-width: 600px; margin: 0 
                 <button class="nav-arrow arrow-left" onclick="manualScroll('slider-reels', -1)">←</button>
                 <div class="video-slider" id="slider-reels">
                     <video loop playsinline preload="none"><source src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/done_becii9.mp4" type="video/mp4"></video>
-                    
                     <video loop playsinline preload="none"><source src="https://res.cloudinary.com/drjfvblwk/video/upload/HOTOTBOO_txsslk.mp4" type="video/mp4"></video>
                     <video loop playsinline preload="none" poster="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/finale_202_oqmn0s.jpg"><source src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/finale_202_oqmn0s.mp4" type="video/mp4"></video>
                     <video loop playsinline preload="none" poster="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/ed38eb3c1c02454287444edc078ede49_pyrkc1.jpg"><source src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/ed38eb3c1c02454287444edc078ede49_pyrkc1.mp4" type="video/mp4"></video>
                     <video loop playsinline preload="none" poster="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/d980b3ae76af4219b8b4d388ffb15dd1_i5ivd4.jpg"><source src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/d980b3ae76af4219b8b4d388ffb15dd1_i5ivd4.mp4" type="video/mp4"></video>
-                    <video loop playsinline preload="none" poster="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/done_20version_s5ip3x.jpg"><source Labs="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/done_20version_s5ip3x.mp4" type="video/mp4"></video>
+                    <video loop playsinline preload="none" poster="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/done_20version_s5ip3x.jpg"><source src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/done_20version_s5ip3x.mp4" type="video/mp4"></video>
                     <video loop playsinline preload="none" poster="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/sdasdc_20XD_oglvcf.jpg"><source src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/sdasdc_20XD_oglvcf.mp4" type="video/mp4"></video>
                     <video loop playsinline preload="none" poster="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/1_20CAST_kmsniw.jpg"><source src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/1_20CAST_kmsniw.mp4" type="video/mp4"></video>
                     <video loop playsinline preload="none" poster="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/Timeline_4_gshe8d.jpg"><source src="https://res.cloudinary.com/dlrgsdnry/video/upload/f_auto,q_auto/Timeline_4_gshe8d.mp4" type="video/mp4"></video>
@@ -446,7 +445,8 @@ function runAutoScroll() {
 
 document.addEventListener('DOMContentLoaded',()=>{
   setLang('cs');
-  setInterval(runAutoScroll, 6000);
+  // Změněno na 18000ms (18 sekund)
+  setInterval(runAutoScroll, 18000); 
   document.querySelectorAll('.video-slider, .gallery-wrapper').forEach(slider => {
       slider.addEventListener('scroll', updateActiveStates);
   });
